@@ -2,31 +2,34 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerMoveHandler, IPointerUpHandler
+public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private RectTransform _rectTransform;
-    private bool _isGrab;
-    public bool IsGrab { get => _isGrab; }
+    private Inventory _inventory;
+    private Image _image;
 
     private void Start()
     {
-        _rectTransform = (RectTransform)transform;
-        GetComponent<Image>().color = Color.HSVToRGB(Random.value, .7f, .7f);
+        _image = GetComponent<Image>();
+        _image.color = Color.HSVToRGB(Random.value, .7f, .7f);
+    }
+
+    public void Initialize(Inventory inventory)
+    {
+        _inventory = inventory;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _isGrab = true;
-    }
-
-    public void OnPointerMove(PointerEventData eventData)
-    {
-        if (!_isGrab) return;
-        _rectTransform.position = eventData.position;
+        _inventory.DragItem = this;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        _isGrab = false;
+        _inventory.DragItem = null;
+    }
+
+    public void SetRaycastTarget(bool value)
+    {
+        _image.raycastTarget = value;
     }
 }
