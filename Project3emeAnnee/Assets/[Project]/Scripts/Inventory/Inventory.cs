@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Transform _inventoryItemContainer;
     [SerializeField] private GameObject _inventorySlotPrefab;
     private List<InventoryItem> _inventoryItemList = new List<InventoryItem>();
-    private InventorySlot[] _inventoryArray;
+    [SerializeField] private InventorySlot[] _inventorySlotArray;
 
     [Header("To Move away :")]
     [SerializeField] private GameObject _itemPrefab;
@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        foreach (var item in _inventoryArray)
+        foreach (var item in _inventorySlotArray)
             item.UpdateItemPos(_itemAnimationSpeed);
 
         if (_dragItem)
@@ -46,18 +46,18 @@ public class Inventory : MonoBehaviour
 
     public void DrawInventory()
     {
-        if (_inventoryArray != null && _inventoryArray.Length > 0)
+        if (_inventorySlotArray != null && _inventorySlotArray.Length > 0)
         {
             print("clear inventory slot");
-            for (int i = 0; i < _inventoryArray.Length; i++)
-                DestroyImmediate(_inventoryArray[i]);
+            for (int i = 0; i < _inventorySlotArray.Length; i++)
+                DestroyImmediate(_inventorySlotArray[i]);
         }
 
-        _inventoryArray = new InventorySlot[_inventorySize];
-        for (int i = 0; i < _inventoryArray.Length; i++)
+        _inventorySlotArray = new InventorySlot[_inventorySize];
+        for (int i = 0; i < _inventorySlotArray.Length; i++)
         {
             GameObject newSlot = Instantiate(_inventorySlotPrefab, transform.position, Quaternion.identity, _inventorySlotContainer);
-            _inventoryArray[i] = newSlot.GetComponent<InventorySlot>().Initialize(this);
+            _inventorySlotArray[i] = newSlot.GetComponent<InventorySlot>().Initialize(this);
         }
     }
 
@@ -65,25 +65,39 @@ public class Inventory : MonoBehaviour
     {
         GameObject newItem = Instantiate(_itemPrefab, _inventoryItemContainer.transform.position, Quaternion.identity, _inventoryItemContainer);
         InventoryItem newInvItem = newItem.GetComponent<InventoryItem>();
+        newInvItem.Initialize(this);
         AddItemToInventory(newInvItem);
+    }
+
+    public void TrashItem(InventoryItem itemToTrash)
+    {
+        print("Trash");
+        _inventoryItemList.Remove(itemToTrash);
+        itemToTrash.TrashAnimation();
     }
 
     public void AddItemToInventory(InventoryItem item)
     {
-        item.Initialize(this);
-        // print("Add item");
-        for (int i = _inventoryArray.Length; i > 1; i--)
+        for (int i = _inventorySlotArray.Length - 1; i > 0; i--)
         {
-            // print(i);
-            _inventoryArray[i - 1].Item = _inventoryArray[i - 2].Item;
+            if (i == _inventorySlotArray.Length - 1 && _inventorySlotArray[i].Item)
+            {
+                TrashItem(_inventorySlotArray[i].Item);
+            }
+            _inventorySlotArray[i].Item = _inventorySlotArray[i - 1].Item;
         }
-        _inventoryArray[0].Item = item;
+        _inventorySlotArray[0].Item = item;
         _inventoryItemList.Add(item);
     }
 
-    public void ItemGrabOverSlot()
+    public void ItemGrabOverSlot(InventorySlot slotOver)
     {
-
+        if (slotOver.Item) return;
+        foreach (var item in _inventorySlotArray)
+        {
+            if (item.Item == DragItem) item.Item = null;
+        }
+        slotOver.Item = DragItem;
     }
 }
 

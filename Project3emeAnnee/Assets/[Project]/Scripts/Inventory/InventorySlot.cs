@@ -25,7 +25,11 @@ public class InventorySlot : MonoBehaviour, IPointerMoveHandler, IPointerExitHan
     {
         if(_inventory.DragItem && _inventoryItem == _inventory.DragItem) return;
         _mouseOverTime = _isMouseOver ? _mouseOverTime + Time.deltaTime : 0;
-        if(_mouseOverTime > 1) print("Drag item over slot : " + name);
+        if(_mouseOverTime > .4f)
+        {
+            _inventory.ItemGrabOverSlot(this);
+            _mouseOverTime = 0;
+        }
     }
 
     public void OnPointerMove(PointerEventData eventData) { _isMouseOver = true; }
