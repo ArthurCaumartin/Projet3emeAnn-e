@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Inventory _inventory;
     private Image _image;
     private RectTransform _rectTransform;
-    private InventorySlot _slotToGoOnPointerUp;
+    public InventorySlot lastSlot;
 
     private void Start()
     {
@@ -31,25 +31,26 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     }
 
     public void SetRaycastTarget(bool value) { _image.raycastTarget = value; }
-    public void OnPointerDown(PointerEventData eventData)
+    // public void OnPointerDown(PointerEventData eventData) { _inventory.DragItem = this; }
+    // public void OnPointerUp(PointerEventData eventData) { _inventory.DragItem = null; }
+
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        if (_slotToGoOnPointerUp)
-        {
-            _slotToGoOnPointerUp.Item = null;
-        }
         _inventory.DragItem = this;
+        print("Start Drag");
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData)
     {
-        if (_slotToGoOnPointerUp)
-            _inventory.ItemGrabOverSlot(_slotToGoOnPointerUp);
+        print("Drag");
+    }
 
+    public void OnEndDrag(PointerEventData eventData)
+    {
         _inventory.DragItem = null;
-    }
 
-    public void EnableSetOnMouseRealse(InventorySlot value)
-    {
-        _slotToGoOnPointerUp = value;
+        // InventorySlot slot = RaycasterUI.instance.GetTypeUnderMouse<InventorySlot>();
+        // slot.AddGrabItemToSlot();
+        // print("End Drag");
     }
 }

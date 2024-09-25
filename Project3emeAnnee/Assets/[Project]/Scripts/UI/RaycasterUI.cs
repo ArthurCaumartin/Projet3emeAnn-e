@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,20 +14,23 @@ public class RaycasterUI : MonoBehaviour
         instance = this;
     }
 
-    public bool DetecteMouseRelease(GameObject toFind)
+    public typeToFind GetTypeUnderMouse<typeToFind>() where typeToFind : MonoBehaviour
     {
         PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
         pointerEventData.position = Input.mousePosition;
 
         List<RaycastResult> results = new List<RaycastResult>();
         _graphicRaycaster.Raycast(pointerEventData, results);
-        if(results.Count == 0) return false;
+        if(results.Count == 0) return null;
 
         foreach (var item in results)
         {
-            if(item.gameObject == toFind)
-                return true;
+            typeToFind typeInstance = item.gameObject.GetComponent<typeToFind>();
+            if(typeInstance && typeInstance is typeToFind)
+            {
+                return typeInstance;
+            }
         }
-        return false;
-    }
+        return null;
+    }   
 }
