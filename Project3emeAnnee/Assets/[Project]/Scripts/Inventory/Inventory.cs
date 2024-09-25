@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory instance;
     [SerializeField] private int _inventorySize = 12;
     [SerializeField] private float _itemAnimationSpeed = 5;
+    public float AnimationSpeed { get => _itemAnimationSpeed; }
     [Header("UI Reference :")]
     [SerializeField] private Transform _inventorySlotContainer;
     [SerializeField] private Transform _inventoryItemContainer;
@@ -22,11 +25,16 @@ public class Inventory : MonoBehaviour
         get => _dragItem;
         set
         {
-            //! Disable target to enable inventory event
+            //! Disable ray target to enable slot inventory pointer event through inventory slot
             foreach (var item in _inventoryItemList)
                 item.SetRaycastTarget(!value);
             _dragItem = value;
         }
+    }
+
+    private void Awake()
+    {
+        instance = this;
     }
 
     private void Start()
@@ -36,9 +44,6 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        foreach (var item in _inventorySlotArray)
-            item.UpdateItemPos(_itemAnimationSpeed);
-
         if (_dragItem)
         {
             _dragItem.transform.position = Input.mousePosition;
@@ -49,7 +54,7 @@ public class Inventory : MonoBehaviour
     {
         if (_inventorySlotArray != null && _inventorySlotArray.Length > 0)
         {
-            print("clear inventory slot");
+            // print("clear inventory slot");
             for (int i = 0; i < _inventorySlotArray.Length; i++)
                 DestroyImmediate(_inventorySlotArray[i]);
         }
@@ -74,7 +79,8 @@ public class Inventory : MonoBehaviour
 
     public void TrashItem(InventoryItem itemToTrash)
     {
-        print("Trash");
+        // print("Trash");
+        if (itemToTrash == DragItem) return;
         _inventoryItemList.Remove(itemToTrash);
         itemToTrash.TrashAnimation();
     }
@@ -88,7 +94,7 @@ public class Inventory : MonoBehaviour
 
     private void DragItemRight(int start, int end)
     {
-        print("Go to Right");
+        // print("Go to Right");
         for (int i = start; i > end; i--)
         {
             if (i == _inventorySlotArray.Length - 1 && _inventorySlotArray[i].Item)
@@ -111,12 +117,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void RemoveItem(InventoryItem itemToRemove)
+    {
+        int dargIndex = GetDragItemIndex();
+        _inventorySlotArray[dargIndex].Item = null;
+        DragItemLeft(dargIndex, _inventorySlotArray.Length - 1);
+    }
+
     public void ItemGrabOverSlot(InventorySlot slotOver)
     {
         if (!DragItem) return;
-        if (slotOver.Item == DragItem)
+        if (slotOver.Item == DragItem) return;
+
+        if (!_inventorySlotArray.Contains(slotOver))
         {
-            print("Over slot item is Drag Item !");
+            if (slotOver.Item) TrashItem(slotOver.Item);
+            RemoveItem(DragItem);
+            slotOver.Item = DragItem;
             return;
         }
 
@@ -125,41 +142,24 @@ public class Inventory : MonoBehaviour
 
         if (slotOver.Item)
         {
-            print("drag Index : " + dragItemIndex + " /// over Index : " + overIndex);
+            print("Item In Slot");
             if (dragItemIndex < overIndex) DragItemLeft(dragItemIndex, overIndex);
             if (dragItemIndex > overIndex) DragItemRight(dragItemIndex, overIndex);
-
             slotOver.Item = DragItem;
             return;
         }
 
-        if (!slotOver.Item)
+        //! If no item in slot
+        print("No Item in over slot");
+        for (int i = overIndex; i > 0; i--)
         {
-            print("Slot " + overIndex + " is empty");
-            for (int i = overIndex; i > 0; i--)
+            if (_inventorySlotArray[i].Item == DragItem) break;
+            if (_inventorySlotArray[i].Item && !_inventorySlotArray[i + 1].Item)
             {
-                print("Loop");
-                if (_inventorySlotArray[i].Item == DragItem) break;
-                if (_inventorySlotArray[i].Item && !_inventorySlotArray[i + 1].Item)
-                {
-                    print("Find first empty slot = " + (i + 1));
-                    _inventorySlotArray[i + 1].Item = DragItem;
-                    DragItemLeft(dragItemIndex, i + 1);
-                    break;
-                }
+                _inventorySlotArray[i + 1].Item = DragItem;
+                DragItemLeft(dragItemIndex, i + 1);
+                break;
             }
-            print("Done !");
-            // for (int i = 0; i < _inventorySlotArray.Length; i++)
-            // {
-            //     if (!_inventorySlotArray[i].Item && _inventorySlotArray[i] != slotOver)
-            //     {
-            //         print("Over Empty slot = set to first empty");
-            //         _inventorySlotArray[dragItemIndex].Item = null;
-            //         _inventorySlotArray[i].Item = DragItem;
-            //         DragItemLeft(dragItemIndex, i);
-            //         return;
-            //     }
-            // }
         }
     }
 
@@ -174,18 +174,5 @@ public class Inventory : MonoBehaviour
         }
 
         return dragItemIndex;
-    }
-}
-
-[CustomEditor(typeof(Inventory)), CanEditMultipleObjects]
-public class EditorInventory : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        Inventory inventory = (Inventory)target;
-        if (GUILayout.Button("Generate Inventory")) inventory?.DrawInventory();
-        if (GUILayout.Button("Spawn New Item")) inventory?.SpawnNewItem();
-
-        base.OnInspectorGUI();
     }
 }

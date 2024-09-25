@@ -8,6 +8,7 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private Inventory _inventory;
     private Image _image;
     private RectTransform _rectTransform;
+    private InventorySlot _slotToGoOnPointerUp;
 
     private void Start()
     {
@@ -29,7 +30,26 @@ public class InventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         .OnComplete(() => Destroy(gameObject));
     }
 
-    public void OnPointerDown(PointerEventData eventData) { _inventory.DragItem = this; }
-    public void OnPointerUp(PointerEventData eventData) { _inventory.DragItem = null; }
     public void SetRaycastTarget(bool value) { _image.raycastTarget = value; }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (_slotToGoOnPointerUp)
+        {
+            _slotToGoOnPointerUp.Item = null;
+        }
+        _inventory.DragItem = this;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (_slotToGoOnPointerUp)
+            _inventory.ItemGrabOverSlot(_slotToGoOnPointerUp);
+
+        _inventory.DragItem = null;
+    }
+
+    public void EnableSetOnMouseRealse(InventorySlot value)
+    {
+        _slotToGoOnPointerUp = value;
+    }
 }

@@ -59,7 +59,7 @@ MonoBehaviour:
   m_CellSize: {x: 50, y: 50}
   m_Spacing: {x: 10, y: 15}
   m_Constraint: 0
-  m_ConstraintCount: 5
+  m_ConstraintCount: 27
 --- !u!1 &3570545916917255909
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   _inventoryItemContainer: {fileID: 636785387980656843}
   _inventorySlotPrefab: {fileID: 8874193247310680313, guid: 9d94faf2c702ce044be09b36ee297508,
     type: 3}
+  _inventorySlotArray: []
   _itemPrefab: {fileID: 7239918968474317526, guid: 210c1ac29e2784b4ea376135ddb4547f,
     type: 3}
 --- !u!1 &8139760213073910014
