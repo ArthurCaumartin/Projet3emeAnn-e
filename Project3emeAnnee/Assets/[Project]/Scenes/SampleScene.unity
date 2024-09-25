@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 0b99a6a94b390d443b0571b8bdb44fbf,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -807,8 +808,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -221.8633, y: -2.3741}
-  m_SizeDelta: {x: 230.2734, y: 280.7483}
+  m_AnchoredPosition: {x: -371, y: -216}
+  m_SizeDelta: {x: 230.2734, y: 109.3251}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1796037219
 MonoBehaviour:
@@ -912,10 +913,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 950044883}
     m_Modifications:
+    - target: {fileID: 3477150094689899869, guid: 1341b0c8de3ecf1489919f6a41f843ba,
+        type: 3}
+      propertyPath: _inventorySize
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3570545916917255909, guid: 1341b0c8de3ecf1489919f6a41f843ba,
         type: 3}
       propertyPath: m_Name
       value: Inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815740163910025384, guid: 1341b0c8de3ecf1489919f6a41f843ba,
+        type: 3}
+      propertyPath: m_Constraint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815740163910025384, guid: 1341b0c8de3ecf1489919f6a41f843ba,
+        type: 3}
+      propertyPath: m_ConstraintCount
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 5107871617519728124, guid: 1341b0c8de3ecf1489919f6a41f843ba,
         type: 3}
@@ -995,7 +1011,7 @@ PrefabInstance:
     - target: {fileID: 5107871617519728124, guid: 1341b0c8de3ecf1489919f6a41f843ba,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 236
+      value: -0.000015259
       objectReference: {fileID: 0}
     - target: {fileID: 5107871617519728124, guid: 1341b0c8de3ecf1489919f6a41f843ba,
         type: 3}

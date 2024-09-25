@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -57,6 +58,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < _inventorySlotArray.Length; i++)
         {
             GameObject newSlot = Instantiate(_inventorySlotPrefab, transform.position, Quaternion.identity, _inventorySlotContainer);
+            newSlot.name = "Slot_" + i;
             _inventorySlotArray[i] = newSlot.GetComponent<InventorySlot>().Initialize(this);
         }
     }
@@ -64,6 +66,7 @@ public class Inventory : MonoBehaviour
     public void SpawnNewItem()
     {
         GameObject newItem = Instantiate(_itemPrefab, _inventoryItemContainer.transform.position, Quaternion.identity, _inventoryItemContainer);
+        newItem.name = "Item_" + _inventoryItemList.Count;
         InventoryItem newInvItem = newItem.GetComponent<InventoryItem>();
         newInvItem.Initialize(this);
         AddItemToInventory(newInvItem);
@@ -78,7 +81,15 @@ public class Inventory : MonoBehaviour
 
     public void AddItemToInventory(InventoryItem item)
     {
-        for (int i = _inventorySlotArray.Length - 1; i > 0; i--)
+        DragItemRight(_inventorySlotArray.Length - 1, 0);
+        _inventorySlotArray[0].Item = item;
+        _inventoryItemList.Add(item);
+    }
+
+    private void DragItemRight(int start, int end)
+    {
+        print("Go to Right");
+        for (int i = start; i > end; i--)
         {
             if (i == _inventorySlotArray.Length - 1 && _inventorySlotArray[i].Item)
             {
@@ -86,18 +97,83 @@ public class Inventory : MonoBehaviour
             }
             _inventorySlotArray[i].Item = _inventorySlotArray[i - 1].Item;
         }
-        _inventorySlotArray[0].Item = item;
-        _inventoryItemList.Add(item);
+    }
+
+    private void DragItemLeft(int fromIndex, int toIndex)
+    {
+        for (int i = fromIndex; i < toIndex; i++)
+        {
+            _inventorySlotArray[i].Item = _inventorySlotArray[i + 1].Item;
+            if (i == toIndex - 1)
+            {
+                _inventorySlotArray[i + 1].Item = null;
+            }
+        }
     }
 
     public void ItemGrabOverSlot(InventorySlot slotOver)
     {
-        if (slotOver.Item) return;
-        foreach (var item in _inventorySlotArray)
+        if (!DragItem) return;
+        if (slotOver.Item == DragItem)
         {
-            if (item.Item == DragItem) item.Item = null;
+            print("Over slot item is Drag Item !");
+            return;
         }
-        slotOver.Item = DragItem;
+
+        int dragItemIndex = GetDragItemIndex();
+        int overIndex = Array.IndexOf(_inventorySlotArray, slotOver);
+
+        if (slotOver.Item)
+        {
+            print("drag Index : " + dragItemIndex + " /// over Index : " + overIndex);
+            if (dragItemIndex < overIndex) DragItemLeft(dragItemIndex, overIndex);
+            if (dragItemIndex > overIndex) DragItemRight(dragItemIndex, overIndex);
+
+            slotOver.Item = DragItem;
+            return;
+        }
+
+        if (!slotOver.Item)
+        {
+            print("Slot " + overIndex + " is empty");
+            for (int i = overIndex; i > 0; i--)
+            {
+                print("Loop");
+                if (_inventorySlotArray[i].Item == DragItem) break;
+                if (_inventorySlotArray[i].Item && !_inventorySlotArray[i + 1].Item)
+                {
+                    print("Find first empty slot = " + (i + 1));
+                    _inventorySlotArray[i + 1].Item = DragItem;
+                    DragItemLeft(dragItemIndex, i + 1);
+                    break;
+                }
+            }
+            print("Done !");
+            // for (int i = 0; i < _inventorySlotArray.Length; i++)
+            // {
+            //     if (!_inventorySlotArray[i].Item && _inventorySlotArray[i] != slotOver)
+            //     {
+            //         print("Over Empty slot = set to first empty");
+            //         _inventorySlotArray[dragItemIndex].Item = null;
+            //         _inventorySlotArray[i].Item = DragItem;
+            //         DragItemLeft(dragItemIndex, i);
+            //         return;
+            //     }
+            // }
+        }
+    }
+
+    private int GetDragItemIndex()
+    {
+        int dragItemIndex = 0;
+        for (int i = 0; i < _inventorySlotArray.Length; i++)
+        {
+            if (_inventorySlotArray[i].Item != DragItem) continue;
+            dragItemIndex = i;
+            break;
+        }
+
+        return dragItemIndex;
     }
 }
 
