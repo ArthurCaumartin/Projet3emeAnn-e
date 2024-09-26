@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -76,6 +78,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    [ContextMenu("Spawn New Item")]
     public void SpawnNewItem()
     {
         GameObject newItem = Instantiate(_itemPrefab, _inventoryItemContainer.transform.position, Quaternion.identity, _inventoryItemContainer);
@@ -102,7 +105,6 @@ public class Inventory : MonoBehaviour
 
     private void DragItemRight(int start, int end)
     {
-        // print("Go to Right");
         for (int i = start; i > end; i--)
         {
             if (i == _mainInventorySlotArray.Length - 1 && _mainInventorySlotArray[i].Item)
@@ -113,23 +115,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void DragItemLeft(int fromIndex, int toIndex)
+    private void DragItemLeft(int start, int end)
     {
-        for (int i = fromIndex; i < toIndex; i++)
+        for (int i = start; i < end; i++)
         {
             _mainInventorySlotArray[i].SetItem(_mainInventorySlotArray[i + 1].Item);
-            if (i == toIndex - 1)
+            if (i == end - 1)
             {
                 _mainInventorySlotArray[i + 1].SetItem(null);
             }
         }
     }
 
-    private void RemoveItem(InventoryItem itemToRemove, bool dragToLeft = false)
+    private void RemoveItem(int itemIndex, bool dragToLeft = false)
     {
-        int dargIndex = GetDragItemIndex();
-        _mainInventorySlotArray[dargIndex].SetItem(null);
-        if (dragToLeft) DragItemLeft(dargIndex, _mainInventorySlotArray.Length - 1);
+        print("Remove Item, Index : " + itemIndex);
+        _mainInventorySlotArray[itemIndex].SetItem(null);
+        if (dragToLeft) DragItemLeft(itemIndex, _mainInventorySlotArray.Length - 1);
     }
 
     public void AddGrabItenToInventory(InventorySlot slotOver)
@@ -137,57 +139,105 @@ public class Inventory : MonoBehaviour
         if (!DragItem) return;
         if (slotOver.Item == DragItem) return;
 
-        //! If drag come from non main slot, clear last slot
-        if (!_mainInventorySlotArray.Contains(DragItem.lastSlot))
-            DragItem.lastSlot.SetItem(null);
+        int dragItemIndex = GetDragItemIndex();
+        int overIndex = GetSlotIndex(slotOver);
 
         //! If drag goes in non main slot
         if (!_mainInventorySlotArray.Contains(slotOver))
         {
             print("Add Item to other slot");
             if (slotOver.Item) TrashItem(slotOver.Item);
-            RemoveItem(DragItem, true);
+
+            if (dragItemIndex == -1)
+                DragItem.lastSlot.SetItem(null);
+            else
+                RemoveItem(dragItemIndex, true);
+
             slotOver.SetItem(DragItem);
             return;
         }
 
-        int dragItemIndex = GetDragItemIndex();
-        print("Drag index : " + dragItemIndex);
-        int overIndex = Array.IndexOf(_mainInventorySlotArray, slotOver);
-
-        if (slotOver.Item)
+        if (dragItemIndex == -1)
         {
-            print("Item In Slot");
-            if (dragItemIndex < overIndex) DragItemLeft(dragItemIndex, overIndex);
-            if (dragItemIndex > overIndex) DragItemRight(dragItemIndex, overIndex);
-            slotOver.SetItem(DragItem);
-            return;
-        }
-
-        //! If no item in slot
-        print("No Item in over slot");
-        for (int i = overIndex; i > 0; i--)
-        {
-            if (_mainInventorySlotArray[i].Item == DragItem) break;
-            if (_mainInventorySlotArray[i].Item && !_mainInventorySlotArray[i + 1].Item)
+            //! If drag come from non main slot, clear last slot
+            DragItem.lastSlot.SetItem(null);
+            if (slotOver.Item)
             {
-                _mainInventorySlotArray[i + 1].SetItem(DragItem);
-                DragItemLeft(dragItemIndex, i + 1);
-                break;
+                DragItemRight(GetFirstEmptySlotIndex(), overIndex);
+                slotOver.SetItem(DragItem);
+            }
+            else
+            {
+                _mainInventorySlotArray[GetFirstEmptySlotIndex()].SetItem(DragItem);
+            }
+        }
+        else
+        {
+            if (slotOver.Item)
+            {
+                // print("Item In Slot");
+                if (dragItemIndex < overIndex) DragItemLeft(dragItemIndex, overIndex);
+                if (dragItemIndex > overIndex) DragItemRight(dragItemIndex, overIndex);
+                slotOver.SetItem(DragItem);
+            }
+            else
+            {
+                // print("No Item in over slot");
+                int indexToFind = GetFirstEmptySlotIndex();
+                _mainInventorySlotArray[indexToFind].SetItem(DragItem);
+                DragItemLeft(dragItemIndex, indexToFind);
             }
         }
     }
 
-    private int GetDragItemIndex()
+    private int GetFirstEmptySlotIndex()
     {
-        int dragItemIndex = 0;
+        for (int i = _mainInventorySlotArray.Length - 1; i > 0; i--)
+        {
+            // if (_mainInventorySlotArray[i].Item == DragItem) break;
+            if (_mainInventorySlotArray[i].Item && !_mainInventorySlotArray[i + 1].Item)
+            {
+                return i + 1;
+            }
+        }
+        return -1;
+    }
+
+    private int GetSlotIndex(InventorySlot slot)
+    {
         for (int i = 0; i < _mainInventorySlotArray.Length; i++)
         {
-            if (_mainInventorySlotArray[i].Item != DragItem) continue;
-            dragItemIndex = i;
-            break;
+            if (_mainInventorySlotArray[i] == slot) return i;
         }
+        return -1;
+    }
 
+    private int GetDragItemIndex()
+    {
+        int dragItemIndex = -1;
+        for (int i = 0; i < _mainInventorySlotArray.Length; i++)
+        {
+            if (_mainInventorySlotArray[i].Item == DragItem)
+            {
+                dragItemIndex = i;
+                return dragItemIndex;
+            }
+        }
         return dragItemIndex;
     }
 }
+
+
+// public static class UUU
+// {
+//     public static int GetIndex<T>(this T[] array, object toFind)
+//     {
+//         if(toFind is not T) return -1;
+
+//         for (int i = 0; i < array.Length; i++)
+//         {
+//             if(array[i].Equals(toFind)) return i;
+//         }
+//         return -1;
+//     }
+// }

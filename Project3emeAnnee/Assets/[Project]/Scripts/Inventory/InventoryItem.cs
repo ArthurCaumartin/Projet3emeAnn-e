@@ -37,12 +37,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         _inventory.DragItem = this;
-        print("Start Drag");
+        // print("Start Drag");
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        print("Drag");
+        // print("Drag");
     }
 
     public void OnEndDrag(PointerEventData eventData)

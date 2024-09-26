@@ -5,8 +5,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private InventoryItem _inventoryItem;
     public InventoryItem Item { get => _inventoryItem; }
-
-
     private Inventory _inventory;
 
     private void Start()
