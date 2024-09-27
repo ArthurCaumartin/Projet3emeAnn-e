@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
-public class EssenceReservoir : MonoBehaviour
+public class GasReservoir : MonoBehaviour
 {
     [SerializeField] private int _essenceQuantity = 500;
     [SerializeField] private RectTransform _startButton;
@@ -11,7 +12,9 @@ public class EssenceReservoir : MonoBehaviour
     private void Start()
     {
         GetComponent<TargetDetector>().TriggerEnvent.AddListener(SetStartButtonScale);
+        _startButton.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.SetGameState(GameState.TowerDefence));
         SetStartButtonScale(false);
+
     }
 
     public void SetStartButtonScale(bool value)
