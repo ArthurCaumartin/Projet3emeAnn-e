@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 49125008}
   - component: {fileID: 49125007}
   - component: {fileID: 49125006}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 267172303}
   - component: {fileID: 267172302}
   - component: {fileID: 267172305}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,8 +455,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31622776, y: -0.6324555, z: 0.31622776, w: 0.6324555}
-  m_LocalPosition: {x: 15, y: 20, z: 4.37}
+  m_LocalRotation: {x: 0.37174803, y: -0.601501, z: 0.37174803, w: 0.60150105}
+  m_LocalPosition: {x: 15, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -519,10 +519,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1645562706}
+  _transitionDuration: 0.5
   _camera: {fileID: 0}
-  _posOffset: {x: 15, y: 20, z: 4.37}
   _dampMovement: 1
   _followSpeed: 20
+  _posOffset: {x: 15, y: 30, z: 0}
+  _movingData:
+    offSet: {x: 15, y: 20, z: 0}
+    angle: {x: 53.130104, y: 270, z: 0}
+  _towerdefenceData:
+    offSet: {x: 15, y: 30, z: 0}
+    angle: {x: 63.434967, y: 270, z: 0.0000038181906}
 --- !u!1 &338258740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1017,7 @@ GameObject:
   - component: {fileID: 587338374}
   - component: {fileID: 587338373}
   - component: {fileID: 587338372}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1132,7 +1139,7 @@ GameObject:
   - component: {fileID: 598480074}
   - component: {fileID: 598480073}
   - component: {fileID: 598480072}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1260,7 +1267,7 @@ GameObject:
   - component: {fileID: 618576356}
   - component: {fileID: 618576355}
   - component: {fileID: 618576354}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1382,7 +1389,7 @@ GameObject:
   - component: {fileID: 686351878}
   - component: {fileID: 686351877}
   - component: {fileID: 686351876}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1504,7 +1511,7 @@ GameObject:
   - component: {fileID: 708807995}
   - component: {fileID: 708807994}
   - component: {fileID: 708807993}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1632,7 +1639,7 @@ GameObject:
   - component: {fileID: 750136267}
   - component: {fileID: 750136266}
   - component: {fileID: 750136265}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1810,7 +1817,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 3072
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -1836,7 +1843,7 @@ GameObject:
   - component: {fileID: 811058967}
   - component: {fileID: 811058966}
   - component: {fileID: 811058965}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1958,7 +1965,7 @@ GameObject:
   - component: {fileID: 826806869}
   - component: {fileID: 826806868}
   - component: {fileID: 826806867}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2129,7 +2136,7 @@ GameObject:
   - component: {fileID: 994200459}
   - component: {fileID: 994200458}
   - component: {fileID: 994200457}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2251,7 +2258,7 @@ GameObject:
   - component: {fileID: 1056435514}
   - component: {fileID: 1056435513}
   - component: {fileID: 1056435512}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2373,7 +2380,7 @@ GameObject:
   - component: {fileID: 1132531015}
   - component: {fileID: 1132531014}
   - component: {fileID: 1132531013}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2647,7 +2654,7 @@ GameObject:
   - component: {fileID: 1290305452}
   - component: {fileID: 1290305451}
   - component: {fileID: 1290305450}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2803,7 +2810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1645562706}
-  _triggerDistance: 8.51
+  _triggerDistance: 8.6
   _event:
     m_PersistentCalls:
       m_Calls: []
@@ -2941,7 +2948,7 @@ GameObject:
   - component: {fileID: 1442177945}
   - component: {fileID: 1442177944}
   - component: {fileID: 1442177943}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3069,7 +3076,7 @@ GameObject:
   - component: {fileID: 1755505092}
   - component: {fileID: 1755505091}
   - component: {fileID: 1755505090}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3222,7 +3229,7 @@ GameObject:
   - component: {fileID: 1999084635}
   - component: {fileID: 1999084634}
   - component: {fileID: 1999084633}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3340,6 +3347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2026724183}
+  - component: {fileID: 2026724185}
   - component: {fileID: 2026724184}
   m_Layer: 0
   m_Name: GameManager
@@ -3376,6 +3384,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _graphicRayArray: []
+--- !u!114 &2026724185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026724182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1426a61dcb6575a4d94556d8666e00b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _state: 0
+  _camControler: {fileID: 330585548}
 --- !u!1 &2032660926
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,7 +3532,7 @@ GameObject:
   - component: {fileID: 2101265422}
   - component: {fileID: 2101265421}
   - component: {fileID: 2101265420}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Obstacle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
