@@ -14,23 +14,20 @@ public class RaycasterUI : MonoBehaviour
         instance = this;
     }
 
-    public typeToFind GetTypeUnderMouse<typeToFind>() where typeToFind : MonoBehaviour
+    public T GetTypeUnderMouse<T>() where T : MonoBehaviour
     {
         PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
         pointerEventData.position = Input.mousePosition;
 
         List<RaycastResult> results = new List<RaycastResult>();
         _graphicRaycaster.Raycast(pointerEventData, results);
-        if(results.Count == 0) return null;
+        if (results.Count == 0) return null;
 
         foreach (var item in results)
         {
-            typeToFind typeInstance = item.gameObject.GetComponent<typeToFind>();
-            if(typeInstance && typeInstance is typeToFind)
-            {
-                return typeInstance;
-            }
+            T instance = item.gameObject.GetComponent<T>();
+            if (instance && instance is T) return instance;
         }
         return null;
-    }   
+    }
 }
