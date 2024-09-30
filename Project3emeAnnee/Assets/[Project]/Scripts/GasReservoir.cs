@@ -16,7 +16,7 @@ public class GasReservoir : MonoBehaviour
 
     public void StartSiphon()
     {
-        GameManager.instance.StartSihpon(transform); 
+        PartyManager.instance.StartSihpon(transform); 
     }
 
     public void SetStartButtonScale(bool value)
