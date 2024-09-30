@@ -12,9 +12,9 @@ public enum GameState
     TowerDefence,
 }
 
-public class GameManager : MonoBehaviour
+public class PartyManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static PartyManager instance;
     [SerializeField] private GameState _state;
     [Space]
     [SerializeField] private PlayerControler _playerControler;
