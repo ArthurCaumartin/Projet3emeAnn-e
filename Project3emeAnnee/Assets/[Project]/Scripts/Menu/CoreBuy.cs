@@ -5,21 +5,20 @@ using UnityEngine;
 
 public class CoreBuy : MonoBehaviour
 {
-    public GasolineManager _gasManager;
+    private ResearchManager _gasManager;
     public int _coreValue;
-    public GameObject _coreSprite, _coreBuy;
+    public GameObject _corePrefab;
 
     private void Start()
     {
-        _gasManager = GetComponentInParent<GasolineManager>();
+        _gasManager = GetComponentInParent<ResearchManager>();
     }
 
     public void BuyCore()
     {
         if (_gasManager.BuyCore(_coreValue))
         {
-            _coreBuy.SetActive(false);
-            _coreSprite.SetActive(true);
+            Instantiate(_corePrefab, transform);
         }
     }
 }
