@@ -41,6 +41,29 @@ public class ResearchManager : MonoBehaviour
         }
     }
 
+    public void SellCore(int value)
+    {
+        switch (value)
+        {
+            case 1:
+                _gasolineManager.Gasoline += 500;
+                break;
+            case 2:
+                _gasolineManager.Gasoline += 1000;
+                break;
+            case 3:
+                _gasolineManager.Gasoline += 2000;
+                break;
+            case 4:
+                _gasolineManager.Gasoline += 4000;
+                break;
+        }
+        _gasText.text = _gasolineManager.Gasoline.ToString();
+        
+        CoreNumber--;
+        _coreText.text = CoreNumber + " / 4";
+    }
+
     public List<int> GetInfoUpgrades()
     {
         List<int> upgradesValues = new List<int>();
