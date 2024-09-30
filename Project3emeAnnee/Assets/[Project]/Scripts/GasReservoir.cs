@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -12,9 +10,13 @@ public class GasReservoir : MonoBehaviour
     private void Start()
     {
         GetComponent<TargetDetector>().TriggerEnvent.AddListener(SetStartButtonScale);
-        _startButton.GetComponent<Button>().onClick.AddListener(() => GameManager.instance.SetGameState(GameState.TowerDefence));
+        _startButton.GetComponent<Button>().onClick.AddListener(StartSiphon);
         SetStartButtonScale(false);
+    }
 
+    public void StartSiphon()
+    {
+        PartyManager.instance.StartSihpon(transform); 
     }
 
     public void SetStartButtonScale(bool value)
