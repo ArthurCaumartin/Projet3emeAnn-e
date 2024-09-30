@@ -8,6 +8,9 @@ public class DragDropResearch : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 {
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
+    private UpgradeSlot _actualSlot;
+
+    public int _upgradeValue;
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
@@ -16,11 +19,13 @@ public class DragDropResearch : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 
     public void OnPointerDown(PointerEventData eventDate)
     {
-        print("On Point Down");
+        // print("On Point Down");
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        OnLeaveSlot();
+        
         _canvasGroup.blocksRaycasts = false;
         _canvasGroup.alpha = 0.6f;
     }
@@ -34,5 +39,19 @@ public class DragDropResearch : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     public void OnDrag(PointerEventData eventData)
     {
         _rectTransform.anchoredPosition += eventData.delta;
+    }
+
+    public void OnDropOnSlot(UpgradeSlot slot)
+    {
+        _actualSlot = slot;
+    }
+
+    public void OnLeaveSlot()
+    {
+        if (_actualSlot == null) return;
+        
+        _actualSlot.OnLeaveSlot();
+        
+        _actualSlot = null;
     }
 }
