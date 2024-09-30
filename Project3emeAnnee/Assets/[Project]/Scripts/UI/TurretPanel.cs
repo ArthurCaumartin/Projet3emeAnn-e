@@ -9,7 +9,7 @@ public class TurretPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Start()
     {
-        ShowPanel(false, true);
+        ShowPanel(true, true);
     }
 
     private void ShowPanel(bool open, bool isInstante = false)
@@ -33,13 +33,13 @@ public class TurretPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        print("Enter : " + name + " / " + transform.localScale);
-        ShowPanel(true);
+        // print("Enter : " + name + " / " + transform.localScale);
+        // ShowPanel(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        print("Exit : " + name + " / " + transform.localScale);
-        ShowPanel(false);
+        // print("Exit : " + name + " / " + transform.localScale);
+        // ShowPanel(false);
     }
 }
