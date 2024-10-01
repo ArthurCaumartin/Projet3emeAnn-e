@@ -18,6 +18,7 @@ public class QuestSelection : MonoBehaviour
         _questManager = GetComponentInParent<QuestManager>();
     }
 
+    // Clicked on a quest in the Quests Menu
     public void SelectQuest()
     {
         if (_isSelected && _isComplete) return;
@@ -27,6 +28,8 @@ public class QuestSelection : MonoBehaviour
         _isSelected = true;
         _stampSprite.color = new Color(1,0,0,1);
     }
+    
+    // Unclicked on a quest in the Quests Menu
     public void UnSelectQuest()
     {
         _isSelected = false;
@@ -34,6 +37,7 @@ public class QuestSelection : MonoBehaviour
         _stampSprite.color = new Color(1,0,0,0);
     }
 
+    // Call when we progress on the quest
     public void Progress()
     {
         _progress++;
@@ -42,7 +46,8 @@ public class QuestSelection : MonoBehaviour
             AchieveQuest();
         }
     }
-
+    
+    // Called if the quest if is achieved
     private void AchieveQuest()
     {
         _isComplete = true;

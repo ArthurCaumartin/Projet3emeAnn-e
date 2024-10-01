@@ -12,7 +12,8 @@ public class QuestManager : MonoBehaviour
    {
       instance = this;
    }
-
+   
+   // Call this Function when a quest is selected in the menu
    public void SelectQuest(QuestSelection questSelectedScirpt)
    {
       if (_selectedQuest != null)
