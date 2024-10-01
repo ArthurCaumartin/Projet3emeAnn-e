@@ -2590,7 +2590,7 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls: []
-  _gizmoColor: {r: 0.19906116, g: 1, b: 0, a: 0.5}
+  _gizmoColor: {r: 1, g: 0, b: 0.06336784, a: 1}
 --- !u!114 &1319735501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3527,11 +3527,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 177419747316367860, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -40
-      objectReference: {fileID: 0}
     - target: {fileID: 1402026957546058026, guid: 80283121f86a32741928ec68a6bed440,
         type: 3}
       propertyPath: m_Name
