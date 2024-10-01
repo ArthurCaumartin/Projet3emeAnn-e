@@ -2590,7 +2590,7 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls: []
-  _gizmoColor: {r: 1, g: 0, b: 0.06336784, a: 1}
+  _gizmoColor: {r: 0, g: 1, b: 0.6853485, a: 0.30588236}
 --- !u!114 &1319735501
 MonoBehaviour:
   m_ObjectHideFlags: 0
