@@ -21,6 +21,8 @@ public class PartyManager : MonoBehaviour
     [SerializeField] private CameraControler _camControler;
     [SerializeField] private TurretManager _turretManager;
 
+    public GameState GameState { get => _state; }
+
     private void Awake()
     {
         instance = this;

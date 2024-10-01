@@ -5,7 +5,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private InventoryItem _inventoryItem;
     [SerializeField] private PartType _partToTake;
-    [SerializeField] TurretSetter _turretSetter;
+    [SerializeField] TurretPanel _turretPanel;
     [SerializeField] ScriptableTurretPart _part;
     public InventoryItem Item { get => _inventoryItem; }
     private Inventory _inventory;
@@ -14,8 +14,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     {
         //! Get inventory ref if Initialize wasn't call
         if (!_inventory) _inventory = Inventory.instance;
-        _turretSetter = transform.parent.GetComponent<TurretSetter>();
-
         name = name + "_" + _partToTake.ToString();
     }
 
@@ -25,10 +23,16 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         return this;
     }
 
+    //! Fonction call a lot of time with item = null
     public void SetItemInSlot(InventoryItem item)
     {
         _inventoryItem = item;
-        if (_inventoryItem) _inventoryItem.LastSlot = this;
+
+        if (_inventoryItem)
+        {
+            _inventoryItem.transform.SetParent(transform);
+            _inventoryItem.LastSlot = this;
+        }
     }
 
     private void MoveItemToSlot(float speed)
@@ -45,7 +49,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     //! Reorganise inventory on mouse over
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(!_inventory.DragItem) return;
+        if (!_inventory.DragItem) return;
         ScriptableTurretPart part = _inventory.DragItem.GetTurretPartOnDescriptor();
         if (_partToTake == part.partType || _partToTake == PartType.None)
             _inventory.AddGrabItenToInventory(this);
@@ -53,7 +57,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 
     public void OnPutInNonMainSlot()
     {
-        if (_turretSetter) _turretSetter.ChangeTurretPart(Item.GetTurretPartOnDescriptor());
+        if (_turretPanel) _turretPanel.ChangeTurretPart(Item.GetTurretPartOnDescriptor());
     }
 }
 
