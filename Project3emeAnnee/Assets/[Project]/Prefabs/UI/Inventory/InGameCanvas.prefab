@@ -107,8 +107,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8381966556844456722}
   - {fileID: 3064880471074931860}
+  - {fileID: 8381966556844456722}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -698,6 +698,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8381966556844456722}
     m_Modifications:
+    - target: {fileID: 302590649609372833, guid: 1341b0c8de3ecf1489919f6a41f843ba,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawnNewInventoryItem
+      objectReference: {fileID: 0}
     - target: {fileID: 3570545916917255909, guid: 1341b0c8de3ecf1489919f6a41f843ba,
         type: 3}
       propertyPath: m_Name
