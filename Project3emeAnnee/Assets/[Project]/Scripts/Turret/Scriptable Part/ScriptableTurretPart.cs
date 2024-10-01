@@ -4,7 +4,7 @@ public class ScriptableTurretPart : ScriptableObject
 {
     public string partName;
     [Space]
-    public Sprite uiSprite;
+    public Sprite inventorySprite;
     //! Rarity
     public Mesh mesh;
 }
