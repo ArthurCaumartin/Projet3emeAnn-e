@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 {
@@ -9,12 +10,19 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     [SerializeField] ScriptableTurretPart _part;
     public InventoryItem Item { get => _inventoryItem; }
     private Inventory _inventory;
+    private Image _image;
 
     private void Start()
     {
         //! Get inventory ref if Initialize wasn't call
         if (!_inventory) _inventory = Inventory.instance;
         name = name + "_" + _partToTake.ToString();
+        _image = GetComponentInChildren<Image>();
+        float r = Random.value;
+        if (r < .25f) _image.transform.eulerAngles = new Vector3(0, 0, 0);
+        if (r > .25f && r < .5f) _image.transform.eulerAngles = new Vector3(0, 0, 90);
+        if (r > .5f && r < .75f) _image.transform.eulerAngles = new Vector3(0, 0, 180);
+        if (r > .75f) _image.transform.eulerAngles = new Vector3(0, 0, 270);
     }
 
     public InventorySlot Initialize(Inventory inventory)
