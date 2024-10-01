@@ -30,7 +30,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 
         if (_inventoryItem)
         {
-            _inventoryItem.transform.SetParent(transform);
+            item.transform.SetParent(_inventory.GetSlotIndex(this) == -1 ? transform : _inventory.ItemContainer);
             _inventoryItem.LastSlot = this;
         }
     }
