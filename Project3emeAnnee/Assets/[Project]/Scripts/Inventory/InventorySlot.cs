@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private InventoryItem _inventoryItem;
+    [SerializeField] private PartType _partToTake;
+    [SerializeField] TurretSetter _turretSetter;
+    [SerializeField] ScriptableTurretPart _part;
     public InventoryItem Item { get => _inventoryItem; }
     private Inventory _inventory;
 
@@ -11,6 +14,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     {
         //! Get inventory ref if Initialize wasn't call
         if (!_inventory) _inventory = Inventory.instance;
+        _turretSetter = transform.parent.GetComponent<TurretSetter>();
     }
 
     public InventorySlot Initialize(Inventory inventory)
@@ -39,7 +43,15 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     //! Reorganise inventory on mouse over
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _inventory.AddGrabItenToInventory(this);
+        if(!_inventory.DragItem) return;
+        ScriptableTurretPart part = _inventory.DragItem.GetTurretPartOnDescriptor();
+        if (_partToTake == part.partType || _partToTake == PartType.None)
+            _inventory.AddGrabItenToInventory(this);
+    }
+
+    public void OnPutInNonMainSlot()
+    {
+        if (_turretSetter) _turretSetter.ChangeTurretPart(Item.GetTurretPartOnDescriptor());
     }
 }
 
