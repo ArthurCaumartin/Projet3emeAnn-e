@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3561f17aa21752d439db1bfebd001541, type: 3}
   m_Name: Base 4
   m_EditorClassIdentifier: 
+  partType: 2
   partName: 
-  uiSprite: {fileID: 0}
+  inventorySprite: {fileID: 0}
   mesh: {fileID: 7351634835607317843, guid: 808cbd55f0324b740af1fd88aa2c8697, type: 3}
   stat:
     damage: 17

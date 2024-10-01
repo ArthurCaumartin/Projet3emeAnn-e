@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3764638d44deb614a857ae384bdd0f5f, type: 3}
   m_Name: Cannon 2
   m_EditorClassIdentifier: 
+  partType: 3
   partName: 
-  uiSprite: {fileID: 0}
+  inventorySprite: {fileID: 0}
   mesh: {fileID: 8829302015704161569, guid: 35c92f619e5478446b518003dfb3f72d, type: 3}
   canon: {fileID: 0}
