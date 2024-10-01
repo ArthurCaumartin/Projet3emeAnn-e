@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3362427066f795547909cc8e08b369fb, type: 3}
-  m_Name: New Heart
+  m_Name: Heart 2
   m_EditorClassIdentifier: 
   partName: 
   uiSprite: {fileID: 0}
-  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  mesh: {fileID: -8182402315704824876, guid: c0ae0bbce9ec26f4ba86bb7a8a7941a7, type: 3}
   effect: {fileID: 0}

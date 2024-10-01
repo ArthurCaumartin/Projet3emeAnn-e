@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3764638d44deb614a857ae384bdd0f5f, type: 3}
-  m_Name: New Cannon
+  m_Script: {fileID: 11500000, guid: 3561f17aa21752d439db1bfebd001541, type: 3}
+  m_Name: Base 4
   m_EditorClassIdentifier: 
   partName: 
   uiSprite: {fileID: 0}
-  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  canon: {fileID: 0}
+  mesh: {fileID: 7351634835607317843, guid: 808cbd55f0324b740af1fd88aa2c8697, type: 3}
+  stat:
+    damage: 17
+    attackPerSecond: 2.5
+    range: 10
