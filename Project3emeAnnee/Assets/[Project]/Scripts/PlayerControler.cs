@@ -40,9 +40,10 @@ public class PlayerControler : MonoBehaviour
 
         Physics.Raycast(_mainCam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit);
         if (!hit.collider) return _agent.destination;
-        print(hit.collider.name);
+        // print(hit.collider.name);
         return hit.point;
     }
+    
     public void SetControlerInMobileMode()
     {
         _canMove = true;
