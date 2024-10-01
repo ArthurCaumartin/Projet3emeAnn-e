@@ -38,7 +38,7 @@ public class UpgradeSlot : MonoBehaviour, IDropHandler
     public void OnLeaveSlot()
     {
         _objectDropped = null;
-        _upgradeSlotImage.color = Color.black;
+        _upgradeSlotImage.color = Color.white;
     }
     
     // If all slots are reset, call this
@@ -48,6 +48,6 @@ public class UpgradeSlot : MonoBehaviour, IDropHandler
         _objectDroppedTransform.anchoredPosition = Vector2.zero;
         _objectDropped = null;
         
-        _upgradeSlotImage.color = Color.black;
+        _upgradeSlotImage.color = Color.white;
     }
 }
