@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using DG.Tweening;
 using UnityEngine;
 
@@ -33,14 +30,17 @@ public class CameraControler : MonoBehaviour
 
     private void OnValidate()
     {
-        if (_target)
-            transform.position = _target.position + _posOffset;
+        if (_target) FollowTarget(false);
     }
-
 
     private void Update()
     {
-        if (_dampMovement)
+        FollowTarget(_dampMovement);
+    }
+
+    private void FollowTarget(bool dampMovement)
+    {
+        if (dampMovement)
         {
             Vector3 targetPos = _target.position + _posOffset;
             transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref _velocity, 1 / _followSpeed, Mathf.Infinity);
@@ -53,27 +53,31 @@ public class CameraControler : MonoBehaviour
 
     public void SetCameraOnState(GameState state)
     {
-        if (state == GameState.Mobile)
+        switch (state)
         {
-            DOTween.To((time) =>
-            {
-                transform.eulerAngles = Vector3.Lerp(_towerdefenceData.angle, _movingData.angle, time);
-                _posOffset = Vector3.Lerp(_towerdefenceData.offSet, _movingData.offSet, time);
-            }, 0, 1, _transitionDuration)
-            .SetEase(Ease.Linear);
-        }
+            case GameState.Mobile:
+                DOTween.To((time) =>
+                {
+                    transform.eulerAngles = Vector3.Lerp(_towerdefenceData.angle, _movingData.angle, time);
+                    _posOffset = Vector3.Lerp(_towerdefenceData.offSet, _movingData.offSet, time);
+                }, 0, 1, _transitionDuration)
+                .SetEase(Ease.Linear);
+                break;
 
-        if (state == GameState.TowerDefence)
-        {
-            DOTween.To((time) =>
-            {
-                transform.eulerAngles = Vector3.Lerp(_movingData.angle, _towerdefenceData.angle, time);
-                _posOffset = Vector3.Lerp(_movingData.offSet, _towerdefenceData.offSet, time);
-            }, 0, 1, _transitionDuration)
-            .SetEase(Ease.Linear);
+            case GameState.TowerDefence:
+                DOTween.To((time) =>
+                {
+                    transform.eulerAngles = Vector3.Lerp(_movingData.angle, _towerdefenceData.angle, time);
+                    _posOffset = Vector3.Lerp(_movingData.offSet, _towerdefenceData.offSet, time);
+                }, 0, 1, _transitionDuration)
+                .SetEase(Ease.Linear);
+                break;
         }
     }
 
+    //! ///////////////////////////////////////////////////
+    //! ///////////////////////////////////////////////////
+    //! CALL BY EDITOR CLASS
     public void LookAtTarget()
     {
         if (_target)
@@ -98,4 +102,6 @@ public class CameraControler : MonoBehaviour
         transform.rotation = Quaternion.identity;
         OnValidate();
     }
+    //! ///////////////////////////////////////////////////
+    //! ///////////////////////////////////////////////////
 }

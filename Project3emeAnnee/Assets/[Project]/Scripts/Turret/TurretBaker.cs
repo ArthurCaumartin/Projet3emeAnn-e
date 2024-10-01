@@ -38,11 +38,10 @@ public class TurretBaker : MonoBehaviour
                 _base = partToSet as ScriptableBase;
                 break;
         }
-
         BakeAll();
     }
 
-    public void BakeAll()
+    private void BakeAll()
     {
         _cannonRenderer.Bake(_canon);
         _heartRenderer.Bake(_heart);

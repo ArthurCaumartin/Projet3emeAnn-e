@@ -25,8 +25,7 @@ public class PlayerControler : MonoBehaviour
 
     void Update()
     {
-        if(!_canMove) return;
-        if (RaycasterUI.instance.GetTypeUnderMouse<Image>()) print("Over UI");
+        if (!_canMove) return;
         if (_mouseMoveAction.ReadValue<float>() > .5f)
         {
             _target = GetMouseGroundPos();
@@ -36,12 +35,15 @@ public class PlayerControler : MonoBehaviour
 
     public Vector3 GetMouseGroundPos()
     {
+        //! If mouse is over UI don't update destination;
         if (RaycasterUI.instance.GetTypeUnderMouse<Image>()) return _agent.destination;
-        Physics.Raycast(_mainCam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit);
-        if (!hit.collider) return _agent.destination;
-        print(hit.collider.name);
-        return hit.point;
+
+        RaycastHit[] hits = Physics.RaycastAll(_mainCam.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, _groundLayer);
+        if (hits.Length > 0 && hits[0].collider)
+            return hits[0].point;
+        return _agent.destination;
     }
+
     public void SetControlerInMobileMode()
     {
         _canMove = true;

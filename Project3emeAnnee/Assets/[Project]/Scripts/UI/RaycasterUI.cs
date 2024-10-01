@@ -22,7 +22,7 @@ public class RaycasterUI : MonoBehaviour
 
     public T GetTypeUnderMouse<T>() where T : MonoBehaviour
     {
-        //TODO BUG : tout les GraficRaycaster sont pas reccupe ? donc toute les UI sont pas capté
+        //TODO BUG : tout les GraficRaycaster sont pas reccupe ? donc toute les UI sont pas capté ?
         PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
         pointerEventData.position = Input.mousePosition;
 
