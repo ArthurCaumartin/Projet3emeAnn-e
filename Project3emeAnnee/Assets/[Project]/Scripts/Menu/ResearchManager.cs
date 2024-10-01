@@ -17,6 +17,8 @@ public class ResearchManager : MonoBehaviour
         _gasolineManager = GetComponentInParent<GasolineManager>();
         _gasText.text = _gasolineManager.Gasoline.ToString();
     }
+    
+    // Call this function when we want to buy a core
     public bool BuyCore(int value)
     {
         if (CoreNumber < 4 && value <= _gasolineManager.Gasoline)
@@ -33,6 +35,7 @@ public class ResearchManager : MonoBehaviour
         }
     }
 
+    // Call this function when button Reset is pressed, it reset the infos about slots and position of Core Sprites
     public void ResetSlots()
     {
         for (int i = 0; i < _upgradeSlots.Count; i++)
@@ -41,6 +44,7 @@ public class ResearchManager : MonoBehaviour
         }
     }
 
+    // Called when a Core Sprite is dropped on the "Sell" button
     public void SellCore(int value)
     {
         switch (value)
@@ -64,6 +68,7 @@ public class ResearchManager : MonoBehaviour
         _coreText.text = CoreNumber + " / 4";
     }
 
+    // Call this to get the List of upgrades 
     public List<int> GetInfoUpgrades()
     {
         List<int> upgradesValues = new List<int>();

@@ -3,10 +3,12 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TestHighlight : Selectable
+public class HighLightUpgrade : Selectable
 {
     public GameObject _infoPopup;
     private bool isHighlighted;
+    
+    // If the object is HighLighted in Canvas, appear an info pop-up
     void Update()
     {
         if (IsHighlighted() && !isHighlighted)
