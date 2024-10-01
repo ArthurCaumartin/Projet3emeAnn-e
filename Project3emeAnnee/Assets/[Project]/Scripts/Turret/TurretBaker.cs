@@ -42,7 +42,7 @@ public class TurretBaker : MonoBehaviour
         BakeAll();
     }
 
-    public void BakeAll()
+    private void BakeAll()
     {
         _cannonRenderer.Bake(_canon);
         _heartRenderer.Bake(_heart);
