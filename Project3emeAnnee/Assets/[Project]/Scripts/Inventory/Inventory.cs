@@ -163,6 +163,7 @@ public class Inventory : MonoBehaviour
         if (dragItemIndex == -1)
         {
             //! If drag come from non main slot, clear last slot
+            if(IsAllInventorySlotFill()) return;
             DragItem.LastSlot.SetItemInSlot(null);
             if (slotOver.Item)
             {
@@ -231,5 +232,15 @@ public class Inventory : MonoBehaviour
         }
         //! Return -1 if the DragItem isn't in the main Inventory
         return dragItemIndex;
+    }
+
+    public bool IsAllInventorySlotFill()
+    {
+        foreach (var item in _mainInventorySlotArray)
+        {
+            if(!item.Item)
+                return false;
+        }
+        return true;
     }
 }
