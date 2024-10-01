@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cargo de recup
-  m_Shader: {fileID: -6465566751694194690, guid: 27b65dbb8926cdc43a31b6b701263de9,
+  m_Shader: {fileID: -6465566751694194690, guid: e61240ed1fe6db448b29977912b479ea,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -75,6 +75,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_1271d9b0f8bd44da8a25916d4ee435b9_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 8afbf33daabfa7f4cabd1895b8baba68, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7b721b407ccf48168ab4950764b926ae_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d375a208b2199134591b3374c7607237, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7be9c0c45a654057b17852a0ea8a6722_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 81df001708c9ed249b0be33b23d341b1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_bccc86040a5f4361833ee25471050dda_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 69ccfa28be412eb45b5fcb05059873e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_e7f1a89594c1441c898231ee711ac872_Texture_1_Texture2D:
