@@ -38,7 +38,6 @@ public class TurretBaker : MonoBehaviour
                 _base = partToSet as ScriptableBase;
                 break;
         }
-
         BakeAll();
     }
 
