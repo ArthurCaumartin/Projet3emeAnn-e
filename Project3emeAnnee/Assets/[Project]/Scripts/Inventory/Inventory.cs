@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
     [Header("UI Reference :")]
     [SerializeField] private Transform _inventorySlotContainer;
     [SerializeField] private Transform _inventoryItemContainer;
+    public Transform ItemContainer { get => _inventoryItemContainer; }
     [SerializeField] private GameObject _inventorySlotPrefab;
     private List<InventoryItem> _inventoryItemList = new List<InventoryItem>();
     private InventorySlot[] _mainInventorySlotArray;
@@ -207,7 +208,7 @@ public class Inventory : MonoBehaviour
         return -1;
     }
 
-    private int GetSlotIndex(InventorySlot slot)
+    public int GetSlotIndex(InventorySlot slot)
     {
         for (int i = 0; i < _mainInventorySlotArray.Length; i++)
         {

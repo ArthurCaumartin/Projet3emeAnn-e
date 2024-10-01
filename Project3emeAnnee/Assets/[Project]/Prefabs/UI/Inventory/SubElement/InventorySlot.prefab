@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryItem: {fileID: 0}
-  _partToTake: 1
-  _turretSetter: {fileID: 0}
+  _partToTake: 0
+  _turretPanel: {fileID: 0}
   _part: {fileID: 0}
 --- !u!222 &7087516395148224118
 CanvasRenderer:

@@ -3530,107 +3530,12 @@ PrefabInstance:
     - target: {fileID: 177419747316367860, guid: 80283121f86a32741928ec68a6bed440,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 177419747316367860, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 263598568738087437, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_Name
-      value: InventorySlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 822885710785482728, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_Name
-      value: Turret Panel
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 1402026957546058026, guid: 80283121f86a32741928ec68a6bed440,
         type: 3}
       propertyPath: m_Name
       value: InGameCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2114456870423345162, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_Name
-      value: Turret Panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2395187721909608930, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_Name
-      value: InventorySlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551000398119223879, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: _turret
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2746556166313083777, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_Name
-      value: InventorySlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2770554560389040281, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2770554560389040281, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2770554560389040281, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2770554560389040281, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2770554560389040281, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3477211923395215227, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3477211923395215227, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3477211923395215227, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3477211923395215227, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3843132042257397157, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: _turret
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148384775638519785, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433217862344189232, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: _turret
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5785826399584302489, guid: 80283121f86a32741928ec68a6bed440,
         type: 3}
@@ -3732,46 +3637,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6359604214295599116, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6359604214295599116, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6359604214295599116, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6359604214295599116, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6359604214295599116, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7163865489990412447, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_Name
-      value: Turret Panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 7240656008616704661, guid: 80283121f86a32741928ec68a6bed440,
-        type: 3}
-      propertyPath: m_Name
-      value: Turret Panel Container
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7163865489990412447, guid: 80283121f86a32741928ec68a6bed440, type: 3}
-    - {fileID: 822885710785482728, guid: 80283121f86a32741928ec68a6bed440, type: 3}
-    - {fileID: 2114456870423345162, guid: 80283121f86a32741928ec68a6bed440, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80283121f86a32741928ec68a6bed440, type: 3}

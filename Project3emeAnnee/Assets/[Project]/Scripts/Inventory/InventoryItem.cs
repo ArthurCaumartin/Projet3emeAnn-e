@@ -8,8 +8,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Inventory _inventory;
     private Image _image;
     private RectTransform _rectTransform;
-    private InventorySlot lastSlot;
-    public InventorySlot LastSlot { get => lastSlot; set => lastSlot = value; }
+    private InventorySlot _lastSlot;
+    public InventorySlot LastSlot { get => _lastSlot; set => _lastSlot = value; }
     private TurretPartDescritor _turretPartDescriptor;
 
     private void Start()
@@ -36,8 +36,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     //! to let the pointer call Event througt InventoryItem
     public void SetRaycastTarget(bool value) { _image.raycastTarget = value; }
 
-    public void OnBeginDrag(PointerEventData eventData) { _inventory.DragItem = this; }
-    public void OnEndDrag(PointerEventData eventData) { _inventory.DragItem = null; }
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        _inventory.DragItem = this;
+    }
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        _inventory.DragItem = null;
+    }
+    
     public void OnDrag(PointerEventData eventData) { }
 
     public ScriptableTurretPart GetTurretPartOnDescriptor()
