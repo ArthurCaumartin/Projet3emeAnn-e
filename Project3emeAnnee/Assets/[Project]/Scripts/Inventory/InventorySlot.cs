@@ -9,6 +9,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 
     private void Start()
     {
+        //! Get inventory ref if Initialize wasn't call
         if (!_inventory) _inventory = Inventory.instance;
     }
 
@@ -18,13 +19,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         return this;
     }
 
-    public void SetItem(InventoryItem item)
+    public void SetItemInSlot(InventoryItem item)
     {
         _inventoryItem = item;
-        if(_inventoryItem) _inventoryItem.lastSlot = this;
+        if (_inventoryItem) _inventoryItem.LastSlot = this;
     }
 
-    private void UpdateItemPos(float speed)
+    private void MoveItemToSlot(float speed)
     {
         if (!_inventoryItem || _inventory.DragItem == _inventoryItem) return;
         _inventoryItem.transform.position = Vector3.Lerp(_inventoryItem.transform.position, transform.position, Time.deltaTime * speed);
@@ -32,9 +33,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 
     private void Update()
     {
-        UpdateItemPos(_inventory.AnimationSpeed);
+        MoveItemToSlot(_inventory.AnimationSpeed);
     }
 
+    //! Reorganise inventory on mouse over
     public void OnPointerEnter(PointerEventData eventData)
     {
         _inventory.AddGrabItenToInventory(this);

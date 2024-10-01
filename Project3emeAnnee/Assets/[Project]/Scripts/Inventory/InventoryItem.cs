@@ -8,7 +8,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Inventory _inventory;
     private Image _image;
     private RectTransform _rectTransform;
-    public InventorySlot lastSlot;
+    private InventorySlot lastSlot;
+    public InventorySlot LastSlot { get => lastSlot; set => lastSlot = value; }
 
     private void Start()
     {
@@ -30,27 +31,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         .OnComplete(() => Destroy(gameObject));
     }
 
+    //! to let the pointer call Event througt InventoryItem
     public void SetRaycastTarget(bool value) { _image.raycastTarget = value; }
-    // public void OnPointerDown(PointerEventData eventData) { _inventory.DragItem = this; }
-    // public void OnPointerUp(PointerEventData eventData) { _inventory.DragItem = null; }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        _inventory.DragItem = this;
-        // print("Start Drag");
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        // print("Drag");
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        _inventory.DragItem = null;
-
-        // InventorySlot slot = RaycasterUI.instance.GetTypeUnderMouse<InventorySlot>();
-        // slot.AddGrabItemToSlot();
-        // print("End Drag");
-    }
+    public void OnBeginDrag(PointerEventData eventData) { _inventory.DragItem = this; }
+    public void OnEndDrag(PointerEventData eventData) { _inventory.DragItem = null; }
+    public void OnDrag(PointerEventData eventData) { }
 }
