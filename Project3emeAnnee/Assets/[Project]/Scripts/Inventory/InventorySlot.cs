@@ -15,6 +15,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         //! Get inventory ref if Initialize wasn't call
         if (!_inventory) _inventory = Inventory.instance;
         _turretSetter = transform.parent.GetComponent<TurretSetter>();
+
+        name = name + "_" + _partToTake.ToString();
     }
 
     public InventorySlot Initialize(Inventory inventory)

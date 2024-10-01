@@ -19,9 +19,7 @@ public class PartyManager : MonoBehaviour
     [Space]
     [SerializeField] private PlayerControler _playerControler;
     [SerializeField] private CameraControler _camControler;
-
-    public UnityEvent OnSiphonState;
-    public UnityEvent OnMobileState;
+    [SerializeField] private TurretManager _turretManager;
 
     private void Awake()
     {
@@ -44,6 +42,18 @@ public class PartyManager : MonoBehaviour
     {
         if (toSet == _state) return;
         _state = toSet;
+
+        switch (toSet)
+        {
+            case GameState.Mobile:
+                //!
+                break;
+
+            case GameState.TowerDefence:
+                //!
+                break;
+        }
+
         _camControler.SetCameraOnState(_state);
     }
 }

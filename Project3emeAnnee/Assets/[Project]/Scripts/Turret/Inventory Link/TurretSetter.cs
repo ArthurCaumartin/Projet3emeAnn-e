@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class TurretSetter : MonoBehaviour
 {
-    [SerializeField] private GameObject _turret;
+    [SerializeField] private TurretBaker _turret;
+    public TurretBaker TurretBaker { set => _turret = value; }
 
     public void ChangeTurretPart(ScriptableTurretPart part)
     {
-        _turret.GetComponent<TurretBaker>().SetTurretComponent(part);
+        _turret.SetTurretComponent(part);
     }
 }
