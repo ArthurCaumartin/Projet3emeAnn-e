@@ -37,6 +37,13 @@ public class TurretManager : MonoBehaviour
 
     public void ClicPanel(TurretPanel panel)
     {
+        if(panel == _lastPanelOpen)
+        {
+            panel.OpenPanel(false);
+            _lastPanelOpen = null;
+            return;
+        }
+
         foreach (var item in _turretPanelList)
             item.GetComponent<TurretPanel>().OpenPanel(false);
 
