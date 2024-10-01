@@ -719,6 +719,8 @@ GameObject:
   - component: {fileID: 8796018829331650429}
   - component: {fileID: 5602028308569708760}
   - component: {fileID: 7663596428721794066}
+  - component: {fileID: 8836823212276691088}
+  - component: {fileID: -6637679591613560520}
   m_Layer: 0
   m_Name: ventoline_reacteurs
   m_TagString: Untagged
@@ -797,3 +799,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8836823212276691088
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167959797627719111}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1928204645961537321, guid: 3e8866779f6f5ee45abc85d9612d7fc7, type: 3}
+--- !u!208 &-6637679591613560520
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167959797627719111}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.276, y: 0.97800004, z: 1.463}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.344, y: 0.001, z: 0.379}
+  m_TimeToStationary: 0.5
