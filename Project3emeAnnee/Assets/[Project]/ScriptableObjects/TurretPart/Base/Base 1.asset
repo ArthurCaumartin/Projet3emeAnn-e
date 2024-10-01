@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 2
   partName: 
-  inventorySprite: {fileID: 0}
+  inventorySprite: {fileID: 21300000, guid: 08015000c296c2845ab6f043afe72c30, type: 3}
   mesh: {fileID: -6978293761761576252, guid: cdf7703c708dee44db1b72f6fc9a8675, type: 3}
   stat:
     damage: 17
