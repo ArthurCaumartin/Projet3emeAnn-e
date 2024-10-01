@@ -3,16 +3,17 @@ using UnityEngine;
 public class VisualBaker : MonoBehaviour
 {
     [SerializeField] private MeshRenderer _renderer;
-    [SerializeField] private MeshFilter _mesh;
+    [SerializeField] private MeshFilter _meshFilter;
 
     private void Start()
     {
         _renderer = GetComponent<MeshRenderer>();
-        _mesh = GetComponent<MeshFilter>();
+        _meshFilter = GetComponent<MeshFilter>();
     }
 
     public void Bake(ScriptableTurretPart part)
     {
-        _mesh.mesh = part.mesh;
+        if (!_meshFilter || !_renderer) Start();
+        _meshFilter.mesh = part.mesh;
     }
 }
