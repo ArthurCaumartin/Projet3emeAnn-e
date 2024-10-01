@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3362427066f795547909cc8e08b369fb, type: 3}
   m_Name: Heart 1
   m_EditorClassIdentifier: 
+  partType: 1
   partName: 
-  uiSprite: {fileID: 0}
+  inventorySprite: {fileID: 21300000, guid: 1ad77a937cfa91d41b48303e7f1936a9, type: 3}
   mesh: {fileID: -2666835821660392994, guid: eba03821aab528a409a50ab4302b397e, type: 3}
   effect: {fileID: 0}

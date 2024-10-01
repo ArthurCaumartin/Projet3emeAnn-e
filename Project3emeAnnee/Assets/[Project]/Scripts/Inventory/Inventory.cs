@@ -155,6 +155,7 @@ public class Inventory : MonoBehaviour
                 RemoveItem(dragItemIndex, true);
 
             slotOver.SetItemInSlot(DragItem);
+            slotOver.OnPutInNonMainSlot();
             return;
         }
 
