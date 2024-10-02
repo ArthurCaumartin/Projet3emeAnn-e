@@ -328,6 +328,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SpawnNewInventoryItem
       objectReference: {fileID: 0}
+    - target: {fileID: 2582787644417118583, guid: 1341b0c8de3ecf1489919f6a41f843ba,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.000045776
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582787644417118583, guid: 1341b0c8de3ecf1489919f6a41f843ba,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000015258789
+      objectReference: {fileID: 0}
     - target: {fileID: 3570545916917255909, guid: 1341b0c8de3ecf1489919f6a41f843ba,
         type: 3}
       propertyPath: m_Name
@@ -432,6 +442,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7611041216267757124, guid: 1341b0c8de3ecf1489919f6a41f843ba,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.56651235
+      objectReference: {fileID: 0}
+    - target: {fileID: 7611041216267757124, guid: 1341b0c8de3ecf1489919f6a41f843ba,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 7611041216267757124, guid: 1341b0c8de3ecf1489919f6a41f843ba,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6185737
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -34,11 +34,11 @@ RectTransform:
   - {fileID: 1972584292285160962}
   m_Father: {fileID: 5626692707580932847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 217.8069, y: 50.4024}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6098718826362535046
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -409,7 +409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Start Wave
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -679,6 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _essenceQuantity: 500
   _startButton: {fileID: 2521046584845085799}
+  _launchWaveButton: {fileID: 3315499394192763691}
 --- !u!1 &8119108929880856311
 GameObject:
   m_ObjectHideFlags: 0
