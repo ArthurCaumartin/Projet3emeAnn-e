@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "WaveTD", fileName = "waveTD", order = 4)]
 public class WaveMob : ScriptableObject
 {
     public List<Waves> waves = new List<Waves>();
