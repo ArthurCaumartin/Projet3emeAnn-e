@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -25,11 +26,13 @@ public class SpawnMobileMob : MonoBehaviour
     public float _despawnRadius = 70f;
     
     private float _cooldown;
-
+    private bool _canSpawnMobs = true;
     private List<GameObject> _allEnemies = new List<GameObject>();
     
     private void Update()
     {
+        if (!_canSpawnMobs) return;
+        
         _cooldown += Time.deltaTime;
 
         if (_cooldown >= _cooldownSpawn)
@@ -60,10 +63,9 @@ public class SpawnMobileMob : MonoBehaviour
                   )){
             zPosSpawn = Random.Range(bottomLeftMax.z, topRightMax.z);
             xPosSpawn = Random.Range(topLeftMax.x, bottomRightMax.x);
-            print("itérationWhile");
         }
         
-        Vector3 enemySpawnPosition = new Vector3(xPosSpawn, 2, zPosSpawn);
+        Vector3 enemySpawnPosition = new Vector3(xPosSpawn, 0.75f, zPosSpawn);
         
         //Verify if the position is on a non NavMesh surface
         NavMeshHit hit;
@@ -81,6 +83,7 @@ public class SpawnMobileMob : MonoBehaviour
     public void DeleteFarMobs()
     {
         Collider[] hitColliders = Physics.OverlapSphere(_playerPos.position, _despawnRadius);
+        
         List<GameObject> hitObjects = new List<GameObject>();
         
         for (int i = 0; i < hitColliders.Length; i++)
@@ -97,6 +100,29 @@ public class SpawnMobileMob : MonoBehaviour
                 Destroy(tempGameobject);
             }
         }
+    }
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.green;
+    //     Gizmos.DrawSphere(_playerPos.position, _despawnRadius);
+    // }
+
+    public void Nuke()
+    {
+        _canSpawnMobs = false;
+        
+        for (int i = 0; i < _allEnemies.Count; i++)
+        {
+            GameObject tempGameobject = _allEnemies[i];
+            _allEnemies.Remove(tempGameobject);
+            Destroy(tempGameobject);
+        }
+    }
+
+    public void DeleteAMob(GameObject enemyToDelete)
+    {
+        _allEnemies.Remove(enemyToDelete);
+        Destroy(enemyToDelete);
     }
     
     private void SpawnMob(Vector3 spawnPoistion)
