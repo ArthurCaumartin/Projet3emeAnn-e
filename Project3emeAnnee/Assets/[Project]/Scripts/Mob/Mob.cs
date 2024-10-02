@@ -22,11 +22,11 @@ public class Mob : MonoBehaviour
         _navMeshAgent.destination = _player.position;
     }
 
-    public void OnCollisionEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // _spawnMobileMob.DeleteAMob(gameObject);
-        }
-    }
+    // public void OnCollisionEnter(Coll other)
+    // {
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         _spawnMobileMob.DeleteAMob(gameObject);
+    //     }
+    // }
 }
