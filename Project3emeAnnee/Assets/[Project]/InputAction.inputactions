@@ -2,7 +2,7 @@
     "name": "InputAction",
     "maps": [
         {
-            "name": "BaseMap ",
+            "name": "InGameMap",
             "id": "21857f0f-5955-4907-a574-94df3610bbb6",
             "actions": [
                 {
@@ -24,6 +24,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InterfaceMap",
+            "id": "b1d57dda-6e64-495b-a716-c743c9a7d58e",
+            "actions": [
+                {
+                    "name": "Clic",
+                    "type": "Button",
+                    "id": "c1625f8b-8b15-4f85-aa62-f007018934bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "de5fbfa9-29fb-4098-9a14-cf3edb818eaf",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Clic",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

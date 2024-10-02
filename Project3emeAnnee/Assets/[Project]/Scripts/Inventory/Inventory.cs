@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -15,6 +13,7 @@ public class Inventory : MonoBehaviour
     [Header("UI Reference :")]
     [SerializeField] private Transform _inventorySlotContainer;
     [SerializeField] private Transform _inventoryItemContainer;
+    public Transform ItemContainer { get => _inventoryItemContainer; }
     [SerializeField] private GameObject _inventorySlotPrefab;
     private List<InventoryItem> _inventoryItemList = new List<InventoryItem>();
     private InventorySlot[] _mainInventorySlotArray;
@@ -162,6 +161,7 @@ public class Inventory : MonoBehaviour
         if (dragItemIndex == -1)
         {
             //! If drag come from non main slot, clear last slot
+            if(IsAllInventorySlotFill()) return;
             DragItem.LastSlot.SetItemInSlot(null);
             if (slotOver.Item)
             {
@@ -207,7 +207,7 @@ public class Inventory : MonoBehaviour
         return -1;
     }
 
-    private int GetSlotIndex(InventorySlot slot)
+    public int GetSlotIndex(InventorySlot slot)
     {
         for (int i = 0; i < _mainInventorySlotArray.Length; i++)
         {
@@ -230,5 +230,15 @@ public class Inventory : MonoBehaviour
         }
         //! Return -1 if the DragItem isn't in the main Inventory
         return dragItemIndex;
+    }
+
+    public bool IsAllInventorySlotFill()
+    {
+        foreach (var item in _mainInventorySlotArray)
+        {
+            if(!item.Item)
+                return false;
+        }
+        return true;
     }
 }

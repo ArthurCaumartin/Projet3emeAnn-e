@@ -51,11 +51,11 @@ public class CameraControler : MonoBehaviour
         }
     }
 
-    public void SetCameraOnState(GameState state)
+    public void SetCameraOnState(PartyState state)
     {
         switch (state)
         {
-            case GameState.Mobile:
+            case PartyState.Mobile:
                 DOTween.To((time) =>
                 {
                     transform.eulerAngles = Vector3.Lerp(_towerdefenceData.angle, _movingData.angle, time);
@@ -64,7 +64,7 @@ public class CameraControler : MonoBehaviour
                 .SetEase(Ease.Linear);
                 break;
 
-            case GameState.TowerDefence:
+            case PartyState.TowerDefence | PartyState.TowerDefencePlacement:
                 DOTween.To((time) =>
                 {
                     transform.eulerAngles = Vector3.Lerp(_movingData.angle, _towerdefenceData.angle, time);

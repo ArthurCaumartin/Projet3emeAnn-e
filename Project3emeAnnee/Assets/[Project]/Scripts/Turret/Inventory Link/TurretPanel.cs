@@ -6,7 +6,7 @@ public class TurretPanel : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TurretBaker _turretBaker;
     [SerializeField] private RectTransform _panelContainer;
     private TurretManager _turretManager;
-    public TurretBaker TurretBaker { set => _turretBaker = value; }
+    public TurretBaker TurretBaker { get => _turretBaker; set => _turretBaker = value; }
 
     private void Start()
     {
