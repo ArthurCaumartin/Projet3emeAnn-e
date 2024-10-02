@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [Serializable]
 public enum PartyState
@@ -21,6 +18,7 @@ public class PartyManager : MonoBehaviour
     [SerializeField] private PlayerControler _playerControler;
     [SerializeField] private CameraControler _camControler;
     [SerializeField] private TurretManager _turretManager;
+    [SerializeField] private SpawnMobileMob _spawnMobileMob;
 
     public PartyState GameState { get => _state; }
 
@@ -42,7 +40,7 @@ public class PartyManager : MonoBehaviour
 
     public void StartTowerDefence()
     {
-        //TODO call spawn
+        //TODO call wave spawner
         // _turretManager
     }
 
@@ -50,11 +48,15 @@ public class PartyManager : MonoBehaviour
     {
         if (toSet == _state) return;
         _state = toSet;
-
+        print(toSet);
         switch (toSet)
         {
             case PartyState.Mobile:
                 _playerControler.SetControlerInMobileMode();
+                break;
+
+            case PartyState.TowerDefencePlacement:
+                _spawnMobileMob.Nuke();
                 break;
 
             case PartyState.TowerDefence:
