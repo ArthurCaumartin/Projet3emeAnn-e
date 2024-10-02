@@ -22,6 +22,8 @@ public class DragDropResearch : MonoBehaviour, IPointerDownHandler, IBeginDragHa
         // print("On Point Down");
     }
 
+    
+    //Start Dragging
     public void OnBeginDrag(PointerEventData eventData)
     {
         OnLeaveSlot();
@@ -30,22 +32,26 @@ public class DragDropResearch : MonoBehaviour, IPointerDownHandler, IBeginDragHa
         _canvasGroup.alpha = 0.6f;
     }
 
+    //End Dragging
     public void OnEndDrag(PointerEventData eventData)
     {
         _canvasGroup.blocksRaycasts = true;
         _canvasGroup.alpha = 1f;
     }
 
+    
     public void OnDrag(PointerEventData eventData)
     {
         _rectTransform.anchoredPosition += eventData.delta;
     }
 
+    // Save the slot where this Core Sprite is dropped
     public void OnDropOnSlot(UpgradeSlot slot)
     {
         _actualSlot = slot;
     }
 
+    // Call the slot where this Core Sprite were and reset the infos
     public void OnLeaveSlot()
     {
         if (_actualSlot == null) return;

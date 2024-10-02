@@ -8,13 +8,16 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Inventory _inventory;
     private Image _image;
     private RectTransform _rectTransform;
-    public InventorySlot lastSlot;
+    private InventorySlot _lastSlot;
+    public InventorySlot LastSlot { get => _lastSlot; set => _lastSlot = value; }
+    private TurretPartDescritor _turretPartDescriptor;
 
     private void Start()
     {
         _image = GetComponent<Image>();
         _image.color = Color.HSVToRGB(Random.value, .7f, .7f);
         _rectTransform = (RectTransform)transform;
+        _turretPartDescriptor = GetComponent<TurretPartDescritor>();
     }
 
     public void Initialize(Inventory inventory)
@@ -30,27 +33,22 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         .OnComplete(() => Destroy(gameObject));
     }
 
+    //! to let the pointer call Event througt InventoryItem
     public void SetRaycastTarget(bool value) { _image.raycastTarget = value; }
-    // public void OnPointerDown(PointerEventData eventData) { _inventory.DragItem = this; }
-    // public void OnPointerUp(PointerEventData eventData) { _inventory.DragItem = null; }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         _inventory.DragItem = this;
-        // print("Start Drag");
     }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        // print("Drag");
-    }
-
     public void OnEndDrag(PointerEventData eventData)
     {
         _inventory.DragItem = null;
+    }
+    
+    public void OnDrag(PointerEventData eventData) { }
 
-        // InventorySlot slot = RaycasterUI.instance.GetTypeUnderMouse<InventorySlot>();
-        // slot.AddGrabItemToSlot();
-        // print("End Drag");
+    public ScriptableTurretPart GetTurretPartOnDescriptor()
+    {
+        return _turretPartDescriptor.GetTurretPart();
     }
 }

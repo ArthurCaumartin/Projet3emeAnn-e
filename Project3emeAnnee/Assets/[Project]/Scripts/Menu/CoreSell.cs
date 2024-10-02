@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CoreTrash : MonoBehaviour, IDropHandler
+public class CoreSell : MonoBehaviour, IDropHandler
 {
     private ResearchManager _researchManager;
 
@@ -13,6 +13,7 @@ public class CoreTrash : MonoBehaviour, IDropHandler
         _researchManager = GetComponentInParent<ResearchManager>();
     }
 
+    // If a Core Sprite that we Drag&Drop is dropped on this object, sell it and destroy the Core Sprite
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)

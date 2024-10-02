@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4801957251031262487}
+  - component: {fileID: 7140421777097803220}
   - component: {fileID: 2367769703106185136}
   - component: {fileID: 2501886471731530208}
   - component: {fileID: 5727156076830736963}
@@ -38,6 +39,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7140421777097803220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239918968474317526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087ccde2fcb5d084dac9428c9f8d5510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _turetPart: {fileID: 0}
+  _turretPartList:
+  - {fileID: 11400000, guid: a2376dc50971b0041b561b6d3f0a2553, type: 2}
+  - {fileID: 11400000, guid: 6a61ca650c08a7e49a392ad892a90021, type: 2}
+  - {fileID: 11400000, guid: 4f9088358b4c71240b00bd078ce9c09f, type: 2}
+  - {fileID: 11400000, guid: 60bac5e6e4f442b49bf661877f8f0e31, type: 2}
+  - {fileID: 11400000, guid: 76ca5922bc54fa642ad88bbdf28e6f35, type: 2}
+  - {fileID: 11400000, guid: 0f374fd65d36c9141a4654420cf701aa, type: 2}
+  - {fileID: 11400000, guid: e6a8a620b8d391146b37e6ea89f7bf1c, type: 2}
 --- !u!114 &2367769703106185136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4da181b7ee42442af06b39e4813259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastSlot: {fileID: 0}
 --- !u!222 &2501886471731530208
 CanvasRenderer:
   m_ObjectHideFlags: 0
