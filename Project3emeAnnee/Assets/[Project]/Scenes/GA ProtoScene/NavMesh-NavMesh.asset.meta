@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Project3emeAnnee/Assets/[Project]/Scenes/ProtoSpawnMob/NavMesh-NavMesh.asset.meta
+guid: c2a7fddb1d28b8c49811984e53ef468a
+========
 guid: dab9cc6b16856d846973a4c197a53779
+>>>>>>>> Elise:Project3emeAnnee/Assets/[Project]/Scenes/GA ProtoScene/NavMesh-NavMesh.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 23800000

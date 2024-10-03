@@ -6,17 +6,27 @@ public class GasReservoir : MonoBehaviour
 {
     [SerializeField] private int _essenceQuantity = 500;
     [SerializeField] private RectTransform _startButton;
+    [SerializeField] private Button _launchWaveButton;
 
     private void Start()
     {
         GetComponent<TargetDetector>().TriggerEnvent.AddListener(SetStartButtonScale);
-        _startButton.GetComponent<Button>().onClick.AddListener(StartSiphon);
+        _startButton.GetComponent<Button>().onClick.AddListener(StartTowerDefencePlacement);
+        _launchWaveButton.onClick.AddListener(StartTowerDefence);
+        _launchWaveButton.gameObject.SetActive(false);
         SetStartButtonScale(false);
     }
 
-    public void StartSiphon()
+    public void StartTowerDefencePlacement()
     {
-        PartyManager.instance.StartSihpon(transform); 
+        PartyManager.instance.StartTowerDefencePlacement(transform);
+        _launchWaveButton.gameObject.SetActive(true);
+    }
+
+    public void StartTowerDefence()
+    {
+        PartyManager.instance.StartTowerDefence();
+        _launchWaveButton.gameObject.SetActive(false);
     }
 
     public void SetStartButtonScale(bool value)

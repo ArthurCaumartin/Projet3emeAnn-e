@@ -1,27 +1,26 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [Serializable]
-public enum GameState
+public enum PartyState
 {
     None,
     Mobile,
     TowerDefence,
+    TowerDefencePlacement,
 }
 
 public class PartyManager : MonoBehaviour
 {
     public static PartyManager instance;
-    [SerializeField] private GameState _state;
+    [SerializeField] private PartyState _state;
     [Space]
     [SerializeField] private PlayerControler _playerControler;
     [SerializeField] private CameraControler _camControler;
     [SerializeField] private TurretManager _turretManager;
+    [SerializeField] private SpawnMobileMob _spawnMobileMob;
 
-    public GameState GameState { get => _state; }
+    public PartyState GameState { get => _state; }
 
     private void Awake()
     {
@@ -30,28 +29,37 @@ public class PartyManager : MonoBehaviour
 
     private void Start()
     {
-        SetGameState(GameState.Mobile);
+        SetPartyState(PartyState.Mobile);
     }
 
-    public void StartSihpon(Transform siphonTransform)
+    public void StartTowerDefencePlacement(Transform siphonTransform)
     {
-        _state = GameState.TowerDefence;
-        _camControler.SetCameraOnState(_state);
+        SetPartyState(PartyState.TowerDefencePlacement);
         _playerControler.SetControlerInSiphonMode(siphonTransform);
     }
 
-    public void SetGameState(GameState toSet)
+    public void StartTowerDefence()
+    {
+        //TODO call wave spawner
+        // _turretManager
+    }
+
+    public void SetPartyState(PartyState toSet)
     {
         if (toSet == _state) return;
         _state = toSet;
-
+        print(toSet);
         switch (toSet)
         {
-            case GameState.Mobile:
-                //!
+            case PartyState.Mobile:
+                _playerControler.SetControlerInMobileMode();
                 break;
 
-            case GameState.TowerDefence:
+            case PartyState.TowerDefencePlacement:
+                _spawnMobileMob.Nuke();
+                break;
+
+            case PartyState.TowerDefence:
                 //!
                 break;
         }
