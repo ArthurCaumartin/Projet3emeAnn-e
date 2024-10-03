@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a39d7aa2de7dc41b07edb17e85e160, type: 3}
   m_Name: TestWave
   m_EditorClassIdentifier: 
-  waves: []
+  waves:
+  - name: 
+    duration: 0
+    mobsToSpawn: []
+  - name: 
+    duration: 0
+    mobsToSpawn: []
+  - name: 
+    duration: 0
+    mobsToSpawn: []

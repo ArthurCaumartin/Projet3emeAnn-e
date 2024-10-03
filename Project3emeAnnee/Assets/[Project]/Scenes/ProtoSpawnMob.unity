@@ -2801,6 +2801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _essenceQuantity: 500
   _startButton: {fileID: 2032660927}
+  _launchWaveButton: {fileID: 0}
 --- !u!1 &1442108671
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,7 +3328,7 @@ MonoBehaviour:
   _maxDistanceNavMeshSpawn: 2
   _cooldownSpawn: 0.25
   _distanceSpawnEnemies: 10
-  _despawnRadius: 65
+  _despawnRadius: 78.5
 --- !u!4 &2013665465
 Transform:
   m_ObjectHideFlags: 0
