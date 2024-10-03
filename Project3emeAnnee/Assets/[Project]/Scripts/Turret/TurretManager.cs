@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -14,7 +15,7 @@ public class TurretManager : MonoBehaviour
     [Space]
     [Header("Turret : ")]
     [SerializeField] private GameObject _turretPrefab;
-    private List<GameObject> _turretPanelList = new List<GameObject>();
+    private List<TurretPanel> _turretPanelList = new List<TurretPanel>();
     private List<GameObject> _turretList = new List<GameObject>();
     private TurretPanel _lastPanelOpen;
     private GameObject _gostTurret;
@@ -38,8 +39,7 @@ public class TurretManager : MonoBehaviour
             newTurret.SetActive(false);
 
             GameObject newPanel = Instantiate(_turretPanelPrefab, _turretPanelContainer);
-            _turretPanelList.Add(newPanel);
-            newPanel.GetComponent<TurretPanel>().Initialize(this, newTurret.GetComponent<TurretBaker>());
+            _turretPanelList.Add(newPanel.GetComponent<TurretPanel>().Initialize(this, newTurret.GetComponent<TurretBaker>()));
         }
     }
 
@@ -48,8 +48,15 @@ public class TurretManager : MonoBehaviour
         if (state == PartyState.TowerDefencePlacement)
         {
             foreach (var item in _turretPanelList)
-                item.GetComponent<TurretPanel>().OpenPanel(false);
+            {
+                item.OpenPanel(false);
+                item.ShowPlacementButton(true);
+            }
+            return;
         }
+
+        foreach (var item in _turretPanelList)
+            item.ShowPlacementButton(false);
     }
 
     private void Update()
@@ -66,27 +73,26 @@ public class TurretManager : MonoBehaviour
         _gostTurret = null;
     }
 
-    public void ClicPanel(TurretPanel panel)
+    public void ClicOnPlacementButton(TurretPanel panel)
     {
-        if (PartyManager.instance.GameState == PartyState.TowerDefencePlacement)
+        if (_gostTurret)
         {
-            // if (_turretPlacedList.Contains(panel.TurretBaker)) return;
-            if (_gostTurret)
-            {
-                _gostTurret.SetActive(false);
-            }
-            _gostTurret = panel.TurretBaker.gameObject;
-            _gostTurret.SetActive(true);
-            _lastPanelOpen = panel;
-            return;
+            _gostTurret.SetActive(false);
         }
+        _gostTurret = panel.TurretBaker.gameObject;
+        _gostTurret.SetActive(true);
+        _lastPanelOpen = panel;
+        return;
+    }
 
-        if (panel == _lastPanelOpen)
-        {
-            panel.OpenPanel(false);
-            _lastPanelOpen = null;
-            return;
-        }
+    public void ShowPanel(TurretPanel panel)
+    {
+        // if (panel == _lastPanelOpen)
+        // {
+        //     panel.OpenPanel(false);
+        //     _lastPanelOpen = null;
+        //     return;
+        // }
 
         foreach (var item in _turretPanelList)
             item.GetComponent<TurretPanel>().OpenPanel(false);
@@ -104,7 +110,7 @@ public class TurretManager : MonoBehaviour
 
     private void OnClic(InputValue value)
     {
-        if(value.Get<float>() > .5f)
+        if (value.Get<float>() > .5f)
             OnGostTurretPlacement();
     }
 }
