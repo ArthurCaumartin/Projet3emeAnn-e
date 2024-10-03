@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a39d7aa2de7dc41b07edb17e85e160, type: 3}
+  m_Name: SpawnerTest
+  m_EditorClassIdentifier: 
+  waves:
+  - name: FirstWave
+    spawnTimeInWaveMob: 5
+    spawnDuration: 10
+    mobsToSpawn:
+    - mobClass: 0
+      mobNumber: 10
+    - mobClass: 2
+      mobNumber: 2
+    - mobClass: 3
+      mobNumber: 3
+  - name: MiddleWave
+    spawnTimeInWaveMob: 40
+    spawnDuration: 10
+    mobsToSpawn:
+    - mobClass: 1
+      mobNumber: 5
+    - mobClass: 0
+      mobNumber: 30
+  - name: FinalWave
+    spawnTimeInWaveMob: 75
+    spawnDuration: 5
+    mobsToSpawn:
+    - mobClass: 0
+      mobNumber: 50
+    - mobClass: 2
+      mobNumber: 10
+    - mobClass: 3
+      mobNumber: 15
+  name: SpawnerTest
+  duration: 90
+  reward: 150

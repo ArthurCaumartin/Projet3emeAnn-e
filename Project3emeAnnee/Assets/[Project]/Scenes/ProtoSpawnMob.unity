@@ -1384,6 +1384,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598480070}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &599379669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599379671}
+  - component: {fileID: 599379670}
+  m_Layer: 0
+  m_Name: SpawnerSiegeMob
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &599379670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599379669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c7fefa719ca2b498979efd7eac6f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawners: []
+--- !u!4 &599379671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599379669}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -55.638496, y: -89.43216, z: 81.50332}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618576352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,6 +3452,7 @@ MonoBehaviour:
   _playerControler: {fileID: 1645562708}
   _camControler: {fileID: 330585548}
   _turretManager: {fileID: 0}
+  _spawnMobileMob: {fileID: 0}
 --- !u!1 &2032660926
 GameObject:
   m_ObjectHideFlags: 0
@@ -4010,6 +4056,7 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 235007638}
   - {fileID: 2013665465}
+  - {fileID: 599379671}
   - {fileID: 5897286161774346837}
   - {fileID: 1319735499}
   - {fileID: 3260687773369669349}

@@ -4,17 +4,24 @@ using UnityEngine.AI;
 
 public class Mob : MonoBehaviour
 {
-    public Transform _player;
+    public string _name;
+    public int _health;
+    public float _movementSpeed;
+    public float _mobScale;
+    
+    private Transform _player;
     [SerializeField] private NavMeshAgent _navMeshAgent;
-    private SpawnMobileMob _spawnMobileMob;
 
     private void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _spawnMobileMob = GetComponentInParent<SpawnMobileMob>();
-
-        _player = _spawnMobileMob._playerPos;
         _navMeshAgent.destination = _player.position;
+    }
+
+    public Mob Initialize(Transform player)
+    {
+        _player = player;
+        return this;
     }
 
     private void Update()

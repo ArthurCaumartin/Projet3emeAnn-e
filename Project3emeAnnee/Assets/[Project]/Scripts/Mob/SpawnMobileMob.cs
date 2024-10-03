@@ -11,7 +11,7 @@ public class SpawnMobileMob : MonoBehaviour
 {
     public Transform _playerPos;
     public Camera _camera;
-    public GameObject _enemyPrefab;
+    public Mob _enemyPrefab;
 
     [Tooltip("When spawning an enemy, the max distance to have a NavMesh close enough to spawn it")]
     public float _maxDistanceNavMeshSpawn = 2f;
@@ -128,9 +128,11 @@ public class SpawnMobileMob : MonoBehaviour
 
     private void SpawnMob(Vector3 spawnPoistion)
     {
-        GameObject enemyInstantiate = Instantiate(_enemyPrefab, spawnPoistion, Quaternion.identity, transform);
-
-        _allEnemies.Add(enemyInstantiate);
+        Mob enemyInstantiate = Instantiate(_enemyPrefab, spawnPoistion, Quaternion.identity, transform);
+        enemyInstantiate.Initialize(_playerPos);
+        
+        
+        _allEnemies.Add(enemyInstantiate.gameObject);
     }
 
     //Raycast to all corners of the camera and get the max positions of field of player's view
