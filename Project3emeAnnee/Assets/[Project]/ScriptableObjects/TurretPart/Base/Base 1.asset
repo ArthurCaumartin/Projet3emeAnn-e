@@ -18,5 +18,8 @@ MonoBehaviour:
   mesh: {fileID: -6978293761761576252, guid: cdf7703c708dee44db1b72f6fc9a8675, type: 3}
   stat:
     damage: 17
-    attackPerSecond: 2.5
+    attackPerSecond: 9
     range: 10
+    rotateSpeed: 50
+    projectileSpeed: 60
+    perforationCount: 2

@@ -1,33 +1,41 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class TargetFinder : MonoBehaviour
 {
-    [SerializeField] private List<Mob> _mobInRange = new List<Mob>();
+    [SerializeField] private List<Mob> _mobInRangeList = new List<Mob>();
     public float _range;
     private SphereCollider _collider;
     private StatContainer _stat;
-    public StatContainer Stat
+    private TurretCanon _canon;
+
+    private void OnValidate()
     {
-        set
-        {
-            _stat = value;
-            Bake();
-        }
+        GetComponent<SphereCollider>().radius = _range;
     }
 
-    private void Bake()
+    public void Bake(TurretCanon newCanon, StatContainer newStat)
     {
-        if(!_collider) _collider = GetComponent<SphereCollider>();
+        if (_canon) Destroy(_canon.gameObject);
+
+        _stat = newStat;
+        _canon = Instantiate(newCanon, transform.position, Quaternion.identity, transform);
+        _canon.Inistalize(this, _stat);
+        if (!_collider) _collider = GetComponent<SphereCollider>();
         _collider.radius = _stat.range;
     }
 
     public Mob GetNearsetMob()
     {
+        if (_mobInRangeList.Count == 0) return null;
+
         Mob toReturn = null;
+
         float minDistance = Mathf.Infinity;
-        foreach (var item in _mobInRange)
+        foreach (var item in _mobInRangeList)
         {
+            if(!item) continue; //TODO remove mob on death
             float currentDistance = (item.transform.position - transform.position).sqrMagnitude;
             if (currentDistance < minDistance)
             {
@@ -35,6 +43,7 @@ public class TargetFinder : MonoBehaviour
                 toReturn = item;
             }
         }
+        // print("GetNearsetMob return : " + toReturn?.name);
         return toReturn;
     }
 
@@ -43,16 +52,16 @@ public class TargetFinder : MonoBehaviour
         Mob mob = other.GetComponent<Mob>();
         if (mob)
         {
-            _mobInRange.Add(mob);
+            _mobInRangeList.Add(mob);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         Mob mob = other.GetComponent<Mob>();
-        if (mob && _mobInRange.Contains(mob))
+        if (mob && _mobInRangeList.Contains(mob))
         {
-            _mobInRange.Remove(mob);
+            _mobInRangeList.Remove(mob);
         }
     }
 }

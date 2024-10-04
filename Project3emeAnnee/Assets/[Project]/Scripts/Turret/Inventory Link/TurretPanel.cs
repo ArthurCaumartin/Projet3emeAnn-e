@@ -36,7 +36,7 @@ public class TurretPanel : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void ShowPlacementButton(bool isShow)
     {
-        print(isShow);
+        // print(isShow);
         _placementButton.DOAnchorPos(isShow ? new Vector2(-_placementButton.rect.width, 0) : Vector2.zero, .1f);
     }
 
