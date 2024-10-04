@@ -17,7 +17,6 @@ public class TurretBaker : MonoBehaviour
 
     [Header("Other :")]
     [SerializeField] private TargetFinder _finder;
-    [SerializeField] private Shooter _shooter;
 
     private void Start()
     {
@@ -47,6 +46,6 @@ public class TurretBaker : MonoBehaviour
         _heartRenderer.Bake(_heart);
         _baseRenderer.Bake(_base);
 
-        _finder.Stat = _base.stat;
+        _finder.Bake(_canon.turretCanon, _base.stat);
     }
 }
