@@ -246,6 +246,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49125004}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &138191536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 138191538}
+  - component: {fileID: 138191537}
+  m_Layer: 0
+  m_Name: Spawner1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &138191537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138191536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1e6044330888141b04225d0556b35a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _posToSpawn: {fileID: 0}
+  _playerPos: {fileID: 1645562706}
+  _wavesToSpawn: {fileID: 11400000, guid: 00a11e746e03d5242bfe9c11055957a1, type: 2}
+  _mobPrefabList:
+  - {fileID: 1837866152966505439, guid: 62d09786f658afc47b351d6b893f3ac3, type: 3}
+  - {fileID: 4635874753042984219, guid: df2b353ae0fae5041b809d23491c5fc2, type: 3}
+  - {fileID: 6088261206720557126, guid: b5959dc25b1ecfe42a80c286d7cc3324, type: 3}
+  - {fileID: 2526220498475402263, guid: 6c3e1c8cb0ae4864b8cf69a30b33fdea, type: 3}
+  _hasStarted: 0
+  _hasFinished: 0
+  _isSpawningWave: 0
+--- !u!4 &138191538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138191536}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 47.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235007637
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +571,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.31602833, y: -0.63255525, z: 0.31602833, w: 0.6325552}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -583,7 +638,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _dampMovement: 1
   _followSpeed: 20
-  _posOffset: {x: 0, y: 0, z: 0}
+  _posOffset: {x: 10, y: 15, z: 0}
   _movingData:
     offSet: {x: 15, y: 20, z: 0}
     angle: {x: 53, y: 270, z: 0}
@@ -1384,6 +1439,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598480070}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &599379669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599379671}
+  - component: {fileID: 599379670}
+  m_Layer: 0
+  m_Name: SpawnerSiegeMob
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &599379670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599379669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c7fefa719ca2b498979efd7eac6f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawners:
+  - {fileID: 138191537}
+  _playerPos: {fileID: 1645562706}
+--- !u!4 &599379671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599379669}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 16.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618576352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2801,6 +2903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _essenceQuantity: 500
   _startButton: {fileID: 2032660927}
+  _launchWaveButton: {fileID: 2032660928}
 --- !u!1 &1442108671
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,7 +3410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2013665464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3322,12 +3425,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPos: {fileID: 1645562706}
   _camera: {fileID: 330585545}
-  _enemyPrefab: {fileID: 7598526433442725878, guid: ff822ed051a82b84bb5ad85ab54c5cd2,
+  _enemyPrefab: {fileID: 707223806181238451, guid: ff822ed051a82b84bb5ad85ab54c5cd2,
     type: 3}
   _maxDistanceNavMeshSpawn: 2
   _cooldownSpawn: 0.25
   _distanceSpawnEnemies: 10
-  _despawnRadius: 65
+  _despawnRadius: 78.5
 --- !u!4 &2013665465
 Transform:
   m_ObjectHideFlags: 0
@@ -3397,7 +3500,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026724182}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1426a61dcb6575a4d94556d8666e00b5, type: 3}
   m_Name: 
@@ -3406,6 +3509,7 @@ MonoBehaviour:
   _playerControler: {fileID: 1645562708}
   _camControler: {fileID: 330585548}
   _turretManager: {fileID: 0}
+  _spawnMobileMob: {fileID: 2013665464}
 --- !u!1 &2032660926
 GameObject:
   m_ObjectHideFlags: 0
@@ -3488,7 +3592,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2032660929}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 599379670}
+        m_TargetAssemblyTypeName: SpawnSiegeMob, Assembly-CSharp
+        m_MethodName: StartWaves
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2032660929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4009,8 +4125,10 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 235007638}
   - {fileID: 2013665465}
+  - {fileID: 599379671}
   - {fileID: 5897286161774346837}
   - {fileID: 1319735499}
   - {fileID: 3260687773369669349}
   - {fileID: 438728164}
   - {fileID: 751935535}
+  - {fileID: 138191538}
