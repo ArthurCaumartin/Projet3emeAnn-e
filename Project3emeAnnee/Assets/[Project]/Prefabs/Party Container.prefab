@@ -657,6 +657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2938876481576812100}
   - component: {fileID: 3012115084301661157}
+  - component: {fileID: 8303474072996995168}
   m_Layer: 10
   m_Name: NavMesh
   m_TagString: Untagged
@@ -727,8 +728,20 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7ad0666b4a545554aafbceaae0e49520, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
+--- !u!114 &8303474072996995168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524435638569414646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab1e7d7540058b43a772c25ff1fca82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4154018649867304989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,11 +2930,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2833438300201016819}
-    - target: {fileID: 3254929148257768313, guid: dd298b709040dc14ba518c498cfffa8b,
-        type: 3}
-      propertyPath: m_text
-      value: Start Wave
-      objectReference: {fileID: 0}
     - target: {fileID: 5411995582835449221, guid: dd298b709040dc14ba518c498cfffa8b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2972,46 +2980,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6212615272980169754, guid: dd298b709040dc14ba518c498cfffa8b,
-        type: 3}
-      propertyPath: _launchWaveButton
-      value: 
-      objectReference: {fileID: 5943741980526866215}
-    - target: {fileID: 6818860776897006276, guid: dd298b709040dc14ba518c498cfffa8b,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818860776897006276, guid: dd298b709040dc14ba518c498cfffa8b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818860776897006276, guid: dd298b709040dc14ba518c498cfffa8b,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818860776897006276, guid: dd298b709040dc14ba518c498cfffa8b,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 217.8069
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818860776897006276, guid: dd298b709040dc14ba518c498cfffa8b,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 50.4024
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818860776897006276, guid: dd298b709040dc14ba518c498cfffa8b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818860776897006276, guid: dd298b709040dc14ba518c498cfffa8b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7345390376138638313, guid: dd298b709040dc14ba518c498cfffa8b,
         type: 3}
       propertyPath: m_Name
@@ -3033,15 +3001,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8971008790623192076}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5943741980526866215 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3315499394192763691, guid: dd298b709040dc14ba518c498cfffa8b,
-    type: 3}
-  m_PrefabInstance: {fileID: 8971008790623192076}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
