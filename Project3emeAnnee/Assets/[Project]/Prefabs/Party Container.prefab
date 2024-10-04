@@ -2786,7 +2786,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _turretPanelContainer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3784761125547721271}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2919,6 +2919,12 @@ PrefabInstance:
 --- !u!224 &976992366639098730 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5785826399584302489, guid: 80283121f86a32741928ec68a6bed440,
+    type: 3}
+  m_PrefabInstance: {fileID: 6756977331484892915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3784761125547721271 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7585107570478341316, guid: 80283121f86a32741928ec68a6bed440,
     type: 3}
   m_PrefabInstance: {fileID: 6756977331484892915}
   m_PrefabAsset: {fileID: 0}
