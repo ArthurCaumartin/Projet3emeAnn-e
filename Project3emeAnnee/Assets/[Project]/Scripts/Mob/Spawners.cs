@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawners : MonoBehaviour
 {
-    public Transform _playerPos;
+    private Transform _playerPos;
     public WaveMob _wavesToSpawn;
 
     [SerializeField] private List<GameObject> _mobPrefabList;
@@ -17,6 +17,8 @@ public class Spawners : MonoBehaviour
     
     private float _duration, _spawnDuration, mobTimeSpawn;
     private int _actualWave = 0, _numberEnemies = 0, _actualEnemyToSpawn = 0;
+    
+    //Je récupère la liste des scripts des préfabs de mobs
     private void Start()
     {
         for (int i = 0; i < _mobPrefabList.Count; i++)
@@ -24,18 +26,22 @@ public class Spawners : MonoBehaviour
             _mobScripts.Add(_mobPrefabList[i].GetComponent<Mob>());
         }
     }
-
+    
     public void Update()
     {
+        //Se lance que quand le siphonnage est lancé
         if (!_hasStarted || _hasFinished) return;
         
         _duration += Time.deltaTime;
         
+        //Si la vague a atteint le temps de la vague actuelle
         if (_duration >= _wavesToSpawn.waves[_actualWave].spawnTimeInWaveMob)
         {
             _isSpawningWave = true;
             WaveSpawning(_actualWave);
         }
+        
+        //Fait apparaître un ennemi durant la vague tous les x temps
         if (_isSpawningWave)
         {
             _spawnDuration += Time.deltaTime;
@@ -52,17 +58,26 @@ public class Spawners : MonoBehaviour
         _hasStarted = true;
     }
 
+    public void SetPlayerTransform(Transform playerTransform)
+    {
+        _playerPos = playerTransform;
+    }
+
     private void WaveSpawning(int waveNumber)
     {
         _numberEnemies = 0;
         mobsToSpawn.Clear();
         _enemiesInWave.Clear();
+        
+        // Setup la vague en renseignant le dictionnaire avec les infos des ennemis et leurs nombres
+        // Renseigne le nombre total d'enemis dans la vague
         for (int i = 0; i < _wavesToSpawn.waves[waveNumber].mobsToSpawn.Count; i++)
         {
             mobsToSpawn[_wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobName] = _wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
             _numberEnemies += _wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
         }
 
+        // Créer une liste aléatoire avec les ennemis pour les instantier 1 a la fois
         foreach (var mobClassNumber in mobsToSpawn)
         {
             for (int i = 0; i < mobClassNumber.Value; i++)
@@ -72,12 +87,15 @@ public class Spawners : MonoBehaviour
         }
         ShuffleList(_enemiesInWave);
 
+        // Créer la variable de tout les quand un ennemi doit apparaître
         float f = _wavesToSpawn.waves[waveNumber].spawnDuration / _numberEnemies;
         mobTimeSpawn = Mathf.Round(f * 100.0f) * 0.01f;
     }
     
     private void InstantiateEnemy()
     {
+        
+        // Vérifie quelle ennemi doit apparaître à une position aléatoire autour du point de spawn
         for (int j = 0; j < _mobPrefabList.Count; j++)
         {
             if (_mobPrefabList[j].name == _enemiesInWave[_actualEnemyToSpawn])
@@ -95,6 +113,7 @@ public class Spawners : MonoBehaviour
         }
     }
 
+    //Fini la vague et réinitialise les variables
     private void FinishWave()
     {
         _isSpawningWave = false;

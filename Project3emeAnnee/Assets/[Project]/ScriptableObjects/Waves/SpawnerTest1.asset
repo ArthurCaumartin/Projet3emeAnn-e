@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43a39d7aa2de7dc41b07edb17e85e160, type: 3}
-  m_Name: SpawnerTest
+  m_Name: SpawnerTest1
   m_EditorClassIdentifier: 
   waves:
   - name: FirstWave
@@ -25,18 +25,18 @@ MonoBehaviour:
       mobNumber: 3
   - name: MiddleWave
     spawnTimeInWaveMob: 20
-    spawnDuration: 5
+    spawnDuration: 8
     mobsToSpawn:
     - mobName: Bomber
       mobNumber: 5
     - mobName: Basic
-      mobNumber: 30
+      mobNumber: 25
   - name: FinalWave
     spawnTimeInWaveMob: 35
     spawnDuration: 20
     mobsToSpawn:
     - mobName: Basic
-      mobNumber: 50
+      mobNumber: 35
     - mobName: Tank
       mobNumber: 10
     - mobName: Fast
