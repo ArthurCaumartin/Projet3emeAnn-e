@@ -37,9 +37,11 @@ public class SpawnSiegeMob : MonoBehaviour
 
     public void FinishExtracting()
     {
-        GameData.instance.AddGas(50 + (50 * GameData.instance.Difficulty));
+        GameManager.instance.AddGas(50 + (50 * GameManager.instance.Difficulty));
         
-        GameData.instance.ChangeDifficulty(true);
+        GameManager.instance.ChangeDifficulty(true);
+        
+        PartyManager.instance.SetPartyState(PartyState.Mobile);
     }
 }
 
