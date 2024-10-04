@@ -8,18 +8,24 @@ public class Spawners : MonoBehaviour
     public float _enemiesSpawnRange = 10f;
     
     private Transform _playerPos;
+    private SpawnSiegeMob _siegeManager;
     private List<GameObject> _enemiesInWave = new List<GameObject>();
-    
+    private List<GameObject> _enemiesAlive = new List<GameObject>();
     private Dictionary<GameObject, int> mobsToSpawn = new Dictionary<GameObject, int>();
     
     private bool _hasStarted, _hasFinished, _isSpawningWave;
-    
     private float _duration, _spawnDuration, mobTimeSpawn;
     private int _actualWave = 0, _numberEnemies = 0, _actualEnemyToSpawn = 0;
     public void Update()
     {
         //Se lance que quand le siphonnage est lancé
-        if (!_hasStarted || _hasFinished) return;
+        if (!_hasStarted) return;
+
+        if (_hasFinished)
+        {
+            CheckIfMobs();
+            return;
+        }
         
         _duration += Time.deltaTime;
         
@@ -42,9 +48,10 @@ public class Spawners : MonoBehaviour
         }
     }
     
-    public void StartSpawnerWaves()
+    public void StartSpawnerWaves(SpawnSiegeMob siegeManagerScript)
     {
         _hasStarted = true;
+        _siegeManager = siegeManagerScript;
     }
 
     public void SetPlayerTransform(Transform playerTransform)
@@ -87,6 +94,9 @@ public class Spawners : MonoBehaviour
         // Vérifie quelle ennemi doit apparaître à une position aléatoire autour du point de spawn
         Vector3 randomPosToSpawn = GetRandomSpawnPos(transform.position);
         GameObject enemyInstantiate = Instantiate(_enemiesInWave[_actualEnemyToSpawn], randomPosToSpawn, Quaternion.identity, transform);
+        
+        _enemiesAlive.Add(enemyInstantiate);
+        
         Mob enemyScript = enemyInstantiate.GetComponent<Mob>();
         enemyScript.Initialize(_playerPos);
         
@@ -94,6 +104,14 @@ public class Spawners : MonoBehaviour
         if (_actualEnemyToSpawn >= _numberEnemies)
         {
             FinishWave();
+        }
+    }
+
+    private void CheckIfMobs()
+    {
+        if (_enemiesAlive.Count == 0)
+        {
+            _siegeManager.FinishWave(this);
         }
     }
     

@@ -22,8 +22,24 @@ public class SpawnSiegeMob : MonoBehaviour
         for (int i = 0; i < _spawners.Count; i++)
         {
             _spawners[i].SetPlayerTransform(_playerTransform);
-            _spawners[i].StartSpawnerWaves();
+            _spawners[i].StartSpawnerWaves(this);
         }
+    }
+
+    public void FinishWave(Spawners finishedSpawner)
+    {
+        _spawners.Remove(finishedSpawner);
+        if (_spawners.Count == 0)
+        {
+            FinishExtracting();
+        }
+    }
+
+    public void FinishExtracting()
+    {
+        GameData.instance.AddGas(50 + (50 * GameData.instance.Difficulty));
+        
+        GameData.instance.ChangeDifficulty(true);
     }
 }
 
