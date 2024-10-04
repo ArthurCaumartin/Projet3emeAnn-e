@@ -4,29 +4,18 @@ using UnityEngine;
 
 public class Spawners : MonoBehaviour
 {
-    private Transform _playerPos;
     public WaveMob _wavesToSpawn;
-
-    [SerializeField] private List<GameObject> _mobPrefabList;
-    private List<Mob> _mobScripts = new List<Mob>();
-    private List<string> _enemiesInWave = new List<string>();
+    public float _enemiesSpawnRange = 10f;
     
-    private Dictionary<string, int> mobsToSpawn = new Dictionary<string, int>();
+    private Transform _playerPos;
+    private List<GameObject> _enemiesInWave = new List<GameObject>();
+    
+    private Dictionary<GameObject, int> mobsToSpawn = new Dictionary<GameObject, int>();
     
     private bool _hasStarted, _hasFinished, _isSpawningWave;
     
     private float _duration, _spawnDuration, mobTimeSpawn;
     private int _actualWave = 0, _numberEnemies = 0, _actualEnemyToSpawn = 0;
-    
-    //Je récupère la liste des scripts des préfabs de mobs
-    private void Start()
-    {
-        for (int i = 0; i < _mobPrefabList.Count; i++)
-        {
-            _mobScripts.Add(_mobPrefabList[i].GetComponent<Mob>());
-        }
-    }
-    
     public void Update()
     {
         //Se lance que quand le siphonnage est lancé
@@ -96,21 +85,22 @@ public class Spawners : MonoBehaviour
     {
         
         // Vérifie quelle ennemi doit apparaître à une position aléatoire autour du point de spawn
-        for (int j = 0; j < _mobPrefabList.Count; j++)
-        {
-            if (_mobPrefabList[j].name == _enemiesInWave[_actualEnemyToSpawn])
-            {
-                Vector3 randomPosToSpawn = GetRandomSpawnPos(transform.position);
-                Mob enemyInstantiate = Instantiate(_mobScripts[j], randomPosToSpawn, Quaternion.identity, transform);
-                enemyInstantiate.Initialize(_playerPos);
-            }
-        }
+        Vector3 randomPosToSpawn = GetRandomSpawnPos(transform.position);
+        GameObject enemyInstantiate = Instantiate(_enemiesInWave[_actualEnemyToSpawn], randomPosToSpawn, Quaternion.identity, transform);
+        Mob enemyScript = enemyInstantiate.GetComponent<Mob>();
+        enemyScript.Initialize(_playerPos);
         
         _actualEnemyToSpawn++;
         if (_actualEnemyToSpawn >= _numberEnemies)
         {
             FinishWave();
         }
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1,0,0,0.3f);
+        Gizmos.DrawSphere(transform.position , _enemiesSpawnRange);
     }
 
     //Fini la vague et réinitialise les variables
@@ -129,8 +119,8 @@ public class Spawners : MonoBehaviour
 
     private Vector3 GetRandomSpawnPos(Vector3 position)
     {
-        float xRandomPos = Random.Range(position.x - 10, position.x + 10);
-        float zRandomPos = Random.Range(position.z - 10, position.z + 10);
+        float xRandomPos = Random.Range(position.x - _enemiesSpawnRange, position.x + _enemiesSpawnRange);
+        float zRandomPos = Random.Range(position.z - _enemiesSpawnRange, position.z + _enemiesSpawnRange);
 
         return new Vector3(xRandomPos, position.y, zRandomPos);
     }
