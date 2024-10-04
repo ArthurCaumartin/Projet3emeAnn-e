@@ -10,7 +10,11 @@ public class Spawners : MonoBehaviour
     private Transform _playerPos;
     private SpawnSiegeMob _siegeManager;
     private List<GameObject> _enemiesInWave = new List<GameObject>();
+    
+    //TODO Connect to MobHealth Death Event 
     private List<GameObject> _enemiesAlive = new List<GameObject>();
+    
+    
     private Dictionary<GameObject, int> mobsToSpawn = new Dictionary<GameObject, int>();
     
     private bool _hasStarted, _hasFinished, _isSpawningWave;
