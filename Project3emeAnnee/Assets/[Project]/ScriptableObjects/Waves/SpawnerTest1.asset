@@ -17,29 +17,37 @@ MonoBehaviour:
     spawnTimeInWaveMob: 5
     spawnDuration: 10
     mobsToSpawn:
-    - mobName: Basic
+    - mobName: {fileID: 1837866152966505439, guid: 62d09786f658afc47b351d6b893f3ac3,
+        type: 3}
       mobNumber: 10
-    - mobName: Tank
+    - mobName: {fileID: 6088261206720557126, guid: b5959dc25b1ecfe42a80c286d7cc3324,
+        type: 3}
       mobNumber: 2
-    - mobName: Fast
+    - mobName: {fileID: 4635874753042984219, guid: df2b353ae0fae5041b809d23491c5fc2,
+        type: 3}
       mobNumber: 3
   - name: MiddleWave
     spawnTimeInWaveMob: 20
     spawnDuration: 8
     mobsToSpawn:
-    - mobName: Bomber
+    - mobName: {fileID: 2526220498475402263, guid: 6c3e1c8cb0ae4864b8cf69a30b33fdea,
+        type: 3}
       mobNumber: 5
-    - mobName: Basic
+    - mobName: {fileID: 1837866152966505439, guid: 62d09786f658afc47b351d6b893f3ac3,
+        type: 3}
       mobNumber: 25
   - name: FinalWave
     spawnTimeInWaveMob: 35
     spawnDuration: 20
     mobsToSpawn:
-    - mobName: Basic
+    - mobName: {fileID: 1837866152966505439, guid: 62d09786f658afc47b351d6b893f3ac3,
+        type: 3}
       mobNumber: 35
-    - mobName: Tank
+    - mobName: {fileID: 6088261206720557126, guid: b5959dc25b1ecfe42a80c286d7cc3324,
+        type: 3}
       mobNumber: 10
-    - mobName: Fast
+    - mobName: {fileID: 2526220498475402263, guid: 6c3e1c8cb0ae4864b8cf69a30b33fdea,
+        type: 3}
       mobNumber: 15
   name: SpawnerTest
   duration: 90

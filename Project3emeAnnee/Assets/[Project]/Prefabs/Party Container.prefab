@@ -2703,9 +2703,20 @@ PrefabInstance:
       objectReference: {fileID: 2833438300201016819}
     - target: {fileID: 1178750463418074437, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178750463418074437, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
+        type: 3}
       propertyPath: _playerPos
       value: 
       objectReference: {fileID: 667830583275152516}
+    - target: {fileID: 1178750463418074437, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
+        type: 3}
+      propertyPath: _enemyPrefab
+      value: 
+      objectReference: {fileID: 707223806181238451, guid: ff822ed051a82b84bb5ad85ab54c5cd2,
+        type: 3}
     - target: {fileID: 1576861463072571210, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
         type: 3}
       propertyPath: m_Name
@@ -2775,7 +2786,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _turretPanelContainer
       value: 
-      objectReference: {fileID: 6896076751691620103}
+      objectReference: {fileID: 3784761125547721271}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2911,9 +2922,9 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6756977331484892915}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &6896076751691620103 stripped
+--- !u!224 &3784761125547721271 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 177419747316367860, guid: 80283121f86a32741928ec68a6bed440,
+  m_CorrespondingSourceObject: {fileID: 7585107570478341316, guid: 80283121f86a32741928ec68a6bed440,
     type: 3}
   m_PrefabInstance: {fileID: 6756977331484892915}
   m_PrefabAsset: {fileID: 0}

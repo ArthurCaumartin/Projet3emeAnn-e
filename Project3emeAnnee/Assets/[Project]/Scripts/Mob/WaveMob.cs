@@ -27,16 +27,16 @@ public class MobsToSpawn
     public List<MobToSpawn> mobs = new List<MobToSpawn>();
 }
 
-// public enum MobClassName {
-//     Basic,
-//     Bomber,
-//     Tank,
-//     Fast
-// }
+public enum MobClassName {
+    Basic,
+    Bomber,
+    Tank,
+    Fast
+}
 
 [Serializable]
 public class MobToSpawn
 {
-    public string mobName;
+    public GameObject mobName;
     public int mobNumber;
 }
