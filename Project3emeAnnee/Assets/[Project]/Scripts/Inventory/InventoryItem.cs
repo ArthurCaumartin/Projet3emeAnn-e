@@ -44,7 +44,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         _inventory.DragItem = null;
     }
-    
+
     public void OnDrag(PointerEventData eventData) { }
 
     public ScriptableTurretPart GetTurretPartOnDescriptor()
