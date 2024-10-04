@@ -17,29 +17,29 @@ MonoBehaviour:
     spawnTimeInWaveMob: 5
     spawnDuration: 10
     mobsToSpawn:
-    - mobClass: 0
+    - mobName: Basic
       mobNumber: 10
-    - mobClass: 2
+    - mobName: Tank
       mobNumber: 2
-    - mobClass: 3
+    - mobName: Fast
       mobNumber: 3
   - name: MiddleWave
-    spawnTimeInWaveMob: 40
-    spawnDuration: 10
-    mobsToSpawn:
-    - mobClass: 1
-      mobNumber: 5
-    - mobClass: 0
-      mobNumber: 30
-  - name: FinalWave
-    spawnTimeInWaveMob: 75
+    spawnTimeInWaveMob: 20
     spawnDuration: 5
     mobsToSpawn:
-    - mobClass: 0
+    - mobName: Bomber
+      mobNumber: 5
+    - mobName: Basic
+      mobNumber: 30
+  - name: FinalWave
+    spawnTimeInWaveMob: 35
+    spawnDuration: 20
+    mobsToSpawn:
+    - mobName: Basic
       mobNumber: 50
-    - mobClass: 2
+    - mobName: Tank
       mobNumber: 10
-    - mobClass: 3
+    - mobName: Fast
       mobNumber: 15
   name: SpawnerTest
   duration: 90
