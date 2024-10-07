@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class TurretCanon : MonoBehaviour
 {
-    [SerializeField] private Projectile _projectilePrefab;
-    private Transform _currentTarget;
-    private float _shootTime = 0;
-    private TargetFinder _finder;
-    private StatContainer _stat;
+    [SerializeField] protected Projectile _projectilePrefab;
+    protected Transform _currentTarget;
+    protected float _shootTime = 0;
+    protected TargetFinder _finder;
+    protected StatContainer _stat;
 
     public virtual void Shoot()
     {
