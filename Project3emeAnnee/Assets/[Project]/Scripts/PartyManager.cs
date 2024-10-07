@@ -40,7 +40,7 @@ public class PartyManager : MonoBehaviour
 
     public void StartTowerDefence()
     {
-        //TODO call wave spawner
+        SetPartyState(PartyState.TowerDefence);
         // _turretManager
     }
 

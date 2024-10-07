@@ -8,8 +8,6 @@ public class WaveMob : ScriptableObject
 {
     public List<Wave> waves = new List<Wave>();
     public string name;
-    public float duration;
-    public int reward;
 }
 
 [Serializable]

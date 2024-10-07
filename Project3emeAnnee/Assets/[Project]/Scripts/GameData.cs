@@ -1,57 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
-public class GameData : MonoBehaviour
+[CreateAssetMenu(menuName = "GameData", fileName = "GameData", order = 5)]
+public class GameData : ScriptableObject
 {
-    public static GameData instance;
+    public int globalGas = 0;
 
-    private int _globalGas = 0;
-    public int GlobalGas{ get => _globalGas; }
+    public int difficulty = 1;
 
-    private int _difficulty = 1;
-    public int Difficulty { get => _difficulty; }
-    private void Awake()
-    {
-        instance = this;
-        
-        DontDestroyOnLoad(this.gameObject);
-    }
-
-    public void ChangeDifficulty(bool addDiff)
-    {
-        if (addDiff)
-        {
-            _difficulty++;
-        }
-        else
-        {
-            _difficulty = 1;
-        }
-    }
-
-    public bool UseGas(int valueToChange)
-    {
-        if (valueToChange > 0)
-        {
-            valueToChange = -valueToChange;
-        }
-        
-        if (_globalGas + valueToChange >= 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }        
-    }
-
-    public void AddGas(int valueToChange)
-    {
-        _globalGas += valueToChange;
-        if (_globalGas > 9999) _globalGas = 9999;
-    }
+    [SerializedDictionary("OptiName", "Value")]
+    public SerializedDictionary<string, int> mechaOptimisations = new SerializedDictionary<string, int>();
 }
     
