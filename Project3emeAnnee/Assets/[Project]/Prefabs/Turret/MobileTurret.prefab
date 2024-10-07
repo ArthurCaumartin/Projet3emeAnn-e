@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _distanceFromPlayer: 3
   _rotateSpeed: 50
+  _height: 0.5
 --- !u!114 &6955017420074816119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e42457452c96442a16432cf8c71c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isMobileTurret: 1
+  _reduceFactor: 0.642
   _cannon: {fileID: 11400000, guid: 4f9088358b4c71240b00bd078ce9c09f, type: 2}
   _core: {fileID: 11400000, guid: 0f374fd65d36c9141a4654420cf701aa, type: 2}
   _body: {fileID: 11400000, guid: a2376dc50971b0041b561b6d3f0a2553, type: 2}

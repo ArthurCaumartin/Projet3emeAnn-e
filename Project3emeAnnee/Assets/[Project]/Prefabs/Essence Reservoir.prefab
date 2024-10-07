@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e33ce8194f185f4aa232854248da7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _essenceQuantity: 500
+  _gasQuantity: 500
   _startButton: {fileID: 2521046584845085799}
   _launchWaveButton: {fileID: 3315499394192763691}
 --- !u!114 &6720768451030678603
@@ -807,6 +807,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5411995582835449221}
     m_Modifications:
+    - target: {fileID: 444864606483022643, guid: 11f94c176819b3a4eb0ca6971472ffb3,
+        type: 3}
+      propertyPath: wavesToSpawn
+      value: 
+      objectReference: {fileID: 11400000, guid: 00a11e746e03d5242bfe9c11055957a1,
+        type: 2}
     - target: {fileID: 4856475453038532861, guid: 11f94c176819b3a4eb0ca6971472ffb3,
         type: 3}
       propertyPath: m_LocalPosition.x

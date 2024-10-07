@@ -2703,20 +2703,9 @@ PrefabInstance:
       objectReference: {fileID: 2833438300201016819}
     - target: {fileID: 1178750463418074437, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1178750463418074437, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
-        type: 3}
       propertyPath: _playerPos
       value: 
       objectReference: {fileID: 667830583275152516}
-    - target: {fileID: 1178750463418074437, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
-        type: 3}
-      propertyPath: _enemyPrefab
-      value: 
-      objectReference: {fileID: 707223806181238451, guid: ff822ed051a82b84bb5ad85ab54c5cd2,
-        type: 3}
     - target: {fileID: 1576861463072571210, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
         type: 3}
       propertyPath: m_Name
