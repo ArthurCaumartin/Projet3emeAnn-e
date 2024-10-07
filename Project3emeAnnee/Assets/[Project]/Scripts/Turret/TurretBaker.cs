@@ -3,6 +3,10 @@ using UnityEngine.Serialization;
 
 public class TurretBaker : MonoBehaviour
 {
+    [SerializeField] private bool _isMobileTurret = false;
+    [Tooltip("Stat is multiplie by the reduce factor. So 1 = keep 100% and 0.1 = keep 10%")]
+    [SerializeField, Range(.01f, 1)] private float _reduceFactor = .5f;
+
     [Header("Turret Scriptable :")]
     [SerializeField] private ScriptableCannon _cannon;
     [SerializeField] private ScriptaleCore _core;
@@ -44,6 +48,6 @@ public class TurretBaker : MonoBehaviour
         _coreRenderer.Bake(_core);
         _bodyRenderer.Bake(_body);
 
-        _finder.Bake(_cannon.turretCannon, _body.stat);
+        _finder.Bake(_cannon.turretCannon, _isMobileTurret ? _body.stat.GetDivideValue(_reduceFactor) : _body.stat);
     }
 }
