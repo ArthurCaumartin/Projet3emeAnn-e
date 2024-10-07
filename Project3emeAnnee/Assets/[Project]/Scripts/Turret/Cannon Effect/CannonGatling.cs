@@ -6,6 +6,7 @@ using UnityEngine;
 public class CannonGatling : TurretCannon
 {
     [SerializeField] private float _numberBulletsPerShot = 3;
+    // [SerializeField] private float _timeBe
     private float _counterTime, _counterBullets;
     private bool _shooting;
 
@@ -15,7 +16,7 @@ public class CannonGatling : TurretCannon
         if (_shooting)
         {
             _counterTime += Time.deltaTime;
-            if(_counterTime >= )
+            // if(_counterTime >= )
         }
     }
 
