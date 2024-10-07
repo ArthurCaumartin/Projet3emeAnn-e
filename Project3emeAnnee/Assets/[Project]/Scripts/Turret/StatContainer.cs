@@ -10,4 +10,5 @@ public struct StatContainer
     public float rotateSpeed;
     public float projectileSpeed;
     public int perforationCount;
+    public int bulletCount;
 }
