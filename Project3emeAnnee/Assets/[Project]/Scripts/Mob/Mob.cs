@@ -1,23 +1,22 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 public class Mob : MonoBehaviour
 {
     public string _name;
-    public int _health;
+    public MobHealth _mobHealth;
     public float _movementSpeed;
     public float _mobScale;
 
-    public UnityEvent OnDeath;
-    
     private Transform _player;
     [SerializeField] private NavMeshAgent _navMeshAgent;
 
     private void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.speed = _movementSpeed;
     }
 
     public Mob Initialize(Transform player)
@@ -28,7 +27,7 @@ public class Mob : MonoBehaviour
 
     private void Update()
     {
-         _navMeshAgent.destination = _player.position;
+        _navMeshAgent.destination = _player.position;
     }
 
     // public void OnCollisionEnter(Coll other)
