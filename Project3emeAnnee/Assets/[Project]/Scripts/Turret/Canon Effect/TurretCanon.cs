@@ -22,17 +22,28 @@ public class TurretCanon : MonoBehaviour
         return this;
     }
 
-    public void Update()
+    public virtual void Update()
     {
+        print("Virtual Void");
         _currentTarget = _finder.GetNearsetMob()?.transform;
         if (!_currentTarget) return;
-        transform.LookAt(_currentTarget);
+        LookAtTarget();
+        ComputeShootTime();
+    }
+
+    private void ComputeShootTime()
+    {
         _shootTime += Time.deltaTime;
         if (_shootTime > 1 / _stat.attackPerSecond)
         {
             _shootTime = 0;
             Shoot();
         }
+    }
+
+    private void LookAtTarget()
+    {
+        transform.LookAt(_currentTarget);
     }
 
     public void SetTarget(Transform target)
