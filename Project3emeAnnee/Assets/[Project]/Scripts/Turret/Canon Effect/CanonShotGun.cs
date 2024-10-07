@@ -8,12 +8,12 @@ public class CanonShotGun : TurretCanon
     {
         for (int i = 0; i < _stat.bulletCount; i++)
         {
-            Vector3 randomDirection = Random.insideUnitSphere;
-            randomDirection = Vector3.Slerp(transform.forward, randomDirection, Random.Range(0.0f, Mathf.Sin(35f * Mathf.Deg2Rad)));
-            randomDirection.y = 0;
-           
-            Quaternion newOrientation = Quaternion.LookRotation(randomDirection, Vector3.up);
-            Projectile newProjectile = Instantiate(_projectilePrefab, transform.position, newOrientation);
+            float loopTime = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, _stat.bulletCount, i));
+            Vector3 newDirection = new Vector3(loopTime, 0, 1);
+            newDirection = transform.rotation * newDirection.normalized;
+            newDirection.y = 0;
+
+            Projectile newProjectile = Instantiate(_projectilePrefab, transform.position, Quaternion.LookRotation(newDirection, Vector3.up));
             newProjectile.Initialize(_stat.projectileSpeed, _stat.damage, _stat.perforationCount);
         }
     }
