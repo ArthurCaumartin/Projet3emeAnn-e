@@ -16,5 +16,5 @@ MonoBehaviour:
   partName: 
   inventorySprite: {fileID: 21300000, guid: 4ec1c44ed61939d4991702c9bb2db386, type: 3}
   mesh: {fileID: -6206385551776140352, guid: 02c035e45960e8c4eac20bcf2b6c3019, type: 3}
-  turretCannon: {fileID: 6149042731350167649, guid: 2f8f761b6c1b1c1479e6d6cbb53975d3,
+  turretCannon: {fileID: 1044086802107268475, guid: f683b6e58de6b054cab9037632fbad34,
     type: 3}

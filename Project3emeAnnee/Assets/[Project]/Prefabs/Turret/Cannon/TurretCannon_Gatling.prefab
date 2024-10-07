@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e578623ee58364ca3f9a77183d45f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 7610375804487813782, guid: 87148240d29edad4fb3f0a4cf9fe36e6,
+    type: 3}
+  _numberBullets: 4
+  _angleShoot: 15

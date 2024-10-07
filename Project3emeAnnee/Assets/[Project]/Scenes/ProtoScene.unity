@@ -302,12 +302,17 @@ PrefabInstance:
     - target: {fileID: 1076253366732831957, guid: 8d526df53053ce5449742ecdf9fac6da,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2151680629159030061, guid: 8d526df53053ce5449742ecdf9fac6da,
         type: 3}
       propertyPath: m_Name
       value: Party Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022987541590745178, guid: 8d526df53053ce5449742ecdf9fac6da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4419080042784953322, guid: 8d526df53053ce5449742ecdf9fac6da,
         type: 3}
@@ -449,6 +454,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7294125662583742632, guid: 8d526df53053ce5449742ecdf9fac6da,
+        type: 3}
+      propertyPath: wavesToSpawn
+      value: 
+      objectReference: {fileID: 11400000, guid: 00a11e746e03d5242bfe9c11055957a1,
+        type: 2}
     - target: {fileID: 7931563695437641530, guid: 8d526df53053ce5449742ecdf9fac6da,
         type: 3}
       propertyPath: m_AnchorMax.y

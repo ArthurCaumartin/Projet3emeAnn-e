@@ -47,4 +47,4 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7610375804487813782, guid: 87148240d29edad4fb3f0a4cf9fe36e6,
     type: 3}
   _numberBulletsPerShot: 3
-  _timeBetweenBullets: 0.1
+  _timeBetweenBullets: 0.035

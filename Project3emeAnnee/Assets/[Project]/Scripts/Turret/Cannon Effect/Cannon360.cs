@@ -3,7 +3,7 @@ using UnityEngine;
 public class Cannon360 : TurretCannon
 {
     [SerializeField] private float _rotateSpeedMultiplier = 5;
-    [SerializeField] private int _initialAdditionalBullet;
+    [SerializeField] private int _initialAdditionalBullet = 4;
     public override void Update()
     {
         transform.Rotate(new Vector3(0, _rotateSpeedMultiplier * _stat.rotateSpeed * Time.deltaTime, 0));
@@ -14,7 +14,7 @@ public class Cannon360 : TurretCannon
 
     public override void Shoot()
     {
-        int totalBullet = _stat.bulletCount + _initialAdditionalBullet;
+        int totalBullet = _initialAdditionalBullet;
         for (int i = 0; i < totalBullet; i++)
         {
             float angleTime = Mathf.Lerp(0, 360, Mathf.InverseLerp(0, totalBullet, i));
