@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
         _speed = speed;
         _damage = damage;
         _perforateCount = perforateCount;
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 2f);
         return this;
     }
 
