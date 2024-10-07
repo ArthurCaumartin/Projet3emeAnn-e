@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3561f17aa21752d439db1bfebd001541, type: 3}
-  m_Name: Base 4
+  m_Name: Body_1
   m_EditorClassIdentifier: 
   partType: 2
   partName: 
   inventorySprite: {fileID: 21300000, guid: 08015000c296c2845ab6f043afe72c30, type: 3}
-  mesh: {fileID: 7351634835607317843, guid: 808cbd55f0324b740af1fd88aa2c8697, type: 3}
+  mesh: {fileID: -6978293761761576252, guid: cdf7703c708dee44db1b72f6fc9a8675, type: 3}
   stat:
     damage: 17
-    attackPerSecond: 2.5
+    attackPerSecond: 9
     range: 10
     rotateSpeed: 50
     projectileSpeed: 60

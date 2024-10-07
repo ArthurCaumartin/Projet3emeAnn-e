@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3362427066f795547909cc8e08b369fb, type: 3}
-  m_Name: Heart 2
+  m_Name: Core_1
   m_EditorClassIdentifier: 
   partType: 1
   partName: 
   inventorySprite: {fileID: 21300000, guid: 1ad77a937cfa91d41b48303e7f1936a9, type: 3}
-  mesh: {fileID: -8182402315704824876, guid: c0ae0bbce9ec26f4ba86bb7a8a7941a7, type: 3}
+  mesh: {fileID: -2666835821660392994, guid: eba03821aab528a409a50ab4302b397e, type: 3}
   effect: {fileID: 0}

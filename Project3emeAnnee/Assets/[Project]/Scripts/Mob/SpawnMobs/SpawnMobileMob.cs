@@ -129,6 +129,7 @@ public class SpawnMobileMob : MonoBehaviour
 
     private void SpawnMob(Vector3 spawnPoistion)
     {
+        if(!_mobPrefab) return;
         Mob intantiatedMob = Instantiate(_mobPrefab, spawnPoistion, Quaternion.identity, transform);
         intantiatedMob.Initialize(_playerPos);
         
