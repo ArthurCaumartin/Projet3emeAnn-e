@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 public class TurretCanon : MonoBehaviour
@@ -31,7 +32,7 @@ public class TurretCanon : MonoBehaviour
         ComputeShootTime();
     }
 
-    private void ComputeShootTime()
+    protected void ComputeShootTime()
     {
         _shootTime += Time.deltaTime;
         if (_shootTime > 1 / _stat.attackPerSecond)
