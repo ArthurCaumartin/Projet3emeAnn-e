@@ -32,7 +32,7 @@ public class TurretCannon : MonoBehaviour
         ComputeShootTime();
     }
 
-    protected void ComputeShootTime()
+    protected virtual void ComputeShootTime()
     {
         _shootTime += Time.deltaTime;
         if (_shootTime > 1 / _stat.attackPerSecond)
