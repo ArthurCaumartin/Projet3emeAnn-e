@@ -1,34 +1,18 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonGatling : TurretCannon
+public class CannonGatling : MonoBehaviour
 {
-    [SerializeField] private float _numberBulletsPerShot = 3;
-    // [SerializeField] private float _timeBe
-    private float _counterTime, _counterBullets;
-    private bool _shooting;
-
-    public override void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-        base.Update();
-        if (_shooting)
-        {
-            _counterTime += Time.deltaTime;
-            // if(_counterTime >= )
-        }
+        
     }
 
-    public override void Shoot()
+    // Update is called once per frame
+    void Update()
     {
-        _shooting = true;
-        _counterTime = 0;
-    }
-
-    public void TrueShoot()
-    {
-        Projectile newProjectile = Instantiate(_projectilePrefab, transform.position, Quaternion.LookRotation(transform.forward, Vector3.up));
-        newProjectile.Initialize(_stat.projectileSpeed, _stat.damage, _stat.perforationCount);
+        
     }
 }
