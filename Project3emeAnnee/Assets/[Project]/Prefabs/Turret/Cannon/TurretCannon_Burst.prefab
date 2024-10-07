@@ -48,3 +48,4 @@ MonoBehaviour:
     type: 3}
   _numberBulletsPerShot: 3
   _timeBetweenBullets: 0.035
+  _attackSpeedMultiplier: 0.7

@@ -5,11 +5,21 @@ using UnityEngine.Serialization;
 
 public class CannonGatling : TurretCannon
 {
-    [SerializeField] private float _attackSpeedMultiplier = 1.4f, _damagesMultiplier = 0.8f, _timeToDecreaseCharge = 0.25f;
-    
-    [SerializeField, Range(0, 90)] private float _angleShootAtMaxCharge = 35;
-
+    [Tooltip("How many bullets needed to go max charge")]
     [SerializeField] private int _bulletsMaxCharge = 10;
+    
+    [Tooltip("Attack speed multiplier at 0 charge")]
+    [SerializeField] private float _attackSpeedAtMinCharge = 0.6f;
+    
+    [Tooltip("Attack speed multiplier at max charge")]
+    [SerializeField] private float _attackSpeedAtMaxCharge = 1.35f;
+    
+    [Tooltip("Angle max where bullets go when at max charge")]
+    [SerializeField, Range(0, 90)] private float _angleShootAtMaxCharge = 35;
+    
+    [Tooltip("Time between decreasing charge when not firing")]
+    [SerializeField] private float _timeToDecreaseCharge = 0.5f;
+
     private int _bulletCounter = 0;
     private float _counterDecrease;
     
@@ -45,7 +55,7 @@ public class CannonGatling : TurretCannon
     
     protected override void ComputeShootTime()
     {
-        float fullShootSpeedMultiplier = Mathf.Lerp(0.6f, 1.35f, Mathf.InverseLerp(0, _bulletsMaxCharge, _bulletCounter));
+        float fullShootSpeedMultiplier = Mathf.Lerp(_attackSpeedAtMinCharge, _attackSpeedAtMaxCharge, Mathf.InverseLerp(0, _bulletsMaxCharge, _bulletCounter));
         
         _shootTime += Time.deltaTime;
         if (_shootTime > 1 / (_stat.attackPerSecond * (_attackSpeedMultiplier * fullShootSpeedMultiplier)))

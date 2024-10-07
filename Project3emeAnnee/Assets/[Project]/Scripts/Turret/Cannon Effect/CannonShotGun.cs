@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CannonShotGun : TurretCannon
 {
-    [SerializeField] private int _numberBullets = 4;
-    [SerializeField] private float _damagesMultiplier = 0.8f, _attackSpeedMultiplier = 0.5f;
+    [SerializeField] private int _numberBullets = 8;
     
     public override void Shoot()
     {

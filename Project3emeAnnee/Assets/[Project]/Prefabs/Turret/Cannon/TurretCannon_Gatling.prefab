@@ -46,5 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 7610375804487813782, guid: 87148240d29edad4fb3f0a4cf9fe36e6,
     type: 3}
-  _numberBullets: 4
-  _angleShoot: 15
+  _attackSpeedMultiplier: 1.4
+  _damagesMultiplier: 0.8
+  _timeToDecreaseCharge: 0.5
+  _angleShootAtMaxCharge: 40
+  _attackSpeedAtMinCharge: 0.6
+  _attackSpeedAtMaxCharge: 1.8
+  _bulletsMaxCharge: 9

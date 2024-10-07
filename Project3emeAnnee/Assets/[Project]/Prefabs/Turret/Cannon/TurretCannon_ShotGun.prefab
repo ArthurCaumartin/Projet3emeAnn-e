@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 7610375804487813782, guid: 87148240d29edad4fb3f0a4cf9fe36e6,
     type: 3}
+  _numberBullets: 10
+  _damagesMultiplier: 0.8
+  _attackSpeedMultiplier: 0.5

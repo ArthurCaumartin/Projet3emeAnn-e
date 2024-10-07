@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class CannonBurst : TurretCannon
 {
-    [SerializeField] private float _numberBulletsPerShot = 3;
-    [SerializeField] private float _timeBetweenBullets = 0.025f;
+    [SerializeField] private float _numberBullets = 3;
+    
+    [Tooltip("Duration between bullets during the burst")]
+    [SerializeField, Range(0.01f, 0.2f)] private float _timeBetweenBullets = 0.025f;
+    
     private float _counterTime = 0, _counterBullets = 0;
     private bool _shooting = false;
-
-    [SerializeField] private float _attackSpeedMultiplier = 0.5f;
     public override void Update()
     {
         base.Update();
@@ -35,7 +36,7 @@ public class CannonBurst : TurretCannon
     {
         _counterTime = 0;
         _counterBullets++;
-        if (_counterBullets >= _numberBulletsPerShot) _shooting = false;
+        if (_counterBullets >= _numberBullets) _shooting = false;
         
         Projectile newProjectile = Instantiate(_projectilePrefab, transform.position, Quaternion.LookRotation(transform.forward, Vector3.up));
         newProjectile.Initialize(_stat.projectileSpeed, _stat.damage, _stat.perforationCount);
