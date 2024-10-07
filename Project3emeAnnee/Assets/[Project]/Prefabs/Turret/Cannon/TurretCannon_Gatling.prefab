@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3808138417262423794}
+  - component: {fileID: 1044086802107268475}
   m_Layer: 0
   m_Name: TurretCannon_Gatling
   m_TagString: Untagged
@@ -31,3 +32,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1044086802107268475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558547684346955373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e578623ee58364ca3f9a77183d45f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 7610375804487813782, guid: 87148240d29edad4fb3f0a4cf9fe36e6,
+    type: 3}
+  _attackSpeedMultiplier: 1.4
+  _damagesMultiplier: 0.8
+  _timeToDecreaseCharge: 0.5
+  _angleShootAtMaxCharge: 40
+  _attackSpeedAtMinCharge: 0.6
+  _attackSpeedAtMaxCharge: 1.8
+  _bulletsMaxCharge: 9

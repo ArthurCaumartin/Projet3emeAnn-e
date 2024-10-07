@@ -8,6 +8,12 @@ public class TurretCannon : MonoBehaviour
     protected float _shootTime = 0;
     protected TargetFinder _finder;
     protected StatContainer _stat;
+    
+    [Tooltip("Modify turret attackSpeed")]
+    [SerializeField, Range(0.1f, 10)] public float _attackSpeedMultiplier = 1;
+    
+    [Tooltip("Modify turret damages per bullet")]
+    [SerializeField, Range(0.1f, 10)] public float _damagesMultiplier = 1;
 
     public virtual void Shoot()
     {
@@ -32,7 +38,7 @@ public class TurretCannon : MonoBehaviour
         ComputeShootTime();
     }
 
-    protected void ComputeShootTime()
+    protected virtual void ComputeShootTime()
     {
         _shootTime += Time.deltaTime;
         if (_shootTime > 1 / _stat.attackPerSecond)

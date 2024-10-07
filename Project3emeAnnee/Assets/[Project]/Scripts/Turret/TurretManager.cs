@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,9 +11,11 @@ public class TurretManager : MonoBehaviour
     [SerializeField] private RectTransform _turretPanelContainer;
     [Space]
     [Header("Turret : ")]
-    [SerializeField] private GameObject _turretPrefab;
+    [SerializeField] private TurretBaker _mobileTurretPrefab;
+    [SerializeField] private TurretBaker _turretPrefab;
     private List<TurretPanel> _turretPanelList = new List<TurretPanel>();
-    private List<GameObject> _turretList = new List<GameObject>();
+    private List<TurretBaker> _turretList = new List<TurretBaker>();
+    private List<TurretBaker> _turretMobileList = new List<TurretBaker>();
     private TurretPanel _lastPanelOpen;
     private GameObject _gostTurret;
     private Grid _grid;
@@ -30,12 +33,16 @@ public class TurretManager : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            GameObject newTurret = Instantiate(_turretPrefab, transform);
+            TurretBaker newTurret = Instantiate(_turretPrefab, transform);
             _turretList.Add(newTurret);
-            newTurret.SetActive(false);
+            newTurret.gameObject.SetActive(false);
+
+            TurretBaker newMobileTurret = Instantiate(_mobileTurretPrefab, transform);
+            newMobileTurret.GetComponent<MobileTurret>().Initialize(PlayerInstance.instance.transform, Mathf.InverseLerp(0, count, i));
+            _turretMobileList.Add(newMobileTurret);
 
             GameObject newPanel = Instantiate(_turretPanelPrefab, _turretPanelContainer);
-            _turretPanelList.Add(newPanel.GetComponent<TurretPanel>().Initialize(this, newTurret.GetComponent<TurretBaker>()));
+            _turretPanelList.Add(newPanel.GetComponent<TurretPanel>().Initialize(this, newTurret, newMobileTurret));
         }
     }
 

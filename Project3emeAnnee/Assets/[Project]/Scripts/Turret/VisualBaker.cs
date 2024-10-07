@@ -13,6 +13,7 @@ public class VisualBaker : MonoBehaviour
 
     public void Bake(ScriptableTurretPart part)
     {
+        if(!part) return;
         if (!_meshFilter || !_renderer) Start();
         _meshFilter.mesh = part.mesh;
     }

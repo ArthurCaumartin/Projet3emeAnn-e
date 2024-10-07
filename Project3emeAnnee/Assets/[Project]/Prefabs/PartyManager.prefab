@@ -149,7 +149,9 @@ MonoBehaviour:
   _turretPanelPrefab: {fileID: 5839369492139956186, guid: f36243bef8836f649a42059069c408d2,
     type: 3}
   _turretPanelContainer: {fileID: 0}
-  _turretPrefab: {fileID: 1992970299037477598, guid: b137caada5335e64c9cb0941b3fbe3f8,
+  _mobileTurretPrefab: {fileID: 6955017420074816119, guid: d05f433c58741be41b768b1c5ea03b6f,
+    type: 3}
+  _turretPrefab: {fileID: 3928879721799613918, guid: b137caada5335e64c9cb0941b3fbe3f8,
     type: 3}
 --- !u!1 &3983313843626678730
 GameObject:
@@ -197,11 +199,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPos: {fileID: 0}
   _camera: {fileID: 0}
-  _enemyPrefab: {fileID: 7598526433442725878, guid: ff822ed051a82b84bb5ad85ab54c5cd2,
+  _mobPrefab: {fileID: 1321703740916909351, guid: 62d09786f658afc47b351d6b893f3ac3,
     type: 3}
   _maxDistanceNavMeshSpawn: 2
   _cooldownSpawn: 0.04
-  _distanceSpawnEnemies: 10
+  _distanceSpawnMobs: 10
   _despawnRadius: 78.5
 --- !u!1 &6313927488124351733
 GameObject:
