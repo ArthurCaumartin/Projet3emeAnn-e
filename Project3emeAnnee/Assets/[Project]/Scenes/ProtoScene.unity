@@ -304,6 +304,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1076253366732831957, guid: 8d526df53053ce5449742ecdf9fac6da,
+        type: 3}
+      propertyPath: _mobPrefab
+      value: 
+      objectReference: {fileID: 1321703740916909351, guid: 62d09786f658afc47b351d6b893f3ac3,
+        type: 3}
     - target: {fileID: 2151680629159030061, guid: 8d526df53053ce5449742ecdf9fac6da,
         type: 3}
       propertyPath: m_Name
@@ -479,6 +485,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8748709909863388684, guid: 8d526df53053ce5449742ecdf9fac6da,
+        type: 3}
+      propertyPath: _turretPrefab
+      value: 
+      objectReference: {fileID: 3928879721799613918, guid: b137caada5335e64c9cb0941b3fbe3f8,
+        type: 3}
+    - target: {fileID: 8748709909863388684, guid: 8d526df53053ce5449742ecdf9fac6da,
+        type: 3}
+      propertyPath: _mobileTurretPrefab
+      value: 
+      objectReference: {fileID: 6955017420074816119, guid: d05f433c58741be41b768b1c5ea03b6f,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -47,4 +47,4 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7610375804487813782, guid: 87148240d29edad4fb3f0a4cf9fe36e6,
     type: 3}
   _rotateSpeedMultiplier: 13.03
-  _initialAdditionalBullet: 266
+  _initialAdditionalBullet: 9
