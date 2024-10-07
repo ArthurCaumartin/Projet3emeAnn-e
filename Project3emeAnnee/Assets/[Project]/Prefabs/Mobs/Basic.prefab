@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4542311613522267998}
   - component: {fileID: 4310008977479937457}
   - component: {fileID: 1321703740916909351}
+  - component: {fileID: -1462443955011651117}
   m_Layer: 0
   m_Name: Basic
   m_TagString: Untagged
@@ -170,7 +171,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 
-  _health: 0
-  _movementSpeed: 0
+  _mobHealth: {fileID: -1462443955011651117}
+  _movementSpeed: 5
   _mobScale: 0
   _navMeshAgent: {fileID: 4310008977479937457}
+--- !u!114 &-1462443955011651117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837866152966505439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9816d3017e605d34994188cc32eef54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxLife: 50
+  _currentLife: 50
+  _onDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
