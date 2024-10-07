@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestSelection : MonoBehaviour
+public class MissionSelection : MonoBehaviour
 {
-    private QuestManager _questManager;
+    private MissionManager _missionManager;
     private bool _isSelected, _isComplete;
 
     public int _numberToDo, _progress;
@@ -15,7 +15,7 @@ public class QuestSelection : MonoBehaviour
     
     private void Start()
     {
-        _questManager = GetComponentInParent<QuestManager>();
+        _missionManager = GetComponentInParent<MissionManager>();
     }
 
     // Clicked on a quest in the Quests Menu
@@ -23,14 +23,14 @@ public class QuestSelection : MonoBehaviour
     {
         if (_isSelected && _isComplete) return;
         
-        _questManager.SelectQuest(this);
+        _missionManager.SelectQuest(this);
         
         _isSelected = true;
         _stampSprite.color = new Color(1,0,0,1);
     }
     
     // Unclicked on a quest in the Quests Menu
-    public void UnSelectQuest()
+    public void UnSelectMission()
     {
         _isSelected = false;
 
@@ -43,12 +43,12 @@ public class QuestSelection : MonoBehaviour
         _progress++;
         if (_progress >= _numberToDo)
         {
-            AchieveQuest();
+            AchieveMission();
         }
     }
     
     // Called if the quest if is achieved
-    private void AchieveQuest()
+    private void AchieveMission()
     {
         _isComplete = true;
         _isSelected = false;

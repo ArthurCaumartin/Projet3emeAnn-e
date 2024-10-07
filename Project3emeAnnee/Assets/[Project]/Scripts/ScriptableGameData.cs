@@ -5,7 +5,7 @@ using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameData", fileName = "GameData", order = 5)]
-public class GameData : ScriptableObject
+public class ScriptableGameData : ScriptableObject
 {
     public int globalGas = 0;
 

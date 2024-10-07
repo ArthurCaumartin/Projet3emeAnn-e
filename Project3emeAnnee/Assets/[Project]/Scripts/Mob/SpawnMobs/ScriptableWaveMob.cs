@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "WavesSpawnTD", fileName = "waveSpawnTD", order = 4)]
-public class WaveMob : ScriptableObject
+public class ScriptableWaveMob : ScriptableObject
 {
     public List<Wave> waves = new List<Wave>();
     public string name;
@@ -23,13 +23,6 @@ public class Wave
 public class MobsToSpawn
 {
     public List<MobToSpawn> mobs = new List<MobToSpawn>();
-}
-
-public enum MobClassName {
-    Basic,
-    Bomber,
-    Tank,
-    Fast
 }
 
 [Serializable]

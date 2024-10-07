@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Spawners : MonoBehaviour
 {
-    public WaveMob _wavesToSpawn;
-    public float _enemiesSpawnRange = 10f;
+    public ScriptableWaveMob wavesToSpawn;
+    public float _mobSpawnRange = 10f;
     
     private Transform _playerPos;
     private SpawnSiegeMob _siegeManager;
-    private List<GameObject> _enemiesInWave = new List<GameObject>();
+    private List<GameObject> _mobsInWave = new List<GameObject>();
     
     //TODO Connect to MobHealth Death Event 
-    private List<GameObject> _enemiesAlive = new List<GameObject>();
+    private List<GameObject> _mobsAlive = new List<GameObject>();
     
     
     private Dictionary<GameObject, int> mobsToSpawn = new Dictionary<GameObject, int>();
     
     private bool _hasStarted, _hasFinished, _isSpawningWave;
     private float _duration, _spawnDuration, mobTimeSpawn;
-    private int _actualWave = 0, _numberEnemies = 0, _actualEnemyToSpawn = 0;
+    private int _actualWave = 0, _numberMobs = 0, _actualMobToSpawn = 0;
     public void Update()
     {
         //Se lance que quand le siphonnage est lancé
@@ -34,7 +35,7 @@ public class Spawners : MonoBehaviour
         _duration += Time.deltaTime;
         
         //Si la vague a atteint le temps de la vague actuelle
-        if (_duration >= _wavesToSpawn.waves[_actualWave].spawnTimeInWaveMob)
+        if (_duration >= wavesToSpawn.waves[_actualWave].spawnTimeInWaveMob)
         {
             _isSpawningWave = true;
             WaveSpawning(_actualWave);
@@ -47,7 +48,7 @@ public class Spawners : MonoBehaviour
             if (_spawnDuration >= mobTimeSpawn)
             {
                 _spawnDuration = 0;
-                InstantiateEnemy();
+                InstantiateMob();
             }
         }
     }
@@ -65,16 +66,16 @@ public class Spawners : MonoBehaviour
 
     private void WaveSpawning(int waveNumber)
     {
-        _numberEnemies = 0;
+        _numberMobs = 0;
         mobsToSpawn.Clear();
-        _enemiesInWave.Clear();
+        _mobsInWave.Clear();
         
         // Setup la vague en renseignant le dictionnaire avec les infos des ennemis et leurs nombres
         // Renseigne le nombre total d'enemis dans la vague
-        for (int i = 0; i < _wavesToSpawn.waves[waveNumber].mobsToSpawn.Count; i++)
+        for (int i = 0; i < wavesToSpawn.waves[waveNumber].mobsToSpawn.Count; i++)
         {
-            mobsToSpawn[_wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobName] = _wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
-            _numberEnemies += _wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
+            mobsToSpawn[wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobName] = wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
+            _numberMobs += wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
         }
 
         // Créer une liste aléatoire avec les ennemis pour les instantier 1 a la fois
@@ -82,30 +83,30 @@ public class Spawners : MonoBehaviour
         {
             for (int i = 0; i < mobClassNumber.Value; i++)
             {
-                _enemiesInWave.Add(mobClassNumber.Key);
+                _mobsInWave.Add(mobClassNumber.Key);
             }
         }
-        ShuffleList(_enemiesInWave);
+        ShuffleList(_mobsInWave);
 
         // Créer la variable de tout les quand un ennemi doit apparaître
-        float f = _wavesToSpawn.waves[waveNumber].spawnDuration / _numberEnemies;
+        float f = wavesToSpawn.waves[waveNumber].spawnDuration / _numberMobs;
         mobTimeSpawn = Mathf.Round(f * 100.0f) * 0.01f;
     }
     
-    private void InstantiateEnemy()
+    private void InstantiateMob()
     {
         
         // Vérifie quelle ennemi doit apparaître à une position aléatoire autour du point de spawn
         Vector3 randomPosToSpawn = GetRandomSpawnPos(transform.position);
-        GameObject enemyInstantiate = Instantiate(_enemiesInWave[_actualEnemyToSpawn], randomPosToSpawn, Quaternion.identity, transform);
+        GameObject mobInstantiate = Instantiate(_mobsInWave[_actualMobToSpawn], randomPosToSpawn, Quaternion.identity, transform);
         
-        _enemiesAlive.Add(enemyInstantiate);
+        _mobsAlive.Add(mobInstantiate);
         
-        Mob enemyScript = enemyInstantiate.GetComponent<Mob>();
-        enemyScript.Initialize(_playerPos);
+        Mob mobScript = mobInstantiate.GetComponent<Mob>();
+        mobScript.Initialize(_playerPos);
         
-        _actualEnemyToSpawn++;
-        if (_actualEnemyToSpawn >= _numberEnemies)
+        _actualMobToSpawn++;
+        if (_actualMobToSpawn >= _numberMobs)
         {
             FinishWave();
         }
@@ -113,7 +114,7 @@ public class Spawners : MonoBehaviour
 
     private void CheckIfMobs()
     {
-        if (_enemiesAlive.Count == 0)
+        if (_mobsAlive.Count == 0)
         {
             _siegeManager.FinishWave(this);
         }
@@ -122,18 +123,18 @@ public class Spawners : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1,0,0,0.3f);
-        Gizmos.DrawSphere(transform.position , _enemiesSpawnRange);
+        Gizmos.DrawSphere(transform.position , _mobSpawnRange);
     }
 
     //Fini la vague et réinitialise les variables
     private void FinishWave()
     {
         _isSpawningWave = false;
-        _actualEnemyToSpawn = 0;
+        _actualMobToSpawn = 0;
         _spawnDuration = 0;
         _actualWave++;
 
-        if (_actualWave >= _wavesToSpawn.waves.Count)
+        if (_actualWave >= wavesToSpawn.waves.Count)
         {
             _hasFinished = true;
         }
@@ -141,8 +142,8 @@ public class Spawners : MonoBehaviour
 
     private Vector3 GetRandomSpawnPos(Vector3 position)
     {
-        float xRandomPos = Random.Range(position.x - _enemiesSpawnRange, position.x + _enemiesSpawnRange);
-        float zRandomPos = Random.Range(position.z - _enemiesSpawnRange, position.z + _enemiesSpawnRange);
+        float xRandomPos = Random.Range(position.x - _mobSpawnRange, position.x + _mobSpawnRange);
+        float zRandomPos = Random.Range(position.z - _mobSpawnRange, position.z + _mobSpawnRange);
 
         return new Vector3(xRandomPos, position.y, zRandomPos);
     }

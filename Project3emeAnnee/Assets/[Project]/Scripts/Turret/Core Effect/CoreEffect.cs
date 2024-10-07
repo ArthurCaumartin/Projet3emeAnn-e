@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TurretEffect : MonoBehaviour
+public class CoreEffect : MonoBehaviour
 {
 
     public virtual void Shoot(GameObject mobTarget)

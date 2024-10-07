@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Project3emeAnnee/Base")]
-public class ScriptableBase : ScriptableTurretPart
+public class ScriptableBody : ScriptableTurretPart
 {
     [Space]
     public StatContainer stat;

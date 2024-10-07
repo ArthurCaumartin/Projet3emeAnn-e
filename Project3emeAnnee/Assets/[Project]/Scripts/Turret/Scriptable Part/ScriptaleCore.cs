@@ -1,8 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Project3emeAnnee/Heart")]
-public class ScriptaleHeart : ScriptableTurretPart
+public class ScriptaleCore : ScriptableTurretPart
 {
     [Space]
-    public TurretEffect effect;
+    public CoreEffect effect;
 }

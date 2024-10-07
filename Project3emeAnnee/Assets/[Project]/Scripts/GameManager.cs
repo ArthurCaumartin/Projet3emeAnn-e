@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] private GameData _gameData;
+    [SerializeField] private ScriptableGameData _gameData;
     
     public int Difficulty { get => _gameData.difficulty; }
     public int GlobalGas { get => _gameData.globalGas; }
