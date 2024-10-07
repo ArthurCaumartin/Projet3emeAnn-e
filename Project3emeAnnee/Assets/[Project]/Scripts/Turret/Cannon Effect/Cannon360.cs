@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Canon360 : TurretCanon
+public class Cannon360 : TurretCannon
 {
     [SerializeField] private float _rotateSpeedMultiplier = 5;
     [SerializeField] private int _initialAdditionalBullet;

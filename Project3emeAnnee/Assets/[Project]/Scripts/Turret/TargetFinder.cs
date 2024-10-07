@@ -8,20 +8,20 @@ public class TargetFinder : MonoBehaviour
     public float _range;
     private SphereCollider _collider;
     private StatContainer _stat;
-    private TurretCanon _canon;
+    private TurretCannon _cannon;
 
     private void OnValidate()
     {
         GetComponent<SphereCollider>().radius = _range;
     }
 
-    public void Bake(TurretCanon newCanon, StatContainer newStat)
+    public void Bake(TurretCannon newCannon, StatContainer newStat)
     {
-        if (_canon) Destroy(_canon.gameObject);
+        if (_cannon) Destroy(_cannon.gameObject);
 
         _stat = newStat;
-        _canon = Instantiate(newCanon, transform.position, Quaternion.identity, transform);
-        _canon.Inistalize(this, _stat);
+        _cannon = Instantiate(newCannon, transform.position, Quaternion.identity, transform);
+        _cannon.Inistalize(this, _stat);
         if (!_collider) _collider = GetComponent<SphereCollider>();
         _collider.radius = _stat.range;
     }

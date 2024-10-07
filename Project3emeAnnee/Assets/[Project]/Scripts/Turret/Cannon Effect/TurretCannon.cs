@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using UnityEngine;
 
-public class TurretCanon : MonoBehaviour
+public class TurretCannon : MonoBehaviour
 {
     [SerializeField] protected Projectile _projectilePrefab;
     protected Transform _currentTarget;
@@ -16,7 +16,7 @@ public class TurretCanon : MonoBehaviour
         newProjectile.Initialize(_stat.projectileSpeed, _stat.damage, _stat.perforationCount);
     }
 
-    public TurretCanon Inistalize(TargetFinder finder, StatContainer stat)
+    public TurretCannon Inistalize(TargetFinder finder, StatContainer stat)
     {
         _finder = finder;
         _stat = stat;

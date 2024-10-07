@@ -5,5 +5,5 @@ using UnityEngine.Serialization;
 public class ScriptableCannon : ScriptableTurretPart
 {
     [Space]
-    public TurretCanon turretCannon;
+    public TurretCannon turretCannon;
 }

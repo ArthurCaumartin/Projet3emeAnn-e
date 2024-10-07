@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanonShotGun : TurretCanon
+public class CannonShotGun : TurretCannon
 {
     public override void Shoot()
     {
