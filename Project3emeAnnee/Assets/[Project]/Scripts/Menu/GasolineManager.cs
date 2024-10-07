@@ -10,6 +10,6 @@ public class GasolineManager : MonoBehaviour
 
     private void Start()
     {
-        _gasoline = GameData.instance.GlobalGas;
+        _gasoline = GameManager.instance.GlobalGas;
     }
 }

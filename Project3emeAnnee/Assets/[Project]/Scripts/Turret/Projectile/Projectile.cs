@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
         _speed = speed;
         _damage = damage;
         _perforateCount = perforateCount;
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 2f);
         return this;
     }
 
@@ -24,17 +24,17 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Mob mobHit = other.GetComponent<Mob>();
+        MobHealth mobHit = other.GetComponent<MobHealth>();
         if (mobHit)
         {
             HitMob(mobHit);
         }
     }
 
-    private void HitMob(Mob mobHit)
+    private void HitMob(MobHealth mobHit)
     {
-        print("Hit Mob !");
-        Destroy(mobHit.gameObject);
+        // print("Hit Mob !");
+        mobHit.DoDamage(_damage);
         _perforateCount--;
         if (_perforateCount <= 0) Destroy(gameObject);
     }

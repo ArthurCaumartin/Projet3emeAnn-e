@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5784070388866199100}
   - component: {fileID: 2371114372942084206}
   - component: {fileID: 6349968605086385084}
+  - component: {fileID: 5318798641943840676}
   m_Layer: 0
   m_Name: Bomber
   m_TagString: Untagged
@@ -170,7 +171,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 
-  _health: 0
-  _movementSpeed: 0
+  _mobHealth: {fileID: -1462443955011651117, guid: 62d09786f658afc47b351d6b893f3ac3,
+    type: 3}
+  _movementSpeed: 6
   _mobScale: 0
   _navMeshAgent: {fileID: 2371114372942084206}
+--- !u!114 &5318798641943840676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2526220498475402263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9816d3017e605d34994188cc32eef54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxLife: 40
+  _currentLife: 40
+  _onDeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MobDeathEvent, Assembly-CSharp
+        m_MethodName: Explode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -1,10 +1,11 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GasReservoir : MonoBehaviour
 {
-    [SerializeField] private int _essenceQuantity = 500;
+    [SerializeField] private int _gasQuantity = 500;
     [SerializeField] private RectTransform _startButton;
     [SerializeField] private Button _launchWaveButton;
 

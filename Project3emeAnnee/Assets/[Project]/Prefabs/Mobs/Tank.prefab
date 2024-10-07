@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6849221887568905645}
   - component: {fileID: 6389653703236766447}
   - component: {fileID: 5084320978010245868}
+  - component: {fileID: 663037566257181863}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -170,7 +171,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 
-  _health: 0
-  _movementSpeed: 0
+  _mobHealth: {fileID: -1462443955011651117, guid: 62d09786f658afc47b351d6b893f3ac3,
+    type: 3}
+  _movementSpeed: 2
   _mobScale: 0
   _navMeshAgent: {fileID: 6389653703236766447}
+--- !u!114 &663037566257181863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4635874753042984219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9816d3017e605d34994188cc32eef54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxLife: 150
+  _currentLife: 150
+  _onDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
