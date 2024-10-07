@@ -35,7 +35,7 @@ public class TargetFinder : MonoBehaviour
         float minDistance = Mathf.Infinity;
         foreach (var item in _mobInRangeList)
         {
-            if(!item) continue; //TODO remove mob on death
+            if (!item) continue; //TODO remove mob on death
             float currentDistance = (item.transform.position - transform.position).sqrMagnitude;
             if (currentDistance < minDistance)
             {
@@ -52,6 +52,7 @@ public class TargetFinder : MonoBehaviour
         Mob mob = other.GetComponent<Mob>();
         if (mob)
         {
+            mob.GetComponent<MobHealth>().OnDeathEvent.AddListener(RemoveMob);
             _mobInRangeList.Add(mob);
         }
     }
@@ -63,5 +64,11 @@ public class TargetFinder : MonoBehaviour
         {
             _mobInRangeList.Remove(mob);
         }
+    }
+
+    public void RemoveMob(Mob toRemove)
+    {
+        if (_mobInRangeList.Contains(toRemove))
+            _mobInRangeList.Remove(toRemove);
     }
 }
