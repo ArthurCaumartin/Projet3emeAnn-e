@@ -50,6 +50,9 @@ public class TurretManager : MonoBehaviour
     {
         if (state == PartyState.TowerDefencePlacement || state == PartyState.TowerDefence)
         {
+            foreach (var item in _turretMobileList)
+                item.gameObject.SetActive(false);
+
             foreach (var item in _turretPanelList)
             {
                 item.OpenPanel(false);
@@ -57,6 +60,9 @@ public class TurretManager : MonoBehaviour
             }
             return;
         }
+
+        foreach (var item in _turretMobileList)
+            item.gameObject.SetActive(true);
 
         foreach (var item in _turretList)
             item.gameObject.SetActive(false);
