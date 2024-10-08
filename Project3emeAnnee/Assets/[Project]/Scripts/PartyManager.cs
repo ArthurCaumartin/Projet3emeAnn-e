@@ -83,7 +83,7 @@ public class PartyManager : MonoBehaviour
         }
     }
 
-    public void CollectGaz(float value, bool isDirectRecord)
+    public void AddGas(float value, bool isDirectRecord)
     {
         if (isDirectRecord)
         {
