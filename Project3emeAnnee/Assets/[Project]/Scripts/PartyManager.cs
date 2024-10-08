@@ -21,7 +21,8 @@ public class PartyManager : MonoBehaviour
     [SerializeField] private TurretManager _turretManager;
     [SerializeField] private SpawnMobileMob _spawnMobileMob;
     [Space]
-    [SerializeField] private float _totalGazCollect = 0;
+    [SerializeField] private float _totalGazCollectBySiphon = 0;
+    [SerializeField] private float _totalGazCollectByPlayer = 0;
 
     public PartyState GameState { get => _state; }
 
@@ -34,7 +35,7 @@ public class PartyManager : MonoBehaviour
     {
         SetPartyState(PartyState.Mobile);
         _partyCanvas.UpdateLifeBar(10, 10);
-        _partyCanvas.UpdateGazCount(_totalGazCollect);
+        _partyCanvas.UpdateGazCount(_totalGazCollectByPlayer);
     }
 
     public void StartTowerDefencePlacement(Transform siphonTransform)
@@ -78,14 +79,23 @@ public class PartyManager : MonoBehaviour
         _partyCanvas.UpdateLifeBar(maxLife, currentLife);
         if (currentLife <= 0)
         {
-            print("Player is Dead !");
+            // print("Player is Dead !");
         }
     }
 
-    public void CollectGaz(float value)
+    public void CollectGaz(float value, bool isDirectRecord)
     {
-        _totalGazCollect += value;
-        _partyCanvas.UpdateGazCount(_totalGazCollect);
-        GameManager.instance.AddGas((int)_totalGazCollect);
+        if (isDirectRecord)
+        {
+            _totalGazCollectBySiphon += value;
+            GameManager.instance.AddGas((int)_totalGazCollectByPlayer);
+        }
+        else
+        {
+            _totalGazCollectByPlayer += value;
+        }
+
+        //TODO a changer quand une interface pour les / le compteur aura étais pensé
+        _partyCanvas.UpdateGazCount(_totalGazCollectByPlayer + _totalGazCollectBySiphon);
     }
 }
