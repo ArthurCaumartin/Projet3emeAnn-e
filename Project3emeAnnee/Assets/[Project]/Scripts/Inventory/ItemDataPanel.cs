@@ -9,6 +9,14 @@ public class ItemDataPanel : MonoBehaviour
     [SerializeField] private Image _partImage;
     [SerializeField] private TextMeshProUGUI _partDetail;
 
+    [Header("Text Stat Reference :")]
+    [SerializeField] private TextMeshProUGUI _textDamage;
+    [SerializeField] private TextMeshProUGUI _textAttackPerSecond;
+    [SerializeField] private TextMeshProUGUI _textRange;
+    [SerializeField] private TextMeshProUGUI _textRotateSpeed;
+    [SerializeField] private TextMeshProUGUI _textProjectileSpeed;
+    [SerializeField] private TextMeshProUGUI _textPerforationCount;
+
     public void SetDataToShow(ScriptableTurretPart part)
     {
         if (!part)
@@ -24,12 +32,18 @@ public class ItemDataPanel : MonoBehaviour
 
         if (part is ScriptableCannon)
         {
-            _partDetail.text = "More Data for canon comming soon :)";
+            //TODO Get stat multiplier
         }
 
         if (part is ScriptableBody)
         {
-            _partDetail.text = "Promis je fait les stats aprés :)";
+            StatContainer stat = ((ScriptableBody)part).stat;
+            _partDetail.text = 
+            "Damage : " + stat.damage.ToString() + "\n" +
+            "AttackSpeed : " + stat.attackPerSecond.ToString() + "\n" +
+            "Range : " + stat.range.ToString() + "\n" +
+            "Projectile Speed : " + stat.projectileSpeed.ToString() + "\n" +
+            "Perforation Count : " + stat.perforationCount.ToString() + "\n";
         }
     }
 
