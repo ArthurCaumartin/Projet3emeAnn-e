@@ -32,4 +32,14 @@ public struct StatContainer
             perforationCount
         );
     }
+
+    public void MultiplieByRarity(float mult)
+    {
+        damage *= mult;
+        attackPerSecond *= mult;
+        range *= mult;
+        rotateSpeed *= mult;
+        projectileSpeed *= mult;
+        perforationCount = (int)(mult * perforationCount);
+    }
 }
