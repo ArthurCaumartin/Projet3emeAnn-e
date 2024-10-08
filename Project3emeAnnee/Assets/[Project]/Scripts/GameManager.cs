@@ -7,13 +7,18 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private ScriptableGameData _gameData;
-    
+
     public int Difficulty { get => _gameData.difficulty; }
     public int GlobalGas { get => _gameData.globalGas; }
     private void Awake()
     {
-        instance = this;
-        
+        if (instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+            instance = this;
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -21,7 +26,7 @@ public class GameManager : MonoBehaviour
     {
         if (addDiff)
         {
-            _gameData.difficulty ++;
+            _gameData.difficulty++;
         }
         else
         {
@@ -35,7 +40,7 @@ public class GameManager : MonoBehaviour
         {
             valueToChange = -valueToChange;
         }
-        
+
         if (_gameData.globalGas + valueToChange >= 0)
         {
             return true;
@@ -43,7 +48,7 @@ public class GameManager : MonoBehaviour
         else
         {
             return false;
-        }        
+        }
     }
 
     public void AddGas(int valueToChange)
