@@ -14,6 +14,8 @@ public class ScriptableTurretPart : ScriptableObject
 {
     public PartType partType;
     public string partName;
+    [Tooltip("Color is for debug, it set the image color of item in inventory.")]
+    public Color color = Color.white;
     [TextArea] public string description;
     [Space]
     public Sprite inventorySprite;
