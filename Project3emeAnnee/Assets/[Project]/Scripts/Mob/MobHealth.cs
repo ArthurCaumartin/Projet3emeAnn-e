@@ -18,18 +18,19 @@ public class MobHealth : MonoBehaviour
         _currentLife -= value;
         if (_currentLife <= 0)
         {
-            OnDeath();
+            OnDeath(true);
         }
     }
 
     public void DestroyMob()
     {
-        OnDeath();
+        OnDeath(false);
     }
 
-    private void OnDeath()
+    private void OnDeath(bool dropStuff = true)
     {
         _onDeathEvent.Invoke(this);
+        if (dropStuff) LootGenerator.instance.GenerateItem();
         Destroy(gameObject);
     }
 }

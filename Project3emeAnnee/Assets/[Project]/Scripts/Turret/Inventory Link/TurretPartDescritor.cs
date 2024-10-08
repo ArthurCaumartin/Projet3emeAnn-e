@@ -5,22 +5,18 @@ using UnityEngine.UI;
 public class TurretPartDescritor : MonoBehaviour
 {
     [SerializeField] private ScriptableTurretPart _turetPart;
-    public List<ScriptableTurretPart> _turretPartList = new List<ScriptableTurretPart>();
+    private Image _image;
 
-    private void Start()
+    public ScriptableTurretPart TurretPart
     {
-        GenerateItem();
-    }
+        get => _turetPart;
 
-    private void GenerateItem()
-    {
-        _turetPart = _turretPartList[Random.Range(0, _turretPartList.Count)];
-        GetComponent<Image>().sprite = _turetPart.inventorySprite;
-        GetComponent<Image>().color = _turetPart.color;
-    }
-
-    public ScriptableTurretPart GetTurretPart()
-    {
-        return _turetPart;
+        set
+        {
+            _turetPart = value;
+            _image = GetComponent<Image>();
+            _image.sprite = _turetPart.inventorySprite;
+            _image.color = _turetPart.color;
+        }
     }
 }
