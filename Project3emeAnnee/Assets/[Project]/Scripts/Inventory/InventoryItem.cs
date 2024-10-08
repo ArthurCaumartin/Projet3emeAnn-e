@@ -20,9 +20,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         _turretPartDescriptor = GetComponent<TurretPartDescritor>();
     }
 
-    public void Initialize(Inventory inventory)
+    public InventoryItem Initialize(Inventory inventory)
     {
         _inventory = inventory;
+        return this;
     }
 
     public void TrashAnimation()
@@ -40,6 +41,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         _inventory.DragItem = this;
     }
+    
     public void OnEndDrag(PointerEventData eventData)
     {
         _inventory.DragItem = null;
@@ -49,7 +51,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public ScriptableTurretPart GetTurretPartOnDescriptor()
     {
-        return _turretPartDescriptor.GetTurretPart();
+        return _turretPartDescriptor.TurretPart;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
