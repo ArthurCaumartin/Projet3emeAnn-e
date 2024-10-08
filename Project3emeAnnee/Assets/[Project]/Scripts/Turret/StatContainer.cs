@@ -26,7 +26,7 @@ public struct StatContainer
         return new StatContainer(
             damage * divideFactor,
             attackPerSecond * divideFactor,
-            range * divideFactor,
+            range,
             rotateSpeed * divideFactor,
             projectileSpeed * divideFactor,
             perforationCount
