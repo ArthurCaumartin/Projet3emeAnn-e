@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3764638d44deb614a857ae384bdd0f5f, type: 3}
+  m_Name: Cannon_360
+  m_EditorClassIdentifier: 
+  partType: 3
+  partName: 360
+  color: {r: 1, g: 0.53459114, b: 0.53459114, a: 1}
+  description: Une super description claire comme de l'eau de roche :)
+  inventorySprite: {fileID: 21300000, guid: 4ec1c44ed61939d4991702c9bb2db386, type: 3}
+  mesh: {fileID: -6206385551776140352, guid: 02c035e45960e8c4eac20bcf2b6c3019, type: 3}
+  turretCannon: {fileID: 2833916004406142461, guid: 751e27912f3537545abfbb54447e7851,
+    type: 3}

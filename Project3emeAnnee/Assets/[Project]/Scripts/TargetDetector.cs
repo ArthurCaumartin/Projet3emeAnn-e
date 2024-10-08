@@ -2,8 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TargetDetector : MonoBehaviour
+public class TargetDetector : MonoBehaviour 
 {
+    //TODO refacto le prefab
     [SerializeField] private Transform _target;
     [SerializeField] private float _triggerDistance;
     [SerializeField] private UnityEvent<bool> _event;

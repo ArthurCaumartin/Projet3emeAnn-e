@@ -3,9 +3,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TurretPanel : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler , IPointerExitHandler
+public class TurretPanel : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private TurretBaker _turretBaker;
+    [SerializeField] private TurretBaker _mobiletTurretBaker;
     [SerializeField] private RectTransform _panelContainer;
     [SerializeField] private RectTransform _placementButton;
     private TurretManager _turretManager;
@@ -17,16 +18,19 @@ public class TurretPanel : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         _placementButton.GetComponent<Button>().onClick.AddListener(() => _turretManager.ClicOnPlacementButton(this));
     }
 
-    public TurretPanel Initialize(TurretManager manager, TurretBaker baker)
+    public TurretPanel Initialize(TurretManager manager, TurretBaker turretBaker, TurretBaker mobiletTurretBaker)
     {
         _turretManager = manager;
-        _turretBaker = baker;
+        _turretBaker = turretBaker;
+        _mobiletTurretBaker = mobiletTurretBaker;
         return this;
     }
 
     public void ChangeTurretPart(ScriptableTurretPart part)
     {
+        print("Change Part in panel : " + part.partName);
         _turretBaker.SetTurretComponent(part);
+        _mobiletTurretBaker.SetTurretComponent(part);
     }
 
     public void OpenPanel(bool value)

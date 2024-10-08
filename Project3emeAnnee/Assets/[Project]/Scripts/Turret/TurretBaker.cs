@@ -1,19 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TurretBaker : MonoBehaviour
 {
+    [SerializeField] private bool _isMobileTurret = false;
+    [Tooltip("Stat is multiplie by the reduce factor. So 1 = keep 100% and 0.1 = keep 10%")]
+    [SerializeField, Range(.01f, 1)] private float _reduceFactor = .5f;
+
     [Header("Turret Scriptable :")]
-    [SerializeField] private ScriptableCannon _canon;
-    [SerializeField] private ScriptaleHeart _heart;
-    [SerializeField] private ScriptableBase _base;
+    [SerializeField] private ScriptableCannon _cannon;
+    [SerializeField] private ScriptaleCore _core;
+    [SerializeField] private ScriptableBody _body; 
 
     [Header("Mesh Renderer :")]
     [SerializeField] private VisualBaker _cannonRenderer;
-    [SerializeField] private VisualBaker _heartRenderer;
-    [SerializeField] private VisualBaker _baseRenderer;
+    [SerializeField] private VisualBaker _coreRenderer;
+    [SerializeField] private VisualBaker _bodyRenderer;
 
     [Header("Other :")]
     [SerializeField] private TargetFinder _finder;
@@ -25,16 +27,17 @@ public class TurretBaker : MonoBehaviour
 
     public void SetTurretComponent(ScriptableTurretPart partToSet)
     {
+        print(gameObject.name + " : bake turret Part");
         switch (partToSet)
         {
             case ScriptableCannon:
-                _canon = partToSet as ScriptableCannon;
+                _cannon = partToSet as ScriptableCannon;
                 break;
-            case ScriptaleHeart:
-                _heart = partToSet as ScriptaleHeart;
+            case ScriptaleCore:
+                _core = partToSet as ScriptaleCore;
                 break;
-            case ScriptableBase:
-                _base = partToSet as ScriptableBase;
+            case ScriptableBody:
+                _body = partToSet as ScriptableBody;
                 break;
         }
         BakeAll();
@@ -42,10 +45,10 @@ public class TurretBaker : MonoBehaviour
 
     private void BakeAll()
     {
-        _cannonRenderer.Bake(_canon);
-        _heartRenderer.Bake(_heart);
-        _baseRenderer.Bake(_base);
+        _cannonRenderer.Bake(_cannon);
+        _coreRenderer.Bake(_core);
+        _bodyRenderer.Bake(_body);
 
-        _finder.Bake(_canon.turretCanon, _base.stat);
+        _finder.Bake(_cannon.turretCannon, _isMobileTurret ? _body.stat.GetDivideValue(_reduceFactor) : _body.stat);
     }
 }

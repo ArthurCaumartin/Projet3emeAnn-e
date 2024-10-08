@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -10,16 +11,21 @@ public class Inventory : MonoBehaviour
     [SerializeField] private float _itemAnimationSpeed = 5;
     public float AnimationSpeed { get => _itemAnimationSpeed; }
     [Header("UI Reference :")]
+    [SerializeField] private ItemDataPanel _itemOverDataPanel;
     [SerializeField] private Transform _inventorySlotContainer;
     [SerializeField] private Transform _inventoryItemContainer;
-    public Transform ItemContainer { get => _inventoryItemContainer; }
     [SerializeField] private GameObject _inventorySlotPrefab;
     private List<InventoryItem> _inventoryItemList = new List<InventoryItem>();
     private InventorySlot[] _mainInventorySlotArray;
 
     [Header("To Move away :")]
     [SerializeField] private GameObject _itemPrefab;
+
     private InventoryItem _dragItem;
+
+    public Transform ItemContainer { get => _inventoryItemContainer; }
+
+
     //! Drag is set by InventoryItem while drag
     public InventoryItem DragItem
     {
@@ -41,6 +47,7 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         InstantiateInventory();
+        ShowOverSataPanel(null);
     }
 
     private void Update()
@@ -127,7 +134,7 @@ public class Inventory : MonoBehaviour
 
     private void RemoveItem(int itemIndex, bool dragToLeft = false)
     {
-        print("Remove Item, Index : " + itemIndex);
+        // print("Remove Item, Index : " + itemIndex);
         _mainInventorySlotArray[itemIndex].SetItemInSlot(null);
         //! Drag to left to fill the holl
         if (dragToLeft) DragItemLeft(itemIndex, _mainInventorySlotArray.Length - 1);
@@ -144,7 +151,7 @@ public class Inventory : MonoBehaviour
         //! If drag goes in non main slot
         if (!_mainInventorySlotArray.Contains(slotOver))
         {
-            print("Add Item to other slot");
+            // print("Add Item to other slot");
             if (slotOver.Item) TrashItem(slotOver.Item);
 
             if (dragItemIndex == -1)
@@ -160,7 +167,7 @@ public class Inventory : MonoBehaviour
         if (dragItemIndex == -1)
         {
             //! If drag come from non main slot, clear last slot
-            if(IsAllInventorySlotFill()) return;
+            if (IsAllInventorySlotFill()) return;
             DragItem.LastSlot.SetItemInSlot(null);
             if (slotOver.Item)
             {
@@ -235,9 +242,17 @@ public class Inventory : MonoBehaviour
     {
         foreach (var item in _mainInventorySlotArray)
         {
-            if(!item.Item)
+            if (!item.Item)
                 return false;
         }
         return true;
+    }
+
+    public void ShowOverSataPanel(InventoryItem item)
+    {
+        if (item)
+            _itemOverDataPanel.SetDataToShow(item.GetTurretPartOnDescriptor());
+        else
+            _itemOverDataPanel.ClearDataToShow();
     }
 }

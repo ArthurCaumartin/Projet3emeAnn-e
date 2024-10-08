@@ -19,19 +19,17 @@ public class UpgradeSlot : MonoBehaviour, IDropHandler
     // If an object is dropped on this object, change color, save the object, place it on this object, call the object to register this slot onto it
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag != null && _objectDropped == null)
-        {
-            _upgradeSlotImage.color = Color.red;
-            
-            _objectDropped = eventData.pointerDrag;
-            
-            _objectDroppedTransform = _objectDropped.GetComponent<RectTransform>();
-            DragDropResearch _objectScript = _objectDropped.GetComponent<DragDropResearch>();
-            _objectScript.OnDropOnSlot(this);
-            
-            _objectDroppedTransform.position = GetComponent<RectTransform>().position;
-            
-        }
+        if (!eventData.pointerDrag && !_objectDropped) return;
+        
+        _upgradeSlotImage.color = Color.red;
+        
+        _objectDropped = eventData.pointerDrag;
+        
+        _objectDroppedTransform = _objectDropped.GetComponent<RectTransform>();
+        DragDropResearch _objectScript = _objectDropped.GetComponent<DragDropResearch>();
+        _objectScript.OnDropOnSlot(this);
+        
+        _objectDroppedTransform.position = GetComponent<RectTransform>().position;
     }
 
     // Reset the slot if the object leave
