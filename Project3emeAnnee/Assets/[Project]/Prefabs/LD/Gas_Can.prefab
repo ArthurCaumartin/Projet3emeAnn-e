@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8334426775784120714}
   - component: {fileID: 3042833442879017569}
   - component: {fileID: 3767465135380569894}
+  - component: {fileID: 6299572217837956325}
   m_Layer: 0
   m_Name: Gas_Can
   m_TagString: Untagged
@@ -674,3 +675,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6299572217837956325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664500704912238035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee0d804736acf24aa0ee19ce6e38482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gasToGet: 5

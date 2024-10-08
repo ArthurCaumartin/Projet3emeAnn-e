@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 1476782661155094789}
   - component: {fileID: 3238088928448292174}
   - component: {fileID: 821758192372732920}
-  m_Layer: 0
+  - component: {fileID: 5170052464668461845}
+  m_Layer: 12
   m_Name: Egg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6558461594750781870}
   serializedVersion: 2
-  m_LocalRotation: {x: 1.110223e-17, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2295,3 +2296,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &5170052464668461845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6558461594750781870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9816d3017e605d34994188cc32eef54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxLife: 50
+  _currentLife: 50
+  _onDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
