@@ -5,4 +5,5 @@ public class ScriptaleCore : ScriptableTurretPart
 {
     [Space]
     public CoreEffect effect;
+    //! un prefabs avec des events
 }
