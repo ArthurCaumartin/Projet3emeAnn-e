@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e33ce8194f185f4aa232854248da7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gasQuantity: 500
+  _gazQuantity: 500
   _startButton: {fileID: 2521046584845085799}
   _launchWaveButton: {fileID: 3315499394192763691}
 --- !u!114 &6720768451030678603
@@ -697,6 +697,9 @@ MonoBehaviour:
   _spawners:
   - {fileID: 1821314975778333860}
   _startButton: {fileID: 3315499394192763691}
+  _onWaveEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8119108929880856311
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +813,22 @@ PrefabInstance:
     - target: {fileID: 444864606483022643, guid: 11f94c176819b3a4eb0ca6971472ffb3,
         type: 3}
       propertyPath: wavesToSpawn
+      value: 
+      objectReference: {fileID: 11400000, guid: 00a11e746e03d5242bfe9c11055957a1,
+        type: 2}
+    - target: {fileID: 444864606483022643, guid: 11f94c176819b3a4eb0ca6971472ffb3,
+        type: 3}
+      propertyPath: WavesToSpawn._serializedList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 444864606483022643, guid: 11f94c176819b3a4eb0ca6971472ffb3,
+        type: 3}
+      propertyPath: WavesToSpawn._serializedList.Array.data[0].Key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 444864606483022643, guid: 11f94c176819b3a4eb0ca6971472ffb3,
+        type: 3}
+      propertyPath: WavesToSpawn._serializedList.Array.data[0].Value
       value: 
       objectReference: {fileID: 11400000, guid: 00a11e746e03d5242bfe9c11055957a1,
         type: 2}

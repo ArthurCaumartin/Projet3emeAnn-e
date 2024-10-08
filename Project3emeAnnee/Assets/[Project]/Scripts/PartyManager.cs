@@ -68,6 +68,7 @@ public class PartyManager : MonoBehaviour
                 break;
         }
 
+        _partyCanvas.UpdatePartyState(_state);
         _turretManager.PassPartyState(_state);
         _camControler.SetCameraOnState(_state);
     }

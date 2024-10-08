@@ -8,6 +8,8 @@ public class PartyCanvas : MonoBehaviour
     [Space]
     [SerializeField] private TextMeshProUGUI _lifeText;
     [SerializeField] private Image _lifeImage;
+    [Space]
+    [SerializeField] private TextMeshProUGUI _partyStateText;
 
 
     public void UpdateLifeBar(int max, int current)
@@ -19,5 +21,10 @@ public class PartyCanvas : MonoBehaviour
     public void UpdateGazCount(float gazCount)
     {
         _gazCountText.text = "Gaz Harvest : " + ((int)gazCount).ToString();
+    }
+
+    public void UpdatePartyState(PartyState state)
+    {
+        _partyStateText.text = state.ToString();
     }
 }

@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class GasReservoir : MonoBehaviour
+public class GasTank : MonoBehaviour
 {
     [SerializeField] private int _gazQuantity = 500;
     [SerializeField] private RectTransform _startButton;
@@ -46,5 +46,6 @@ public class GasReservoir : MonoBehaviour
         PartyManager.instance.CollectGaz(_gazQuantity);
         PartyManager.instance.SetPartyState(PartyState.Mobile);
         GameManager.instance.ChangeDifficulty(true);
+        gameObject.SetActive(false);
     }
 }
