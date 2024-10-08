@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
         // print("Hit Mob !");
         mobHit.DoDamage(_damage);
         _perforateCount--;
-        if (_perforateCount <= 0) Destroy(gameObject);
+        if (_perforateCount <= -1) Destroy(gameObject);
     }
 
     private void Move()
