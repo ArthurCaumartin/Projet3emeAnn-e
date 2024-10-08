@@ -2713,6 +2713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6596222402742243911, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
         type: 3}
+      propertyPath: _partyCanvas
+      value: 
+      objectReference: {fileID: 6221715975640400853}
+    - target: {fileID: 6596222402742243911, guid: 1ee31749d1e3d964ba7e843e7f648bd0,
+        type: 3}
       propertyPath: _camControler
       value: 
       objectReference: {fileID: 1112722633417333994}
@@ -2917,6 +2922,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6756977331484892915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6221715975640400853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 833837329007074598, guid: 80283121f86a32741928ec68a6bed440,
+    type: 3}
+  m_PrefabInstance: {fileID: 6756977331484892915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3670d8eda39634a4b88070235d9d2162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8971008790623192076
 PrefabInstance:
   m_ObjectHideFlags: 0
