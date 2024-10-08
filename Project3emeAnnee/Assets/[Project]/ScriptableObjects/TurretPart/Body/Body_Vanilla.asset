@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 2
   partName: Body_Vanilla
+  color: {r: 1, g: 1, b: 1, a: 1}
   description: glace vanille en legende
   inventorySprite: {fileID: 21300000, guid: 08015000c296c2845ab6f043afe72c30, type: 3}
   mesh: {fileID: -6978293761761576252, guid: cdf7703c708dee44db1b72f6fc9a8675, type: 3}
   stat:
     damage: 20
     attackPerSecond: 4
-    range: 10
+    range: 15
     rotateSpeed: 10
     projectileSpeed: 60
     perforationCount: 0
