@@ -14,6 +14,7 @@ public class ScriptableWaveMob : ScriptableObject
 public class Wave
 {
     public string name;
+    public bool isWaveSplit;
     public int spawnTimeInWaveMob;
     public float spawnDuration;
     public List<MobToSpawn> mobsToSpawn = new List<MobToSpawn>();
@@ -29,5 +30,5 @@ public class MobsToSpawn
 public class MobToSpawn
 {
     public GameObject mobName;
-    public int mobNumber;
+    public int mobNumber = 1;
 }

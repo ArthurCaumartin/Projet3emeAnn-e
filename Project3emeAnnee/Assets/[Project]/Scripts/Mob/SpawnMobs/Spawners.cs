@@ -1,11 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using AYellowpaper.SerializedCollections;
 
 public class Spawners : MonoBehaviour
 {
-    public ScriptableWaveMob wavesToSpawn;
+    [SerializedDictionary("Difficulty", "WaveScriptable")]
+    public SerializedDictionary<int, ScriptableWaveMob> WavesToSpawn = new SerializedDictionary<int, ScriptableWaveMob>();
+    
+    // public ScriptableWaveMob wavesToSpawn;
     public float _mobSpawnRange = 10f;
     
     private Transform _playerPos;
@@ -35,9 +37,10 @@ public class Spawners : MonoBehaviour
         _duration += Time.deltaTime;
         
         //Si la vague a atteint le temps de la vague actuelle
-        if (_duration >= wavesToSpawn.waves[_actualWave].spawnTimeInWaveMob)
+        if (_duration >= WavesToSpawn[GameManager.instance.Difficulty].waves[_actualWave].spawnTimeInWaveMob)
         {
             _isSpawningWave = true;
+            
             WaveSpawning(_actualWave);
         }
         
@@ -72,10 +75,16 @@ public class Spawners : MonoBehaviour
         
         // Setup la vague en renseignant le dictionnaire avec les infos des ennemis et leurs nombres
         // Renseigne le nombre total d'enemis dans la vague
-        for (int i = 0; i < wavesToSpawn.waves[waveNumber].mobsToSpawn.Count; i++)
+        for (int i = 0; i <  WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn.Count; i++)
         {
-            mobsToSpawn[wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobName] = wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
-            _numberMobs += wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
+            mobsToSpawn[ WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobName] = 0;
+        }
+
+        for (int i = 0; i <  WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn.Count; i++)
+        {
+            mobsToSpawn[ WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobName] +=
+                WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobNumber;
+            _numberMobs +=  WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobNumber;
         }
 
         // Créer une liste aléatoire avec les ennemis pour les instantier 1 a la fois
@@ -86,10 +95,11 @@ public class Spawners : MonoBehaviour
                 _mobsInWave.Add(mobClassNumber.Key);
             }
         }
-        ShuffleList(_mobsInWave);
+        if (! WavesToSpawn[GameManager.instance.Difficulty].waves[_actualWave].isWaveSplit) ShuffleList(_mobsInWave);
+        
 
         // Créer la variable de tout les quand un ennemi doit apparaître
-        float f = wavesToSpawn.waves[waveNumber].spawnDuration / _numberMobs;
+        float f =  WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].spawnDuration / _numberMobs;
         mobTimeSpawn = Mathf.Round(f * 100.0f) * 0.01f;
     }
     
@@ -134,7 +144,7 @@ public class Spawners : MonoBehaviour
         _spawnDuration = 0;
         _actualWave++;
 
-        if (_actualWave >= wavesToSpawn.waves.Count)
+        if (_actualWave >=  WavesToSpawn[GameManager.instance.Difficulty].waves.Count)
         {
             _hasFinished = true;
         }

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a39d7aa2de7dc41b07edb17e85e160, type: 3}
+  m_Name: BigBottomRight
+  m_EditorClassIdentifier: 
+  waves:
+  - name: FirstWave
+    isWaveSplit: 0
+    spawnTimeInWaveMob: 5
+    spawnDuration: 10
+    mobsToSpawn:
+    - mobName: {fileID: 1837866152966505439, guid: 62d09786f658afc47b351d6b893f3ac3,
+        type: 3}
+      mobNumber: 10
+    - mobName: {fileID: 6088261206720557126, guid: b5959dc25b1ecfe42a80c286d7cc3324,
+        type: 3}
+      mobNumber: 5
+  - name: SplitWave
+    isWaveSplit: 1
+    spawnTimeInWaveMob: 18
+    spawnDuration: 15
+    mobsToSpawn:
+    - mobName: {fileID: 1837866152966505439, guid: 62d09786f658afc47b351d6b893f3ac3,
+        type: 3}
+      mobNumber: 20
+    - mobName: {fileID: 2526220498475402263, guid: 6c3e1c8cb0ae4864b8cf69a30b33fdea,
+        type: 3}
+      mobNumber: 5
+    - mobName: {fileID: 1837866152966505439, guid: 62d09786f658afc47b351d6b893f3ac3,
+        type: 3}
+      mobNumber: 10
+    - mobName: {fileID: 4635874753042984219, guid: df2b353ae0fae5041b809d23491c5fc2,
+        type: 3}
+      mobNumber: 7
+  - name: FinishWave
+    isWaveSplit: 0
+    spawnTimeInWaveMob: 40
+    spawnDuration: 10
+    mobsToSpawn:
+    - mobName: {fileID: 1837866152966505439, guid: 62d09786f658afc47b351d6b893f3ac3,
+        type: 3}
+      mobNumber: 30
+    - mobName: {fileID: 6088261206720557126, guid: b5959dc25b1ecfe42a80c286d7cc3324,
+        type: 3}
+      mobNumber: 15
+    - mobName: {fileID: 4635874753042984219, guid: df2b353ae0fae5041b809d23491c5fc2,
+        type: 3}
+      mobNumber: 10
+  name: BigBottomRight
