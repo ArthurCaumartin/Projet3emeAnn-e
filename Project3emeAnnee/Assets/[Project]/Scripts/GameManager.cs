@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         DontDestroyOnLoad(this.gameObject);
+        _gameData.difficulty = 1;
     }
 
     public void ChangeDifficulty(bool addDiff)

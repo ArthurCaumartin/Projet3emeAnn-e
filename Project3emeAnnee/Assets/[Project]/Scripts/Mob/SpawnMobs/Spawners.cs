@@ -14,8 +14,8 @@ public class Spawners : MonoBehaviour
     private SpawnSiegeMob _siegeManager;
     private List<GameObject> _mobsInWave = new List<GameObject>();
 
-    //TODO Connect to MobHealth Death Event 
-    private List<GameObject> _mobsAlive = new List<GameObject>();
+    //TODO Connect to MobHealth Death Event  
+    [SerializeField] private List<GameObject> _mobsAlive = new List<GameObject>();
 
 
     private Dictionary<GameObject, int> mobsToSpawn = new Dictionary<GameObject, int>();
@@ -137,6 +137,7 @@ public class Spawners : MonoBehaviour
         if (_mobsAlive.Count == 0)
         {
             _siegeManager.FinishWave(this);
+            enabled = false;
         }
     }
 
