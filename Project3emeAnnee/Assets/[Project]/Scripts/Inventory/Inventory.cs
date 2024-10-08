@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -10,16 +11,21 @@ public class Inventory : MonoBehaviour
     [SerializeField] private float _itemAnimationSpeed = 5;
     public float AnimationSpeed { get => _itemAnimationSpeed; }
     [Header("UI Reference :")]
+    [SerializeField] private ItemDataPanel _itemOverDataPanel;
     [SerializeField] private Transform _inventorySlotContainer;
     [SerializeField] private Transform _inventoryItemContainer;
-    public Transform ItemContainer { get => _inventoryItemContainer; }
     [SerializeField] private GameObject _inventorySlotPrefab;
     private List<InventoryItem> _inventoryItemList = new List<InventoryItem>();
     private InventorySlot[] _mainInventorySlotArray;
 
     [Header("To Move away :")]
     [SerializeField] private GameObject _itemPrefab;
+
     private InventoryItem _dragItem;
+
+    public Transform ItemContainer { get => _inventoryItemContainer; }
+
+
     //! Drag is set by InventoryItem while drag
     public InventoryItem DragItem
     {
@@ -41,6 +47,7 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         InstantiateInventory();
+        ShowOverSataPanel(null);
     }
 
     private void Update()
@@ -160,7 +167,7 @@ public class Inventory : MonoBehaviour
         if (dragItemIndex == -1)
         {
             //! If drag come from non main slot, clear last slot
-            if(IsAllInventorySlotFill()) return;
+            if (IsAllInventorySlotFill()) return;
             DragItem.LastSlot.SetItemInSlot(null);
             if (slotOver.Item)
             {
@@ -235,9 +242,17 @@ public class Inventory : MonoBehaviour
     {
         foreach (var item in _mainInventorySlotArray)
         {
-            if(!item.Item)
+            if (!item.Item)
                 return false;
         }
         return true;
+    }
+
+    public void ShowOverSataPanel(InventoryItem item)
+    {
+        if (item)
+            _itemOverDataPanel.SetDataToShow(item.GetTurretPartOnDescriptor());
+        else
+            _itemOverDataPanel.ClearDataToShow();
     }
 }

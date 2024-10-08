@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler , IPointerEnterHandler, IPointerExitHandler
 {
     private Inventory _inventory;
     private Image _image;
@@ -50,5 +50,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public ScriptableTurretPart GetTurretPartOnDescriptor()
     {
         return _turretPartDescriptor.GetTurretPart();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _inventory.ShowOverSataPanel(this);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _inventory.ShowOverSataPanel(null);
     }
 }
