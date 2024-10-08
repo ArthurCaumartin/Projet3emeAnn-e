@@ -30,5 +30,5 @@ public class MobsToSpawn
 public class MobToSpawn
 {
     public GameObject mobName;
-    public int mobNumber;
+    public int mobNumber = 1;
 }
