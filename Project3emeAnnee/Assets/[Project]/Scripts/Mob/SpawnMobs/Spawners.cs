@@ -6,20 +6,20 @@ public class Spawners : MonoBehaviour
 {
     [SerializedDictionary("Difficulty", "WaveScriptable")]
     public SerializedDictionary<int, ScriptableWaveMob> WavesToSpawn = new SerializedDictionary<int, ScriptableWaveMob>();
-    
+
     // public ScriptableWaveMob wavesToSpawn;
     public float _mobSpawnRange = 10f;
-    
+
     private Transform _playerPos;
     private SpawnSiegeMob _siegeManager;
     private List<GameObject> _mobsInWave = new List<GameObject>();
-    
+
     //TODO Connect to MobHealth Death Event 
     private List<GameObject> _mobsAlive = new List<GameObject>();
-    
-    
+
+
     private Dictionary<GameObject, int> mobsToSpawn = new Dictionary<GameObject, int>();
-    
+
     private bool _hasStarted, _hasFinished, _isSpawningWave;
     private float _duration, _spawnDuration, mobTimeSpawn;
     private int _actualWave = 0, _numberMobs = 0, _actualMobToSpawn = 0;
@@ -30,20 +30,19 @@ public class Spawners : MonoBehaviour
 
         if (_hasFinished)
         {
-            CheckIfMobs();
             return;
         }
-        
+
         _duration += Time.deltaTime;
-        
+
         //Si la vague a atteint le temps de la vague actuelle
         if (_duration >= WavesToSpawn[GameManager.instance.Difficulty].waves[_actualWave].spawnTimeInWaveMob)
         {
             _isSpawningWave = true;
-            
+
             WaveSpawning(_actualWave);
         }
-        
+
         //Fait apparaître un ennemi durant la vague tous les x temps
         if (_isSpawningWave)
         {
@@ -55,7 +54,7 @@ public class Spawners : MonoBehaviour
             }
         }
     }
-    
+
     public void StartSpawnerWaves(SpawnSiegeMob siegeManagerScript)
     {
         _hasStarted = true;
@@ -72,19 +71,19 @@ public class Spawners : MonoBehaviour
         _numberMobs = 0;
         mobsToSpawn.Clear();
         _mobsInWave.Clear();
-        
+
         // Setup la vague en renseignant le dictionnaire avec les infos des ennemis et leurs nombres
         // Renseigne le nombre total d'enemis dans la vague
-        for (int i = 0; i <  WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn.Count; i++)
+        for (int i = 0; i < WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn.Count; i++)
         {
-            mobsToSpawn[ WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobName] = 0;
+            mobsToSpawn[WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobName] = 0;
         }
 
-        for (int i = 0; i <  WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn.Count; i++)
+        for (int i = 0; i < WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn.Count; i++)
         {
-            mobsToSpawn[ WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobName] +=
+            mobsToSpawn[WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobName] +=
                 WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobNumber;
-            _numberMobs +=  WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobNumber;
+            _numberMobs += WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].mobsToSpawn[i].mobNumber;
         }
 
         // Créer une liste aléatoire avec les ennemis pour les instantier 1 a la fois
@@ -95,31 +94,42 @@ public class Spawners : MonoBehaviour
                 _mobsInWave.Add(mobClassNumber.Key);
             }
         }
-        if (! WavesToSpawn[GameManager.instance.Difficulty].waves[_actualWave].isWaveSplit) ShuffleList(_mobsInWave);
-        
+        if (!WavesToSpawn[GameManager.instance.Difficulty].waves[_actualWave].isWaveSplit) ShuffleList(_mobsInWave);
+
 
         // Créer la variable de tout les quand un ennemi doit apparaître
-        float f =  WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].spawnDuration / _numberMobs;
+        float f = WavesToSpawn[GameManager.instance.Difficulty].waves[waveNumber].spawnDuration / _numberMobs;
         mobTimeSpawn = Mathf.Round(f * 100.0f) * 0.01f;
     }
-    
+
     private void InstantiateMob()
     {
-        
+
         // Vérifie quelle ennemi doit apparaître à une position aléatoire autour du point de spawn
         Vector3 randomPosToSpawn = GetRandomSpawnPos(transform.position);
         GameObject mobInstantiate = Instantiate(_mobsInWave[_actualMobToSpawn], randomPosToSpawn, Quaternion.identity, transform);
-        
+
         _mobsAlive.Add(mobInstantiate);
-        
+
         Mob mobScript = mobInstantiate.GetComponent<Mob>();
         mobScript.Initialize(_playerPos);
-        
+        mobInstantiate.GetComponent<MobHealth>().OnDeathEvent.AddListener(RemoveMob);
+
+
+
         _actualMobToSpawn++;
         if (_actualMobToSpawn >= _numberMobs)
         {
             FinishWave();
         }
+    }
+
+    private void RemoveMob(Mob toRemove)
+    {
+        if (_mobsAlive.Contains(toRemove.gameObject))
+            _mobsAlive.Remove(toRemove.gameObject);
+        
+        CheckIfMobs();
     }
 
     private void CheckIfMobs()
@@ -129,11 +139,11 @@ public class Spawners : MonoBehaviour
             _siegeManager.FinishWave(this);
         }
     }
-    
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = new Color(1,0,0,0.3f);
-        Gizmos.DrawSphere(transform.position , _mobSpawnRange);
+        Gizmos.color = new Color(1, 0, 0, 0.3f);
+        Gizmos.DrawSphere(transform.position, _mobSpawnRange);
     }
 
     //Fini la vague et réinitialise les variables
@@ -144,7 +154,7 @@ public class Spawners : MonoBehaviour
         _spawnDuration = 0;
         _actualWave++;
 
-        if (_actualWave >=  WavesToSpawn[GameManager.instance.Difficulty].waves.Count)
+        if (_actualWave >= WavesToSpawn[GameManager.instance.Difficulty].waves.Count)
         {
             _hasFinished = true;
         }
@@ -157,7 +167,7 @@ public class Spawners : MonoBehaviour
 
         return new Vector3(xRandomPos, position.y, zRandomPos);
     }
-    
+
     private void ShuffleList<T>(List<T> listToShuffle)
     {
         for (int i = 0; i < listToShuffle.Count; i++)

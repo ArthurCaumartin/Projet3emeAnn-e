@@ -599,6 +599,22 @@ PrefabInstance:
       propertyPath: _gazCountText
       value: 
       objectReference: {fileID: 1717259386}
+    - target: {fileID: 7294125662583742632, guid: 8d526df53053ce5449742ecdf9fac6da,
+        type: 3}
+      propertyPath: WavesToSpawn._serializedList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294125662583742632, guid: 8d526df53053ce5449742ecdf9fac6da,
+        type: 3}
+      propertyPath: WavesToSpawn._serializedList.Array.data[0].Key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294125662583742632, guid: 8d526df53053ce5449742ecdf9fac6da,
+        type: 3}
+      propertyPath: WavesToSpawn._serializedList.Array.data[0].Value
+      value: 
+      objectReference: {fileID: 11400000, guid: 00a11e746e03d5242bfe9c11055957a1,
+        type: 2}
     - target: {fileID: 7931563695437641530, guid: 8d526df53053ce5449742ecdf9fac6da,
         type: 3}
       propertyPath: m_AnchorMax.y
