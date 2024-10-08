@@ -17,9 +17,10 @@ public class PartyManager : MonoBehaviour
     [Space]
     [SerializeField] private PlayerControler _playerControler;
     [SerializeField] private CameraControler _camControler;
+    [SerializeField] private PartyCanvas _partyCanvas;
     [SerializeField] private TurretManager _turretManager;
     [SerializeField] private SpawnMobileMob _spawnMobileMob;
-
+    
     public PartyState GameState { get => _state; }
 
     private void Awake()
@@ -30,6 +31,7 @@ public class PartyManager : MonoBehaviour
     private void Start()
     {
         SetPartyState(PartyState.Mobile);
+        _partyCanvas.UpdateLifeBar(10, 10);
     }
 
     public void StartTowerDefencePlacement(Transform siphonTransform)
@@ -56,7 +58,7 @@ public class PartyManager : MonoBehaviour
                 break;
 
             case PartyState.TowerDefencePlacement:
-                // _spawnMobileMob.Nuke();
+                _spawnMobileMob.Nuke();
                 break;
 
             case PartyState.TowerDefence:
@@ -66,5 +68,14 @@ public class PartyManager : MonoBehaviour
 
         _turretManager.PassPartyState(_state);
         _camControler.SetCameraOnState(_state);
+    }
+
+    public void PlayerTakeDamage(int maxLife, int currentLife)
+    {
+        _partyCanvas.UpdateLifeBar(maxLife, currentLife);
+        if(currentLife <= 0)
+        {
+            print("Player is Dead !");
+        }
     }
 }

@@ -24,6 +24,11 @@ public class MobHealth : MonoBehaviour
         }
     }
 
+    public void DestroyMob()
+    {
+        OnDeath();
+    }
+
     private void OnDeath()
     {
         _onDeathEvent.Invoke(_thisMob);

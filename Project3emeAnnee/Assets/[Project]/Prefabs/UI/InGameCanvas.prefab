@@ -83,6 +83,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5785826399584302489}
+  - component: {fileID: 833837329007074598}
   - component: {fileID: 164602700835738853}
   - component: {fileID: 5749184581560929012}
   - component: {fileID: 6363888325678247972}
@@ -118,6 +119,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &833837329007074598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402026957546058026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3670d8eda39634a4b88070235d9d2162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeText: {fileID: 7594039790410304534}
+  _lifeImage: {fileID: 5168324769035045133}
 --- !u!223 &164602700835738853
 Canvas:
   m_ObjectHideFlags: 0
@@ -1089,10 +1104,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 5dab94caca3e1964f911a77e9657db2d, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
