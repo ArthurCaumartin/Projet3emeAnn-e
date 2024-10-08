@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7018522893851399811}
-  - component: {fileID: 4527029731814165070}
+  - component: {fileID: 7702071426140380}
   - component: {fileID: 6596222402742243911}
   - component: {fileID: 7040837219044869918}
   m_Layer: 0
@@ -34,9 +34,10 @@ Transform:
   m_Children:
   - {fileID: 1946950704468622608}
   - {fileID: 1296456348281619095}
+  - {fileID: 8681440283746972617}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4527029731814165070
+--- !u!114 &7702071426140380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,6 +84,7 @@ MonoBehaviour:
   _playerControler: {fileID: 0}
   _camControler: {fileID: 0}
   _turretManager: {fileID: 7484407254568529820}
+  _spawnMobileMob: {fileID: 1178750463418074437}
 --- !u!114 &7040837219044869918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +151,58 @@ MonoBehaviour:
   _turretPanelContainer: {fileID: 0}
   _turretPrefab: {fileID: 1992970299037477598, guid: b137caada5335e64c9cb0941b3fbe3f8,
     type: 3}
+--- !u!1 &3983313843626678730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8681440283746972617}
+  - component: {fileID: 1178750463418074437}
+  m_Layer: 0
+  m_Name: MobSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8681440283746972617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983313843626678730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7018522893851399811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178750463418074437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983313843626678730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcc24ed30d499d44ab1bdb41187f05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPos: {fileID: 0}
+  _camera: {fileID: 0}
+  _enemyPrefab: {fileID: 7598526433442725878, guid: ff822ed051a82b84bb5ad85ab54c5cd2,
+    type: 3}
+  _maxDistanceNavMeshSpawn: 2
+  _cooldownSpawn: 0.04
+  _distanceSpawnEnemies: 10
+  _despawnRadius: 78.5
 --- !u!1 &6313927488124351733
 GameObject:
   m_ObjectHideFlags: 0

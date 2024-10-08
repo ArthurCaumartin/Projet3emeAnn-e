@@ -20,3 +20,6 @@ MonoBehaviour:
     damage: 17
     attackPerSecond: 2.5
     range: 10
+    rotateSpeed: 50
+    projectileSpeed: 60
+    perforationCount: 2

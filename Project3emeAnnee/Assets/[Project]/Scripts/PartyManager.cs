@@ -56,7 +56,7 @@ public class PartyManager : MonoBehaviour
                 break;
 
             case PartyState.TowerDefencePlacement:
-                _spawnMobileMob.Nuke();
+                // _spawnMobileMob.Nuke();
                 break;
 
             case PartyState.TowerDefence:
@@ -64,6 +64,7 @@ public class PartyManager : MonoBehaviour
                 break;
         }
 
+        _turretManager.PassPartyState(_state);
         _camControler.SetCameraOnState(_state);
     }
 }

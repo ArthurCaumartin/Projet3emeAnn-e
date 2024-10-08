@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IDropHandler
 {
     [SerializeField] private InventoryItem _inventoryItem;
     [SerializeField] private PartType _partToTake;
@@ -11,6 +13,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     public InventoryItem Item { get => _inventoryItem; }
     private Inventory _inventory;
     private Image _image;
+
+    public UnityEvent<InventoryItem> OnItemChange;
 
     private void Start()
     {
@@ -40,6 +44,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         {
             item.transform.SetParent(_inventory.GetSlotIndex(this) == -1 ? transform : _inventory.ItemContainer);
             _inventoryItem.LastSlot = this;
+            OnItemChange.Invoke(item);
         }
     }
 
@@ -57,6 +62,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     //! Reorganise inventory on mouse over
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (_inventory.GetSlotIndex(this) == -1) return;
+
         if (!_inventory.DragItem) return;
         ScriptableTurretPart part = _inventory.DragItem.GetTurretPartOnDescriptor();
         if (_partToTake == part.partType || _partToTake == PartType.None)
@@ -66,6 +73,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     public void OnPutInNonMainSlot()
     {
         if (_turretPanel) _turretPanel.ChangeTurretPart(Item.GetTurretPartOnDescriptor());
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (!eventData.pointerDrag) return;
+        _inventory.AddGrabItenToInventory(this);
     }
 }
 

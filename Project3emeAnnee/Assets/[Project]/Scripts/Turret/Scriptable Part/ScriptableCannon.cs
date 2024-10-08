@@ -4,5 +4,5 @@ using UnityEngine;
 public class ScriptableCannon : ScriptableTurretPart
 {
     [Space]
-    public TurretCanon canon;
+    public TurretCanon turretCanon;
 }
