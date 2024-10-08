@@ -48,7 +48,7 @@ public class TurretManager : MonoBehaviour
 
     public void PassPartyState(PartyState state)
     {
-        if (state == PartyState.TowerDefencePlacement)
+        if (state == PartyState.TowerDefencePlacement || state == PartyState.TowerDefence)
         {
             foreach (var item in _turretPanelList)
             {
