@@ -9,7 +9,7 @@ public class TurretCannon : MonoBehaviour
     protected TargetFinder _finder;
     protected StatContainer _stat;
     
-    [Tooltip("Modify turret attackSpeed")]
+    [Tooltip("Modify turret attackSpeed")] //TODO pass variable private and add Getter
     [SerializeField, Range(0.1f, 10)] public float _attackSpeedMultiplier = 1;
     
     [Tooltip("Modify turret damages per bullet")]

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Core_1
   m_EditorClassIdentifier: 
   partType: 1
-  partName: 
+  partName: Core_1
+  description: Core_1 effect not set :'(
   inventorySprite: {fileID: 21300000, guid: 1ad77a937cfa91d41b48303e7f1936a9, type: 3}
   mesh: {fileID: -2666835821660392994, guid: eba03821aab528a409a50ab4302b397e, type: 3}
   effect: {fileID: 0}

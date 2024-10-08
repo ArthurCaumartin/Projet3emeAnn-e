@@ -53,13 +53,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turetPart: {fileID: 0}
   _turretPartList:
+  - {fileID: 11400000, guid: d64a150b4952c5045b46c358746a89ab, type: 2}
+  - {fileID: 11400000, guid: a503da0622e56a542b4b8b00c31bab03, type: 2}
+  - {fileID: 11400000, guid: f4fee0b61bb4d3a479d718ed16efb001, type: 2}
+  - {fileID: 11400000, guid: b5c4cc7242b09914f90b96e6204d3bac, type: 2}
   - {fileID: 11400000, guid: a2376dc50971b0041b561b6d3f0a2553, type: 2}
-  - {fileID: 11400000, guid: 6a61ca650c08a7e49a392ad892a90021, type: 2}
   - {fileID: 11400000, guid: 4f9088358b4c71240b00bd078ce9c09f, type: 2}
-  - {fileID: 11400000, guid: 60bac5e6e4f442b49bf661877f8f0e31, type: 2}
-  - {fileID: 11400000, guid: 76ca5922bc54fa642ad88bbdf28e6f35, type: 2}
   - {fileID: 11400000, guid: 0f374fd65d36c9141a4654420cf701aa, type: 2}
-  - {fileID: 11400000, guid: e6a8a620b8d391146b37e6ea89f7bf1c, type: 2}
 --- !u!114 &2367769703106185136
 MonoBehaviour:
   m_ObjectHideFlags: 0

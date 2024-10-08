@@ -58,6 +58,9 @@ public class TurretManager : MonoBehaviour
             return;
         }
 
+        foreach (var item in _turretList)
+            item.gameObject.SetActive(false);
+
         foreach (var item in _turretPanelList)
             item.ShowPlacementButton(false);
     }

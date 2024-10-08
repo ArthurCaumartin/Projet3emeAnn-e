@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Body_Heavy
   m_EditorClassIdentifier: 
   partType: 2
-  partName: 
+  partName: Body_Heavy
+  description: Slow du cul domage
   inventorySprite: {fileID: 21300000, guid: 08015000c296c2845ab6f043afe72c30, type: 3}
   mesh: {fileID: -6978293761761576252, guid: cdf7703c708dee44db1b72f6fc9a8675, type: 3}
   stat:
