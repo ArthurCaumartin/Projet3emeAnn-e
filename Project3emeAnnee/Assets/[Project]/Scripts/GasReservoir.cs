@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GasReservoir : MonoBehaviour
 {
-    [SerializeField] private int _gasQuantity = 500;
+    [SerializeField] private int _gazQuantity = 500;
     [SerializeField] private RectTransform _startButton;
     [SerializeField] private Button _launchWaveButton;
 
@@ -13,8 +13,12 @@ public class GasReservoir : MonoBehaviour
     {
         GetComponent<TargetDetector>().TriggerEnvent.AddListener(SetStartButtonScale);
         _startButton.GetComponent<Button>().onClick.AddListener(StartTowerDefencePlacement);
+
+        GetComponent<SpawnSiegeMob>().OnWaveEnd.AddListener(FinishSiphon);
+
         _launchWaveButton.onClick.AddListener(StartTowerDefence);
         _launchWaveButton.gameObject.SetActive(false);
+
         SetStartButtonScale(false);
     }
 
@@ -34,5 +38,14 @@ public class GasReservoir : MonoBehaviour
     {
         _startButton.DOScale(value ? Vector3.one : Vector3.zero, .1f)
         .SetEase(Ease.Linear);
+    }
+
+    public void FinishSiphon()
+    {
+        print("Add gaz quantity");
+        // GameManager.instance.AddGas(50 + (50 * GameManager.instance.Difficulty));
+        PartyManager.instance.CollectGaz(_gazQuantity);
+        PartyManager.instance.SetPartyState(PartyState.Mobile);
+        GameManager.instance.ChangeDifficulty(true);
     }
 }

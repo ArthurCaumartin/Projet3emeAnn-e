@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -10,6 +11,8 @@ public class SpawnSiegeMob : MonoBehaviour
     public List<Spawners> _spawners = new List<Spawners>();
     public Button _startButton;
     private Transform _playerTransform;
+    [SerializeField] private UnityEvent _onWaveEnd;
+    public UnityEvent OnWaveEnd { get => _onWaveEnd; }
 
     private void Start()
     {
@@ -37,11 +40,8 @@ public class SpawnSiegeMob : MonoBehaviour
 
     public void FinishExtracting()
     {
-        GameManager.instance.AddGas(50 + (50 * GameManager.instance.Difficulty));
-        
-        GameManager.instance.ChangeDifficulty(true);
-        
-        PartyManager.instance.SetPartyState(PartyState.Mobile);
+        print("Shipon finish Call Event !");
+        _onWaveEnd.Invoke();
     }
 }
 

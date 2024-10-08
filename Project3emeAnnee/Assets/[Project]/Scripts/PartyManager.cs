@@ -20,6 +20,8 @@ public class PartyManager : MonoBehaviour
     [SerializeField] private PartyCanvas _partyCanvas;
     [SerializeField] private TurretManager _turretManager;
     [SerializeField] private SpawnMobileMob _spawnMobileMob;
+    [Space]
+    [SerializeField] private float _totalGazCollect = 0;
     
     public PartyState GameState { get => _state; }
 
@@ -32,6 +34,7 @@ public class PartyManager : MonoBehaviour
     {
         SetPartyState(PartyState.Mobile);
         _partyCanvas.UpdateLifeBar(10, 10);
+        _partyCanvas.UpdateGazCount(_totalGazCollect);
     }
 
     public void StartTowerDefencePlacement(Transform siphonTransform)
@@ -43,14 +46,13 @@ public class PartyManager : MonoBehaviour
     public void StartTowerDefence()
     {
         SetPartyState(PartyState.TowerDefence);
-        // _turretManager
     }
 
     public void SetPartyState(PartyState toSet)
     {
         if (toSet == _state) return;
         _state = toSet;
-        print(toSet);
+        // print(toSet);
         switch (toSet)
         {
             case PartyState.Mobile:
@@ -77,5 +79,11 @@ public class PartyManager : MonoBehaviour
         {
             print("Player is Dead !");
         }
+    }
+
+    public void CollectGaz(float value)
+    {
+        _totalGazCollect += value;
+        _partyCanvas.UpdateGazCount(_totalGazCollect);
     }
 }

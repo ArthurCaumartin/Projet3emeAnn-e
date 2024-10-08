@@ -15,7 +15,7 @@ MonoBehaviour:
   waves:
   - name: FirstWave
     spawnTimeInWaveMob: 5
-    spawnDuration: 10
+    spawnDuration: 5
     mobsToSpawn:
     - mobName: {fileID: 1837866152966505439, guid: 62d09786f658afc47b351d6b893f3ac3,
         type: 3}
