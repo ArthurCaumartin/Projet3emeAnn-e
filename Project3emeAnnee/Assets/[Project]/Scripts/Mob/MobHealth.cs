@@ -5,14 +5,12 @@ public class MobHealth : MonoBehaviour
 {
     [SerializeField] private float _maxLife;
     [SerializeField] private float _currentLife;
-    [SerializeField] private UnityEvent<Mob> _onDeathEvent;
-    public UnityEvent<Mob> OnDeathEvent { get => _onDeathEvent; }
-    private Mob _thisMob;
+    [SerializeField] private UnityEvent<MobHealth> _onDeathEvent;
+    public UnityEvent<MobHealth> OnDeathEvent { get => _onDeathEvent; }
 
     private void Start()
     {
         _currentLife = _maxLife;
-        _thisMob = GetComponent<Mob>();
     }
 
     public void DoDamage(float value)
@@ -31,7 +29,7 @@ public class MobHealth : MonoBehaviour
 
     private void OnDeath()
     {
-        _onDeathEvent.Invoke(_thisMob);
+        _onDeathEvent.Invoke(this);
         Destroy(gameObject);
     }
 }

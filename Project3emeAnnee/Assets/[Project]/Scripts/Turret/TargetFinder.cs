@@ -4,7 +4,7 @@ using UnityEngine.Analytics;
 
 public class TargetFinder : MonoBehaviour
 {
-    [SerializeField] private List<Mob> _mobInRangeList = new List<Mob>();
+    [SerializeField] private List<MobHealth> _mobInRangeList = new List<MobHealth>();
     public float _range;
     private SphereCollider _collider;
     private StatContainer _stat;
@@ -26,11 +26,11 @@ public class TargetFinder : MonoBehaviour
         _collider.radius = _stat.range;
     }
 
-    public Mob GetNearsetMob()
+    public MobHealth GetNearsetMob()
     {
         if (_mobInRangeList.Count == 0) return null;
 
-        Mob toReturn = null;
+        MobHealth toReturn = null;
 
         float minDistance = Mathf.Infinity;
         foreach (var item in _mobInRangeList)
@@ -49,24 +49,24 @@ public class TargetFinder : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Mob mob = other.GetComponent<Mob>();
+        MobHealth mob = other.GetComponent<MobHealth>();
         if (mob)
         {
-            mob.GetComponent<MobHealth>().OnDeathEvent.AddListener(RemoveMob);
+            mob.OnDeathEvent.AddListener(RemoveMob);
             _mobInRangeList.Add(mob);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Mob mob = other.GetComponent<Mob>();
+        MobHealth mob = other.GetComponent<MobHealth>();
         if (mob && _mobInRangeList.Contains(mob))
         {
             _mobInRangeList.Remove(mob);
         }
     }
 
-    public void RemoveMob(Mob toRemove)
+    public void RemoveMob(MobHealth toRemove)
     {
         if (_mobInRangeList.Contains(toRemove))
             _mobInRangeList.Remove(toRemove);

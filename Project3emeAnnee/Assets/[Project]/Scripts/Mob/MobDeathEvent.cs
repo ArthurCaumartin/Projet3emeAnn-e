@@ -10,7 +10,6 @@ public class MobDeathEvent : MonoBehaviour
 
     void Start()
     {
-        GetComponent<MobHealth>().OnDeathEvent.AddListener(Explode);
     }
 
     public void Split(Mob toSplit)
