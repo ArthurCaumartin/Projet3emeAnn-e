@@ -43,7 +43,7 @@ public class GasTank : MonoBehaviour
     public void FinishSiphon()
     {
         print("Add gaz quantity");
-        PartyManager.instance.CollectGaz(_gazQuantity);
+        PartyManager.instance.CollectGaz(_gazQuantity, true);
         PartyManager.instance.SetPartyState(PartyState.Mobile);
         GameManager.instance.ChangeDifficulty(true);
         gameObject.SetActive(false);

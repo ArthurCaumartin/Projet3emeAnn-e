@@ -134,7 +134,7 @@ public class Inventory : MonoBehaviour
 
     private void RemoveItem(int itemIndex, bool dragToLeft = false)
     {
-        print("Remove Item, Index : " + itemIndex);
+        // print("Remove Item, Index : " + itemIndex);
         _mainInventorySlotArray[itemIndex].SetItemInSlot(null);
         //! Drag to left to fill the holl
         if (dragToLeft) DragItemLeft(itemIndex, _mainInventorySlotArray.Length - 1);
@@ -151,7 +151,7 @@ public class Inventory : MonoBehaviour
         //! If drag goes in non main slot
         if (!_mainInventorySlotArray.Contains(slotOver))
         {
-            print("Add Item to other slot");
+            // print("Add Item to other slot");
             if (slotOver.Item) TrashItem(slotOver.Item);
 
             if (dragItemIndex == -1)

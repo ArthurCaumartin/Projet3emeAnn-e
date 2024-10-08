@@ -27,6 +27,7 @@ public class TurretBaker : MonoBehaviour
 
     public void SetTurretComponent(ScriptableTurretPart partToSet)
     {
+        print(gameObject.name + " : bake turret Part");
         switch (partToSet)
         {
             case ScriptableCannon:

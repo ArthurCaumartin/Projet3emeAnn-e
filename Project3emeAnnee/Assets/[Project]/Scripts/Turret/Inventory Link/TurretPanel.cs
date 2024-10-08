@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TurretPanel : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler , IPointerExitHandler
+public class TurretPanel : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private TurretBaker _turretBaker;
     [SerializeField] private TurretBaker _mobiletTurretBaker;
@@ -28,7 +28,9 @@ public class TurretPanel : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void ChangeTurretPart(ScriptableTurretPart part)
     {
+        print("Change Part in panel : " + part.partName);
         _turretBaker.SetTurretComponent(part);
+        _mobiletTurretBaker.SetTurretComponent(part);
     }
 
     public void OpenPanel(bool value)
