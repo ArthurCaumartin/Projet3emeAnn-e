@@ -43,7 +43,6 @@ public class GasReservoir : MonoBehaviour
     public void FinishSiphon()
     {
         print("Add gaz quantity");
-        // GameManager.instance.AddGas(50 + (50 * GameManager.instance.Difficulty));
         PartyManager.instance.CollectGaz(_gazQuantity);
         PartyManager.instance.SetPartyState(PartyState.Mobile);
         GameManager.instance.ChangeDifficulty(true);

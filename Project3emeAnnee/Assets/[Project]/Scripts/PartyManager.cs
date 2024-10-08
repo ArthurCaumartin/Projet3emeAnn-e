@@ -22,7 +22,7 @@ public class PartyManager : MonoBehaviour
     [SerializeField] private SpawnMobileMob _spawnMobileMob;
     [Space]
     [SerializeField] private float _totalGazCollect = 0;
-    
+
     public PartyState GameState { get => _state; }
 
     private void Awake()
@@ -75,7 +75,7 @@ public class PartyManager : MonoBehaviour
     public void PlayerTakeDamage(int maxLife, int currentLife)
     {
         _partyCanvas.UpdateLifeBar(maxLife, currentLife);
-        if(currentLife <= 0)
+        if (currentLife <= 0)
         {
             print("Player is Dead !");
         }
@@ -85,5 +85,6 @@ public class PartyManager : MonoBehaviour
     {
         _totalGazCollect += value;
         _partyCanvas.UpdateGazCount(_totalGazCollect);
+        GameManager.instance.AddGas((int)_totalGazCollect);
     }
 }
