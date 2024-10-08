@@ -111,9 +111,9 @@ public class Spawners : MonoBehaviour
 
         _mobsAlive.Add(mobInstantiate);
 
-        Mob mobScript = mobInstantiate.GetComponent<Mob>();
-        mobScript.Initialize(_playerPos);
-        mobInstantiate.GetComponent<MobHealth>().OnDeathEvent.AddListener(RemoveMob);
+        MobHealth mobHealth = mobInstantiate.GetComponent<MobHealth>();
+        mobHealth.GetComponent<Mob>().Initialize(_playerPos);
+        mobHealth.OnDeathEvent.AddListener(RemoveMob);
 
 
 
@@ -124,7 +124,7 @@ public class Spawners : MonoBehaviour
         }
     }
 
-    private void RemoveMob(Mob toRemove)
+    private void RemoveMob(MobHealth toRemove)
     {
         if (_mobsAlive.Contains(toRemove.gameObject))
             _mobsAlive.Remove(toRemove.gameObject);

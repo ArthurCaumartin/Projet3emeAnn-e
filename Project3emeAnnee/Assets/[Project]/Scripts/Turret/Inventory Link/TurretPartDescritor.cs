@@ -16,6 +16,7 @@ public class TurretPartDescritor : MonoBehaviour
     {
         _turetPart = _turretPartList[Random.Range(0, _turretPartList.Count)];
         GetComponent<Image>().sprite = _turetPart.inventorySprite;
+        GetComponent<Image>().color = _turetPart.color;
     }
 
     public ScriptableTurretPart GetTurretPart()

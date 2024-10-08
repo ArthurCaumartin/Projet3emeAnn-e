@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 3
   partName: Burst
+  color: {r: 1, g: 0.30817604, b: 0.84535706, a: 1}
   description: Une super description claire comme de l'eau de roche :)
   inventorySprite: {fileID: 21300000, guid: 4ec1c44ed61939d4991702c9bb2db386, type: 3}
   mesh: {fileID: -6206385551776140352, guid: 02c035e45960e8c4eac20bcf2b6c3019, type: 3}
