@@ -31,7 +31,7 @@ public class TurretCannon : MonoBehaviour
 
     public virtual void Update()
     {
-        print("Virtual Void");
+        // print("Virtual Void");
         _currentTarget = _finder.GetNearsetMob()?.transform;
         if (!_currentTarget) return;
         LookAtTarget();
