@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Project3emeAnnee/Heart")]
+[CreateAssetMenu(menuName = "Project3emeAnnee/Core")]
 public class ScriptaleCore : ScriptableTurretPart
 {
     [Space]
