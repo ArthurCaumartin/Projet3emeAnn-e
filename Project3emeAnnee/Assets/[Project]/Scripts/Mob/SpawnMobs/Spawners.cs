@@ -38,6 +38,7 @@ public class Spawners : MonoBehaviour
         if (_duration >= wavesToSpawn.waves[_actualWave].spawnTimeInWaveMob)
         {
             _isSpawningWave = true;
+            
             WaveSpawning(_actualWave);
         }
         
@@ -74,7 +75,13 @@ public class Spawners : MonoBehaviour
         // Renseigne le nombre total d'enemis dans la vague
         for (int i = 0; i < wavesToSpawn.waves[waveNumber].mobsToSpawn.Count; i++)
         {
-            mobsToSpawn[wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobName] = wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
+            mobsToSpawn[wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobName] = 0;
+        }
+
+        for (int i = 0; i < wavesToSpawn.waves[waveNumber].mobsToSpawn.Count; i++)
+        {
+            mobsToSpawn[wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobName] +=
+                wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
             _numberMobs += wavesToSpawn.waves[waveNumber].mobsToSpawn[i].mobNumber;
         }
 
@@ -86,7 +93,8 @@ public class Spawners : MonoBehaviour
                 _mobsInWave.Add(mobClassNumber.Key);
             }
         }
-        ShuffleList(_mobsInWave);
+        if (!wavesToSpawn.waves[_actualWave].isWaveSplit) ShuffleList(_mobsInWave);
+        
 
         // Créer la variable de tout les quand un ennemi doit apparaître
         float f = wavesToSpawn.waves[waveNumber].spawnDuration / _numberMobs;
