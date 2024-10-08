@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2414333947032209673}
   - component: {fileID: 6323842109972346827}
   - component: {fileID: 707223806181238451}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263e59fe81d2a354b9bdfe82cf33eb69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _name: 
+  _mobHealth: {fileID: 0}
+  _movementSpeed: 0
+  _mobScale: 0
   _navMeshAgent: {fileID: 6323842109972346827}
 --- !u!1001 &6080384708278261120
 PrefabInstance:
@@ -239,6 +242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MockupEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 88c3da6fbc945de49b64d680ca7eaac8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
