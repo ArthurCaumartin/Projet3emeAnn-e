@@ -14,7 +14,6 @@ public class Spawners : MonoBehaviour
     private SpawnSiegeMob _siegeManager;
     private List<GameObject> _mobsInWave = new List<GameObject>();
 
-    //TODO Connect to MobHealth Death Event  
     [SerializeField] private List<GameObject> _mobsAlive = new List<GameObject>();
 
 

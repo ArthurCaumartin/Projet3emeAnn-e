@@ -7,7 +7,7 @@ public class LootGenerator : MonoBehaviour
 {
     public static LootGenerator instance;
     [Tooltip("Roll a dice between 0 and 100 if drop under _drop chance Generate a Item")]
-    [SerializeField, Range(0, 100)] private float _dropChance; //TODO Move to game data ?
+    [SerializeField, Range(0, 100)] private float _dropChance;
     [SerializeField] private Inventory _inventory;
     [SerializeField] private TurretPartDescritor _itemPrefab;
     [Space]

@@ -165,7 +165,6 @@ namespace AYellowpaper.SerializedCollections.Editor
             ToggleSearchBar(_propertyData.AlwaysShowSearch ? true : SCEditorUtility.ShouldShowSearch(pageCount));
         }
 
-        // TODO: This works for now, but isn't perfect. This checks if the serialized dictionary was reassigned with new(), simply by comparing the count. Should be instead done by reference equality in the future
         private void CheckIfNewDictionary()
         {
             if (_singleEditingData.IsValid && _singleEditingData.LookupTable.GetCount() != _activeState.ListSize)
@@ -213,7 +212,6 @@ namespace AYellowpaper.SerializedCollections.Editor
 
         private void CheckPaging()
         {
-            // TODO: Is there a better solution to check for Revert/delete/add?
             if (_lastListSize != _activeState.ListSize)
             {
                 _lastListSize = _activeState.ListSize;
