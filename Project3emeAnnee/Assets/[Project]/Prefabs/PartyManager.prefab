@@ -83,8 +83,11 @@ MonoBehaviour:
   _state: 0
   _playerControler: {fileID: 0}
   _camControler: {fileID: 0}
+  _partyCanvas: {fileID: 0}
   _turretManager: {fileID: 7484407254568529820}
   _spawnMobileMob: {fileID: 1178750463418074437}
+  _totalGazCollectBySiphon: 0
+  _totalGazCollectByPlayer: 0
 --- !u!114 &7040837219044869918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +195,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3983313843626678730}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebcc24ed30d499d44ab1bdb41187f05e, type: 3}
   m_Name: 

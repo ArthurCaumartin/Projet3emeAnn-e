@@ -8,6 +8,7 @@ public class GasTank : MonoBehaviour
     [SerializeField] private int _gazQuantity = 500;
     [SerializeField] private RectTransform _startButton;
     [SerializeField] private Button _launchWaveButton;
+    [SerializeField] private SpriteRenderer _siphonVisual;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class GasTank : MonoBehaviour
 
     public void StartTowerDefencePlacement()
     {
+        _startButton.DOScale(Vector3.zero, .1f);
         PartyManager.instance.StartTowerDefencePlacement(transform);
         _launchWaveButton.gameObject.SetActive(true);
     }
@@ -43,6 +45,7 @@ public class GasTank : MonoBehaviour
     public void FinishSiphon()
     {
         print("Add gaz quantity");
+        _siphonVisual.color = Color.white;
         PartyManager.instance.AddGas(_gazQuantity, true);
         PartyManager.instance.SetPartyState(PartyState.Mobile);
         GameManager.instance.ChangeDifficulty(true);
