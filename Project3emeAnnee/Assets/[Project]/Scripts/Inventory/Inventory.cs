@@ -82,11 +82,12 @@ public class Inventory : MonoBehaviour
     [ContextMenu("Spawn New Item")]
     public void SpawnNewInventoryItem()
     {
-        GameObject newItem = Instantiate(_itemPrefab, _inventoryItemContainer.transform.position, Quaternion.identity, _inventoryItemContainer);
-        newItem.name = "Item_" + _inventoryItemList.Count;
-        InventoryItem newInvItem = newItem.GetComponent<InventoryItem>();
-        newInvItem.Initialize(this);
-        AddItemToInventory(newInvItem);
+        // GameObject newItem = Instantiate(_itemPrefab, _inventoryItemContainer.transform.position, Quaternion.identity, _inventoryItemContainer);
+        // newItem.name = "Item_" + _inventoryItemList.Count;
+        // InventoryItem newInvItem = newItem.GetComponent<InventoryItem>();
+        // newInvItem.Initialize(this);
+        // AddItemToInventory(newInvItem);
+        LootGenerator.instance.GenerateItem(1000);
     }
 
     public void TrashItem(InventoryItem itemToTrash)

@@ -1,6 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+
+
+
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private ScriptableGameData _gameData;
 
-    public int Difficulty { get => _gameData.difficulty; }
+    public int Difficulty { get => _gameData.currentDifficultyIndex; }
     public int GlobalGas { get => _gameData.globalGas; }
     private void Awake()
     {
@@ -17,21 +22,20 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-            instance = this;
+        instance = this;
 
         DontDestroyOnLoad(this.gameObject);
-        _gameData.difficulty = 1;
     }
 
     public void ChangeDifficulty(bool addDiff)
     {
         if (addDiff)
         {
-            _gameData.difficulty++;
+            _gameData.currentDifficultyIndex++;
         }
         else
         {
-            _gameData.difficulty = 1;
+            _gameData.currentDifficultyIndex = 1;
         }
     }
 
@@ -56,5 +60,10 @@ public class GameManager : MonoBehaviour
     {
         _gameData.globalGas += valueToChange;
         if (_gameData.globalGas > 9999) _gameData.globalGas = 9999;
+    }
+
+    public ScriptableGameData GetGameData()
+    {
+        return _gameData;
     }
 }
