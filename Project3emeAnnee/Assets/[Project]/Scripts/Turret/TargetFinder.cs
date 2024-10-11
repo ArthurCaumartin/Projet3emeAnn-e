@@ -35,7 +35,7 @@ public class TargetFinder : MonoBehaviour
         float minDistance = Mathf.Infinity;
         foreach (var item in _mobInRangeList)
         {
-            if (!item) continue; //TODO remove mob on death
+            if (!item) continue; 
             float currentDistance = (item.transform.position - transform.position).sqrMagnitude;
             if (currentDistance < minDistance)
             {

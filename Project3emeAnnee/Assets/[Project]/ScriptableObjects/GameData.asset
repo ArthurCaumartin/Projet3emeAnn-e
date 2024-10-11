@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   globalGas: 0
-  difficulty: 1
+  currentDifficultyIndex: 1
   mechaOptimisations:
     _serializedList:
     - Key: 

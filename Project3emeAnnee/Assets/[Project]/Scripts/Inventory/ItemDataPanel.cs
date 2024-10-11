@@ -32,7 +32,7 @@ public class ItemDataPanel : MonoBehaviour
 
         if (part is ScriptableCannon)
         {
-            //TODO Get stat multiplier
+            //TODO Get stat multiplier with getter (getter not set for now)
         }
 
         if (part is ScriptableBody)

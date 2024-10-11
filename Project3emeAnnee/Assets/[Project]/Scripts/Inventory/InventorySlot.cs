@@ -65,9 +65,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IDropHandler
         if (_inventory.GetSlotIndex(this) == -1) return;
 
         if (!_inventory.DragItem) return;
-        ScriptableTurretPart part = _inventory.DragItem.GetTurretPartOnDescriptor();
-        if (_partToTake == part.partType || _partToTake == PartType.None)
-            _inventory.AddGrabItenToInventory(this);
+        _inventory.AddGrabItenToInventory(this);
     }
 
     public void OnPutInNonMainSlot()
@@ -78,7 +76,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         if (!eventData.pointerDrag) return;
-        _inventory.AddGrabItenToInventory(this);
+        ScriptableTurretPart part = _inventory.DragItem.GetTurretPartOnDescriptor();
+        if (_partToTake == part.partType || _partToTake == PartType.None)
+            _inventory.AddGrabItenToInventory(this);
     }
 }
 
